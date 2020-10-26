@@ -2,9 +2,10 @@
 --This code will make the X2 devs cry
 
 local exp = require("Stats")
+allAchievements = Achievements.get()
 
 SaveData["episode"] = SaveData["episode"] or {}
-local stat = SaveData["episode"]
+stat = SaveData["episode"]
 
 --WARNING: Spaghetti Code Ahead!
 
@@ -85,4 +86,4 @@ xpDrop(89, 1)
 
 
 
--- I know, really bad practice. But Redigit got away with it so yeah awful drunken spaghetti code is what has entertaining you. And it's in VB6, just to rub salt in the wound.
+-- I know, really bad practice.
