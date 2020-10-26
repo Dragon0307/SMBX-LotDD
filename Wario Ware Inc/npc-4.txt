@@ -1,0 +1,11 @@
+height=68
+width=98
+gfxheight=68
+gfxwidth=98
+nohurt=1
+jumphurt=1
+nogravity=1
+speed=0
+npcblock=0
+npcblocktop=0
+frames=2

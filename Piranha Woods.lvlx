@@ -1,0 +1,16 @@
+HEAD
+TL:"Piranha Woods";CPID:"SMBX2";
+HEAD_END
+SECTION
+SC:0;L:-200000;R:-196480;T:-200800;B:-199136;MZ:16;MF:"";BG:12;
+SECTION_END
+LAYERS
+LR:"Default";
+LR:"Destroyed Blocks";HD:1;
+LR:"Spawned NPCs";
+LAYERS_END
+EVENTS_CLASSIC
+ET:"Level - Start";AS:0;AX:0;AY:0;
+ET:"P Switch - Start";AS:0;AX:0;AY:0;
+ET:"P Switch - End";AS:0;AX:0;AY:0;
+EVENTS_CLASSIC_END
