@@ -12,4 +12,3 @@ function onEvent(event)
         soundPlayed = 1
     end
 end
-
