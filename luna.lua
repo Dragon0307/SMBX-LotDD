@@ -69,6 +69,7 @@ lhp.setNPCDamage(13, stat.level * 1.25) --Fireballs
 lhp.setNPCDamage(263, stat.level * 1.5) --Ice Cubes
 lhp.setNPCDamage(171, stat.level * 3) --Player Hammers
 lhp.setNPCDamage(157, stat.level * 3) --Verticle Stripe Mushroom Blocks
+lhp.setNPCDamage(80, stat.level * 1) --Verticle Stripe Mushroom Blocks
 end
 
 --NPC HP

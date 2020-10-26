@@ -19,3 +19,4 @@ Sound Effects - Hamster Republic, https://rpg.hamsterrepublic.com/ohrrpgce/Free_
 Toilet - https://onedrive.live.com/?authkey=%21ALWQOpojXPegX3g&id=35D552C9678BB8FA%21588509&cid=35D552C9678BB8FA
 Bath and Shower - 
 Chet Rippo - Johnathan Explorer, https://www.spriters-resource.com/custom_edited/papermariocustoms/sheet/17650/
+Mr.DoubleA's NPC Pack - https://www.supermariobrosx.org/forums/viewtopic.php?f=101&t=25011 
