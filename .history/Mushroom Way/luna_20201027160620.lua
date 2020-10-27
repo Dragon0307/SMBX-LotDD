@@ -13,9 +13,4 @@ function onEvent(event)
     end
 end
 
-stats.xpDrop(89, 1)
-stats.xpDrop(173, 1)
-stats.xpDrop(29, 2)
-stats.xpDrop(27, 1)
-stats.xpDrop(28, 1)
-stats.xpDrop(233, 1)
+stat.xpDrop

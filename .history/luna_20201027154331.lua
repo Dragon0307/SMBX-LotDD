@@ -16,6 +16,10 @@ local textplus = require("textplus")
 local flutter = require("flutterjump") --Yoshi is NOT a tool to be used and discarded, he has rights! Use the flutter jump instead of cruelly sacrificing him.
 local warp = require("warpTransition")
 
+function sleep(n) -- I have no clue why I left this here.
+    if n > 0 then os.execute("ping -n " .. tonumber(n+1) .. " localhost > NUL") end
+end
+
 local fontB = textplus.loadFont("textplus/font/6.ini")
 local fontA = textplus.loadFont("textplus/font/smw-b.ini")
 
@@ -27,16 +31,16 @@ function onDraw()
     textplus.print{
         x = 30,
         y = 550,
-        xscale = 2,
-        yscale = 2,
+        xscale = 2.5,
+        yscale = 2.5,
         font = fontB,
         text = "LEVEL: " .. stat.level
     }
     textplus.print{
         x = 200,
         y = 550,
-        xscale =2,
-        yscale = 2,
+        xscale =2.5,
+        yscale = 2.5,
         font = fontB,
         text = "EXPERIENCE: " .. stat.xp
     }
@@ -82,5 +86,9 @@ lhp.setHP(173, 3.3) -- SMB1 Green Koopa
 lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 --Leveling Up and EXP stats
+
+stats.xpDrop(89, 1)
+stats.xpDrop(173, 1)
+stats.xpDrop(29, 2)
 
 -- I know, really bad practice.

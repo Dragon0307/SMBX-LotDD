@@ -1,5 +1,5 @@
 --Stats.lua - Gainus Levelus! This lets you gain experience and level up.
---COPPYRIT KMAKEVURSE LAL RITES RIZURVURVD DOO NUT DSITRIBUT
+--COPPYRIT KMAKEVURSE
 --Should I upload this?
 --These are commented because 1. I don't mind people raiding my episode files and 2. I like talking to myself.
 
@@ -52,6 +52,8 @@ function stats.GainXP(x) -- GainXP - This function grants you experience points.
         until stat.xp < stat.level * 5 + stat.level
     end
 end
+
+
 
 function stats.onNPCKill(EventObj, killedNPC, killReason) -- This raids xpDrops and dispenses XP for the NPC you just murdered, as long as you have declared it.
     if xpDrops[killedNPC.id] ~= nil then

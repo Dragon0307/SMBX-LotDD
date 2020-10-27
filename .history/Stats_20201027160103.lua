@@ -53,6 +53,8 @@ function stats.GainXP(x) -- GainXP - This function grants you experience points.
     end
 end
 
+
+
 function stats.onNPCKill(EventObj, killedNPC, killReason) -- This raids xpDrops and dispenses XP for the NPC you just murdered, as long as you have declared it.
     if xpDrops[killedNPC.id] ~= nil then
         stats.GainXP(xpDrops[killedNPC.id])

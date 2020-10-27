@@ -27,7 +27,7 @@ function onDraw()
     textplus.print{
         x = 30,
         y = 550,
-        xscale = 2,
+        xscale = 2.5,
         yscale = 2,
         font = fontB,
         text = "LEVEL: " .. stat.level
@@ -82,5 +82,9 @@ lhp.setHP(173, 3.3) -- SMB1 Green Koopa
 lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 --Leveling Up and EXP stats
+
+stats.xpDrop(89, 1)
+stats.xpDrop(173, 1)
+stats.xpDrop(29, 2)
 
 -- I know, really bad practice.

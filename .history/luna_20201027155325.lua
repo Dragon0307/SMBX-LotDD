@@ -83,4 +83,8 @@ lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 --Leveling Up and EXP stats
 
+stats.xpDrop(89, 1)
+stats.xpDrop(173, 1)
+stats.xpDrop(29, 2)
+
 -- I know, really bad practice.
