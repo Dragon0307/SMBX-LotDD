@@ -40,7 +40,7 @@ function stats.GainXP(x) -- GainXP - This function grants you experience points.
         repeat
             stat.xp = stat.xp - stat.level * 5 + stat.level
             stats.LevelUp(1) --Keep going until you haven't got enough experience points
-        until stat.xp < stat.level * 5 + stat.level
+        until stat.xp < stat.level * 5 + stat.leve
     end
 end
 
