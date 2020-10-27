@@ -1,0 +1,1 @@
+lhp.setHP(1, 4.25) -- Chompy, Phase 1
