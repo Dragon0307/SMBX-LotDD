@@ -4,9 +4,6 @@
 local exp = require("Stats")
 allAchievements = Achievements.get()
 
-SaveData["episode"] = SaveData["episode"] or {}
-stat = SaveData["episode"]
-
 --WARNING: Spaghetti Code Ahead!
 
 lhp = require("LightHitPoint") -- Needs to be global for per-level health bars.
@@ -82,10 +79,9 @@ lhp.setHP(431, 12) -- SMW Supercharged Spiny
 lhp.setHP(29, 7) -- SMB1 Hammer Bro.
 lhp.setHP(173, 3.3) -- SMB1 Green Koopa
 
-xpDrop(89, 1)
+xpDrop(1, 1)
 
 --Leveling Up and EXP stats
-
 
 
 

@@ -1,20 +1,15 @@
---Stats.lua - Stat script for the SMBX episode "Legend of the Dark Door".
---I made this to de-clutter the episode's luna.lua 
---Steal this script! Feel free to modify or utilise this in some form for your episode.
+--Stats
 
---XP drops
-
--- Within this array are contained knowlege of greatness! If you want, mess around with it. But I don't have a clue because I was just looking at how HitPointLite does its tables.
 local xpDrops = {
 
 }
 
--- To add experience to the table, call xpDrop(NPC, reward). replace "NPC" with the ID of the NPC in question and  
-
---Set up the levelup function 
+xpDrops[89] = 1
 
 SaveData["episode"] = SaveData["episode"] or {}
-local stat = SaveData["episode"]
+stat = SaveData["episode"]
+
+--Set up the levelup function 
 
 if stat.level == nil then
     stat.level = 1
@@ -35,21 +30,12 @@ GainXP = function(x) -- GainXP - This function grants you experience points.
     end
 end
 
-function xpDrop(NPCID, reward) -- This is declared in your luna.lua. Replacce NPCID with the ID of the NPC in question and reward with the XP drop.
+function xpDrop(NPCID, reward) -- Replace NPCID with the ID of the NPC in question and reward with the XP drop.
     xpDrops[NPCID] = reward
 end
 
-
-function onNPCKill(EventObj, killedNPC, killReason)
-    --if killedNPC.id = xpDrops
+local function onNPCKill(EventObj, killedNPC, killReason)
+    if xpDrops[killedNPC.id] ~= nil then
+        GainXP(xpDrops[killedNPC.id])
+    end
 end
-
-
--- Use onInitAPI to set up all the SMBX event handlers you'll need!
--- This runs as soon as library is loaded.
-
---function barebones.onTick()
-	-- Put onTick stuff here
---end
-
---return stat
