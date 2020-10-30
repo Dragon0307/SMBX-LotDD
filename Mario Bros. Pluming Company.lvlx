@@ -1449,13 +1449,14 @@ ID:221;X:-179608;Y:-180128;D:-1;
 ID:221;X:-179608;Y:-180096;D:-1;
 ID:221;X:-179608;Y:-180064;D:-1;
 ID:151;X:-198696;Y:-200112;D:-1;MG:"SUPER MARIO BROS. PLUMBING AND PRINCESS RESCUES";FD:1;ET:"Sign Interaction";
-ID:465;X:-179488;Y:-180064;D:-1;MG:"This cupboard is covered in slobber. Inside there is a box labled \"Yoshi Food\" and another labled \"Pipe Rapeair Kit\". The repair kit appears to be half eaten.";FD:1;
+ID:465;X:-179488;Y:-180064;D:-1;MG:"This cupboard is covered in slobber. Inside there is a box labled \"Yoshi Food\" and another labled \"Pipe Repair Kit\". The repair kit appears to be half eaten.";FD:1;
 ID:151;X:-200168;Y:-200272;D:-1;MG:"KERO SEWERS ACCESS PIPE\nAuthorized Personell Only";FD:1;
 ID:101;X:-199486;Y:-200222;D:1;MG:"Luigi\: Hey\, a-Toad. It's-a-me\, Luigi. What-a are you-a doing here?";FD:1;
 ID:465;X:-179760;Y:-180066;D:-1;MG:"There is a rack of CDs on this shelf. They are labled \"Hotel Mario\"\, \"Super Mario Bros. the Movie\" and \"Windows Vista Install Disk.\" There is also a DS cartridge labled \"R4i Gold\" and an assortment of Genesis cartridges.";FD:1;
 NPC_END
 DOORS
 IX:-199680;IY:-200224;OX:-179296;OY:-180064;DT:2;ID:1;OD:1;TW:1;
+IX:-200240;IY:-200352;DT:1;ID:3;OD:1;EX:1;
 DOORS_END
 LAYERS
 LR:"Default";
