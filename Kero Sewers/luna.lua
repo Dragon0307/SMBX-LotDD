@@ -13,8 +13,8 @@ function onEvent(event)
                 Text.showMessageBox("With that out of the way, HOCUS CHOKUS! Now you should feel stronger. Remember, no refunds!")
                 LevelUp(5)
                 stat.xp = -50
-            else
-                text.showMessageBox("Anyway, if you bring me 32 Blue Coins, I'll give you a 100% definately legal upgrade!") 
-        end
+            end
+    else
+        text.showMessageBox("Anyway, if you bring me 32 Blue Coins, I'll give you a 100% definately legal upgrade!")
     end
 end

@@ -6,10 +6,8 @@ function onEvent(event)
         Audio.MusicChange(0, "42 - Castle Boss.ogg")
     elseif event == "Boom Boom Reset" then
         Audio.MusicChange(0, "mrpg-theme2.spc")
-    elseif event == "Stop Music" then
-        Audio.MusicChange(2, 0)
-    elseif event == "Lift Start" and soundPlayed == 0 then
-        Audio.playSFX("Sounds/nsmbwiiBoneRollercoasterActivate.ogg")
-        soundPlayed = 1
-    end
+    elseif event == "Larry Music" then
+        Audio.MusicChange(0, "42 - Castle Boss.ogg")    
+    elseif event == "Larry Reset" then
+        Audio.MusicChange(0, "mrpg-theme2.spc")
 end
