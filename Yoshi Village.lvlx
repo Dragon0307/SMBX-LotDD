@@ -359,7 +359,9 @@ ID:87;X:-159232;Y:-160032;W:32;H:32;
 BLOCK_END
 NPC
 ID:95;X:-199840;Y:-200128;D:-1;MG:"Bum! Welcome to our vilage! ";FD:1;EA:"Check Status";
-ID:98;X:-159808;Y:-160096;D:1;MG:"Yahii! You found our Pipe Plaza! Unfortunately\, that meanie Trashi blocked off the pipe back to our village! If you do\, I'll teach you our proudest technique.";FD:1;
+ID:98;X:-159744;Y:-160096;D:1;MG:"Yahii! You found our Pipe Plaza! Unfortunately\, that meanie Trashi blocked off the pipe back to our village! If you do\, I'll teach you our proudest technique.";FD:1;
+ID:91;X:-199776;Y:-200096;D:-1;CN:13;
+ID:1;X:-199104;Y:-200128;D:-1;
 NPC_END
 LAYERS
 LR:"Default";
