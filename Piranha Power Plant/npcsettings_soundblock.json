@@ -1,0 +1,21 @@
+{
+	"style" : "groupbox",
+	"title" : "Sound Block Properties",
+	"layout": [
+		{
+			"control": "lineEdit",
+			"name": "inv",
+			"title": "SFX",
+			"tooltip": "What sound should it play? Enter either a SFX ID or a filepath (dont forget to put the filename extension!)",
+			"value-default": "29"
+		},
+			{
+			"control": "lineEdit",
+			"name": "example",
+			"title": "SFX List",
+			"tooltip": "A list of the default SMBX SFX",
+			"value-default": "https://wohlsoft.ru/pgewiki/SFX_list_(SMBX64)",
+			"read-only": true
+		}
+	]
+}

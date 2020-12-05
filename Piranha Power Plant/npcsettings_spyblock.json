@@ -1,0 +1,31 @@
+{
+	"style" : "groupbox",
+	"title" : "Spy Block Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "type",
+			"title": "Type",
+			"type": "int",
+			"tooltip": "What Type of object should it scan?",
+			"value-default": 0,
+			"elements": ["Players", "NPCs", "Blocks"]
+		},
+		{
+			"control": "comboBox",
+			"name": "dir",
+			"title": "Direction",
+			"type": "int",
+			"tooltip": "What direction should it face?",
+			"value-default": 0,
+			"elements": ["Left", "Up", "Right", "Down"]
+		},
+		{
+			"control": "lineEdit",
+			"name": "whitelist",
+			"title": "White List",
+			"tooltip": "The spyblock will only scan for objects with matching ID. If leave blank, all IDs will trigger the spyblock",
+			"value-default": ""
+		}
+	]
+}

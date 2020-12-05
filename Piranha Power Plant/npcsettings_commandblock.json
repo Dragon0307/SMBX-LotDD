@@ -1,0 +1,22 @@
+{
+	"style" : "groupbox",
+	"title" : "Command Block Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "type",
+			"title": "Type",
+			"type": "int",
+			"tooltip": "How does then redstone energy run the script?",
+			"value-default": 0,
+			"elements": ["Pulse", "Repeating"]
+		},
+		{
+			"control": "multiLineEdit",
+			"name": "script",
+			"title": "Script",
+			"tooltip": "The script the command block should execute",
+			"value-default": ""
+		}
+	]
+}

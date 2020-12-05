@@ -5310,7 +5310,7 @@ ID:22;X:-59904;Y:-60032;W:64;H:32;
 ID:22;X:-59904;Y:-60064;W:64;H:32;
 ID:22;X:-59904;Y:-60096;W:64;H:32;
 ID:22;X:-59904;Y:-60128;W:64;H:32;
-ID:21;X:-59904;Y:-60160;W:64;H:32;
+ID:21;X:-59904;Y:-60192;W:64;H:32;
 ID:403;X:-59936;Y:-60096;W:32;H:32;
 ID:1035;X:-59936;Y:-60064;W:32;H:32;
 ID:1035;X:-59936;Y:-60032;W:32;H:32;
@@ -5404,7 +5404,7 @@ ID:35;X:-59616;Y:-60032;W:64;H:32;
 ID:35;X:-59616;Y:-60064;W:64;H:32;
 ID:35;X:-59616;Y:-60096;W:64;H:32;
 ID:35;X:-59616;Y:-60128;W:64;H:32;
-ID:34;X:-59616;Y:-60160;W:64;H:32;
+ID:34;X:-59616;Y:-60192;W:64;H:32;
 ID:37;X:-59616;Y:-60608;W:64;H:32;
 ID:37;X:-59616;Y:-60576;W:64;H:32;
 ID:37;X:-59616;Y:-60512;W:64;H:32;
@@ -5441,7 +5441,7 @@ ID:145;X:-59360;Y:-60032;W:64;H:32;
 ID:145;X:-59360;Y:-60064;W:64;H:32;
 ID:145;X:-59360;Y:-60096;W:64;H:32;
 ID:145;X:-59360;Y:-60128;W:64;H:32;
-ID:140;X:-59360;Y:-60160;W:64;H:32;
+ID:140;X:-59360;Y:-60192;W:64;H:32;
 ID:195;X:-59360;Y:-60608;W:64;H:32;
 ID:195;X:-59360;Y:-60576;W:64;H:32;
 ID:195;X:-59360;Y:-60544;W:64;H:32;
@@ -8363,6 +8363,9 @@ ID:22;X:-195008;Y:-200544;W:64;H:32;
 ID:22;X:-195008;Y:-200512;W:64;H:32;
 ID:22;X:-195008;Y:-200480;W:64;H:32;
 ID:21;X:-195008;Y:-200448;W:64;H:32;
+ID:22;X:-59904;Y:-60160;W:64;H:32;
+ID:35;X:-59616;Y:-60160;W:64;H:32;
+ID:145;X:-59360;Y:-60160;W:64;H:32;
 BLOCK_END
 BGO
 ID:75;X:-159232;Y:-160608;
@@ -13525,6 +13528,7 @@ ID:78;X:-17728;Y:-20032;
 ID:78;X:-17664;Y:-20096;
 ID:78;X:-17664;Y:-20032;
 ID:107;X:-17824;Y:-21632;
+ID:107;X:-59488;Y:-60160;
 BGO_END
 NPC
 ID:94;X:-179744;Y:-180118;D:-1;MG:"'Sup. This is the main entrance to Kero Sewers. Why we have an absurdly spacious sewer that links up the whole kingdom\, I don't know. Also\, it stinks. A lot. Mind\, you're a plumber so you should be used to it by now. ";FD:1;
@@ -13556,7 +13560,7 @@ ID:94;X:-139776;Y:-140118;D:-1;MG:"Intruder! Only authorised personell are allow
 ID:151;X:-195016;Y:-200336;D:-1;MG:"Entrance to the Mario Bros. Plumbing Company. ";FD:1;
 ID:198;X:-79461;Y:-80970;D:-1;MG:"Hey\, It's me! Chett Rippo! Remember me? No? Is it because I shrank in the wash?";FD:1;
 ID:151;X:-79400;Y:-80176;D:-1;MG:"Entrance to the Pipe Plaza on Yoshi's Island";FD:1;
-ID:111;X:-59744;Y:-60128;D:-1;MG:"Whoa! Bowser said I shouldn't let anyone down here! Mind\, I'm a traitor so I will tell you about the pipes.";FD:1;
+ID:111;X:-59744;Y:-60128;D:-1;MG:"Whoa! Bowser said I shouldn't let anyone down here\, let alone tell you of all people about these pipes! Mind\, he doesn't pay me enough\, so I will tell you about the pipes anyway.";FD:1;
 ID:28;X:-99392;Y:-99776;D:-1;
 ID:28;X:-99392;Y:-100000;D:-1;
 ID:28;X:-99392;Y:-100224;D:-1;
@@ -13568,6 +13572,7 @@ NPC_END
 DOORS
 IX:-179632;IY:-180160;OX:-199952;OY:-200480;DT:1;ID:3;OD:1;
 IX:-194992;IY:-200416;DT:2;ID:1;OD:1;LF:"Mario Bros. Pluming Company.lvlx";LI:2;EX:1;
+IX:-59600;IY:-60384;DT:1;ID:1;OD:1;LF:"Border Patrol.lvlx";LI:0;EX:1;
 DOORS_END
 LAYERS
 LR:"Default";
@@ -13583,7 +13588,7 @@ ET:"Lava Layer";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 1";MG:"The orange pipe goes to DK Jungle. Just be sure to swim past all the Cheep Cheeps.";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 2";MG:"The green pipe is for authorised personell only\, or so I've been told. You can find a pipe to the Mushroom Port there\, as well as one that is locked to the general public.";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 3";MG:"The red pipe goes to Bowser's side of the Border Patrol. He uses this pipe to sneak into the Mushroom Kingdom and kidnap Princess Peach. I'm suprised you and the Toads haven't noticed yet.";AS:0;AX:0;AY:0;
-ET:"Koopa Dialogue 4";MG:"The SMB3 grey pipe heads down to an area connected to a pipe which heads to Pipe Plaza on Yoshi's Island. I've also heard rumors about this dodgy dude who is looking for star coins...";AS:0;AX:0;AY:0;
+ET:"Koopa Dialogue 4";MG:"The dark grey pipe heads down to an area connected to a pipe which heads to Pipe Plaza on Yoshi's Island. I've also heard rumors about this dodgy dude who is looking for star coins...";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 5";MG:"The SMB1 grey pipe is hooked up directly to the central shaft\, which itself is connected to Toad Town\, the Mario Bros. Plumbing company and the main entranace to the sewers. Beware though\, it's a one way trip!";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 6";MG:"Finally\, the blue pipe is hooked right up to Boo Woods. That place gives me the chills!";AS:0;AX:0;AY:0;
 ET:"Koopa Dialogue 7";MG:"And that's all you need to know about the pipes here! The door near me should take you to Bubble Lake. Now good luck and don't tell anybody I filled you in.";AS:0;AX:0;AY:0;

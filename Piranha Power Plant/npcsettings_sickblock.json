@@ -1,0 +1,24 @@
+{
+	"style" : "groupbox",
+	"title" : "Sick Block Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "type",
+			"title": "Type",
+			"type": "int",
+			"tooltip": "What type?",
+			"value-default": 0,
+			"elements": ["Normal", "Masked", "Asymptomatic"]
+		},
+		{
+			"control": "comboBox",
+			"name": "mode",
+			"title": "Mode",
+			"type": "int",
+			"tooltip": "What mode?",
+			"value-default": 0,
+			"elements": ["Mortal", "Angelic"]
+		}		
+	]
+}

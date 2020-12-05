@@ -1,0 +1,42 @@
+{
+	"style" : "groupbox",
+	"title" : "Dropper Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "dir",
+			"title": "Direction",
+			"type": "int",
+			"tooltip": "What direction should it face?",
+			"value-default": 0,
+			"elements": ["Left", "Up", "Right", "Down"]
+		},
+		{
+			"control": "spinBox",
+			"type": "int",
+			"name": "inv",
+			"title": "Inventory",
+			"tooltip": "What is the inventory item ID?",
+			"value-default": 0,
+			"value-min": 0,
+			"value-max": 1000,
+			"single-step": 1
+		},
+		{
+			"control": "checkbox",
+			"name": "autofire",
+			"title": "Autofire",
+			"tooltip": "If checked, the dropper will instantly drop its item without waiting for redstone power",
+			"text-visible": false,
+			"value-default": false
+		},
+		{
+			"control": "checkbox",
+			"name": "overwrite",
+			"title": "Overwrite Mode",
+			"tooltip": "If checked, when a dropper will always accept inventory, even when its already holding one",
+			"text-visible": false,
+			"value-default": false
+		}	
+	]
+}

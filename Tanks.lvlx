@@ -1,8 +1,8 @@
 HEAD
-TL:"Diamond City";CPID:"SMBX2";
+TL:"Waluigi's Tanktical Assault";CPID:"SMBX2";
 HEAD_END
 SECTION
-SC:0;L:-224416;R:-199200;T:-200600;B:-200000;MZ:53;MF:"";BG:8;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 1\n    }\n}\n";
+SC:0;L:-224416;R:-199200;T:-200600;B:-200000;MZ:40;MF:"";BG:8;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 1\n    }\n}\n";
 SECTION_END
 BLOCK
 ID:223;X:-199296;Y:-200096;W:32;H:32;

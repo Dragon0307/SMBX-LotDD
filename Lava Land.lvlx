@@ -2,7 +2,7 @@ HEAD
 TL:"Lava Land";CPID:"SMBX2";
 HEAD_END
 SECTION
-SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Sonic 3D Blast - Volcano Valley Zone 1.vgz";BG:23;
+SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Sonic 3D Blast - Volcano Valley Zone 1.vgz";BG:23;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 2\,\n        \"weather\"\: 5\n    }\n}\n";
 SECTION_END
 STARTPOINT
 ID:1;X:-199964;Y:-200150;D:1;
@@ -89,6 +89,7 @@ ID:251;X:-199392;Y:-200096;W:32;H:32;
 BLOCK_END
 NPC
 ID:94;X:-199872;Y:-200150;D:-1;MG:"Well\, across this firey lavascape is the largest volcano in the kingdom. Also\, the enemies here are ridiculously strong\, so watch your back.";FD:1;
+ID:110;X:-199264;Y:-200224;D:-1;
 NPC_END
 LAYERS
 LR:"Default";

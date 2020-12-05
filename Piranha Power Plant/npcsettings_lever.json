@@ -1,0 +1,15 @@
+{
+	"style" : "groupbox",
+	"title" : "Lever Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "state",
+			"title": "State",
+			"type": "int",
+			"tooltip": "Should it be on?",
+			"value-default": 0,
+			"elements": ["Off", "On"]
+		}
+	]
+}

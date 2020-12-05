@@ -12171,8 +12171,8 @@
 832
 320
 9
-""
-""
+"Mushroom Mine.lvlx"
+"Mushroom Mine"
 -1
 -1
 -1
@@ -12315,7 +12315,7 @@
 416
 512
 31
-"Trashi's Trollgate.lvlx"
+"Bubble Lake.lvlx"
 "Bubble Lake"
 -1
 -1
@@ -12443,8 +12443,8 @@
 512
 640
 27
-""
-""
+"E. Gadd's Lab.lvlx"
+"E. Gadd's Lab"
 -1
 -1
 -1
@@ -12635,5 +12635,17 @@
 "next"
 288
 -32
+5
+416
+-576
+5
+672
+-192
+5
+320
+96
+5
+-1792
+-64
 5
 "next"

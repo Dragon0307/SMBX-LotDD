@@ -1,0 +1,15 @@
+{
+	"style" : "groupbox",
+	"title" : "Alternator Properties",
+	"layout": [
+		{
+			"control": "comboBox",
+			"name": "dir",
+			"title": "Orientation",
+			"type": "int",
+			"tooltip": "What orientation should it face?",
+			"value-default": 0,
+			"elements": ["Horizontal", "Vertical"]
+		}
+	]
+}

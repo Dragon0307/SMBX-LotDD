@@ -2,7 +2,7 @@ HEAD
 TL:"Sarassa Piramid";CPID:"SMBX2";
 HEAD_END
 SECTION
-SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Mario & Luigi Bowser's Inside Story- Bowser's Path.ogg";BG:52;CS:1;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 4\n    }\n}\n";
+SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Mario & Luigi Bowser's Inside Story- Bowser's Path.ogg";BG:52;OE:1;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 4\n    }\n}\n";
 SC:1;L:-180000;R:-177888;T:-180864;B:-180000;MZ:24;MF:"Music-Underground_Desert.mp3";BG:57;XTRA:"{\n    \"darkness\"\: {\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"enabled\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"weather\"\: 4\n    }\n}\n";
 SECTION_END
 STARTPOINT

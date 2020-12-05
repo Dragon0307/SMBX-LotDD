@@ -1,0 +1,16 @@
+HEAD
+TL:"Mountain of Yoshis";CPID:"SMBX2";
+HEAD_END
+SECTION
+SC:0;L:-200000;R:-191040;T:-204896;B:-200000;MZ:24;MF:"mrpg-theme2.spc";BG:11;
+SECTION_END
+LAYERS
+LR:"Default";
+LR:"Destroyed Blocks";HD:1;
+LR:"Spawned NPCs";
+LAYERS_END
+EVENTS_CLASSIC
+ET:"Level - Start";AS:0;AX:0;AY:0;
+ET:"P Switch - Start";AS:0;AX:0;AY:0;
+ET:"P Switch - End";AS:0;AX:0;AY:0;
+EVENTS_CLASSIC_END

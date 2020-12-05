@@ -1,0 +1,13 @@
+{
+	"style" : "groupbox",
+	"title" : "Amped Jewel Properties",
+	"layout": [
+		{
+			"control": "lineEdit",
+			"name": "tagstext",
+			"title": "Tags",
+			"tooltip": "If you set a tag, only amped jewels that share a tag can connect. Set this to blank to prevent any type of connnections",
+			"value-default": "default"
+		}	
+	]
+}
