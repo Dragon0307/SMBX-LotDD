@@ -1,3 +1,4 @@
 *.sav
 *-ext.dat
 progress.json
+*.meta

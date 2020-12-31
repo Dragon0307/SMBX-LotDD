@@ -1,0 +1,1 @@
+-- Oh, so you're offering me Yoshi Cookies now? I explicitly said I wouldn't let you past, even for one of those! Actually, now that I think of it, There's three of those... hmmm... I guess that means you CAN come past! But don't tell anyone!

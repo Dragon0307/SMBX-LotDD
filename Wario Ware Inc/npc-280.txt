@@ -1,5 +1,4 @@
 gfxheight=59
 height=59
 health=2
-nogravity=1
 noshell=1

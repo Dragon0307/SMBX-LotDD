@@ -5,6 +5,7 @@ SECTION
 SC:0;L:-200000;R:-197856;T:-200600;B:-200000;MZ:38;MF:"";BG:34;
 SC:1;L:-180000;R:-178496;T:-181056;B:-180000;MZ:24;MF:"ff6-123.spc";BG:12;
 SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:38;MF:"";BG:12;
+SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:0;MF:"";BG:0;
 SECTION_END
 STARTPOINT
 ID:1;X:-199996;Y:-200150;D:1;
@@ -361,7 +362,7 @@ NPC
 ID:95;X:-199840;Y:-200128;D:-1;MG:"Bum! Welcome to our vilage! ";FD:1;EA:"Check Status";
 ID:98;X:-159744;Y:-160096;D:1;MG:"Yahii! You found our Pipe Plaza! Unfortunately\, that meanie Trashi blocked off the pipe back to our village! If you do\, I'll teach you our proudest technique.";FD:1;
 ID:91;X:-199776;Y:-200096;D:-1;CN:13;
-ID:1;X:-199104;Y:-200128;D:-1;
+ID:149;X:-199616;Y:-200128;D:-1;
 NPC_END
 LAYERS
 LR:"Default";

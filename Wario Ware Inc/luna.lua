@@ -14,12 +14,12 @@ end
 function onNPCHarm(eventToken,killedNPC,harmType)
     if killedNPC == 280 and warioPhase == 0 then
         AirSupport = layer.get("Air Support")
-        layer.show(AirSupport)
-        Text.showMessageBox("Grrrrrrr! You're are making me MAAAAAAAAAD! NOW I SHALL ACTIVATE MY WARIO CANNON!")
+        layer.show("AirSupport")
+        Text.showMessageBox("Grrrrrrr! You're are making me MAAAAAAAAAD! NOW I SHALL ACTIVATE MY WARIO CANNON!") -- This is intentional
         warioPhase = 2
     end
 end
 
 function PhaseTwo()
-    layer.show(AirSupport)
-    
+    layer.show("AirSupport")
+end
