@@ -3029,6 +3029,21 @@ ID:422;X:-157216;Y:-160224;W:32;H:32;
 ID:422;X:-156352;Y:-160256;W:32;H:32;
 ID:422;X:-155616;Y:-160320;W:32;H:32;
 ID:422;X:-156480;Y:-160256;W:32;H:32;
+ID:448;X:-197856;Y:-200320;W:32;H:32;
+ID:448;X:-197824;Y:-200320;W:32;H:32;
+ID:448;X:-197792;Y:-200320;W:32;H:32;
+ID:448;X:-197760;Y:-200320;W:32;H:32;
+ID:448;X:-197728;Y:-200320;W:32;H:32;
+ID:448;X:-197696;Y:-200320;W:32;H:32;
+ID:448;X:-197664;Y:-200320;W:32;H:32;
+ID:448;X:-197632;Y:-200320;W:32;H:32;
+ID:448;X:-197600;Y:-200320;W:32;H:32;
+ID:448;X:-197568;Y:-200320;W:32;H:32;
+ID:448;X:-197536;Y:-200320;W:32;H:32;
+ID:448;X:-197504;Y:-200320;W:32;H:32;
+ID:448;X:-197472;Y:-200320;W:32;H:32;
+ID:448;X:-197440;Y:-200320;W:32;H:32;
+ID:448;X:-197408;Y:-200320;W:32;H:32;
 BLOCK_END
 BGO
 ID:47;X:-196928;Y:-201216;
@@ -3346,5 +3361,5 @@ ET:"Bowser Dialogue";MG:"Now\, if we could get on board one of these airships\, 
 ET:"Bowser Dialouge 2";MG:"Peach\:                     That's a good thing\, because you always leave me in your damp and smelly dungeon with no air conditioning!";AS:0;AX:0;AY:0;
 ET:"Bowser Dialouge 3";MG:"Bowser\:                    ...Anyway. Bullet Hill has very uneven terrain and you will need some way of being able to scale the peaks. In adition\, the area is overflowing with my since hypnotized minions! So\, we will need a way of working around both.";AS:0;AX:0;AY:0;
 ET:"Bowser Dialouge 4";MG:"Peach\:                     That's easy - I've got one sitting around in my castle. I'll have the Toads transport it over right now.";AS:0;AX:0;AY:0;
-ET:"Bowser Dialouge 5";MG:"Bowser\:                    Gwarharhar! That sounds good! I'll let you use my Bob-Omb Blaster\, too. If we can get onto an airshi\, we'll be there in no time!";AS:0;AX:0;AY:0;
+ET:"Bowser Dialouge 5";MG:"Bowser\:                    Gwarharhar! That sounds good! I'll let you use my Bob-Omb Blaster\, too. If we can get onto an airship\, we'll be there in no time!";AS:0;AX:0;AY:0;
 EVENTS_CLASSIC_END

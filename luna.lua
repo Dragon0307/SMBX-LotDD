@@ -21,10 +21,10 @@ function onKeyboardPress(keyCode)
     end
 end
 
-local function onNPCKill(EventObj, killedNPC, killReason) -- Restore mana when collecting an SMB1 axe trigger.
+function onNPCKill(EventObj, killedNPC, killReason) -- Restore mana when collecting an SMB1 axe trigger.
     if killedNPC.id == 178 then
         attack.Mana = attack.Mana + 12
-        audio.playSFX("Sounds/Heal8-Bit")
+        Audio.playSFX("Sounds/Heal8-Bit.ogg")
     end
 end
 
@@ -112,7 +112,7 @@ lhp.setHP(2, 10) -- SMB3 Red Goomba
 lhp.setHP(89, 1.5) -- SMB1 Goomba
 lhp.setHP(71, 30 ) -- SMB3 Grand Goomba
 lhp.setHP(431, 12) -- SMW Supercharged Spiny
-lhp.setHP(29, 7) -- SMB1 Hammer Bro.
+lhp.setHP(29, 4) -- SMB1 Hammer Bro.
 lhp.setHP(173, 3.3) -- SMB1 Green Koopa
 lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
