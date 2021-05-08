@@ -44,7 +44,7 @@ local warpTransition = require("warpTransition")
 local fontB = textplus.loadFont("textplus/font/6.ini")
 local fontA = textplus.loadFont("textplus/font/smw-b.ini")
 
-LsBreathMeter = require("BreathMeter")
+--LsBreathMeter = require("BreathMeter")
 
 ------------------
 --Textplus setup--
