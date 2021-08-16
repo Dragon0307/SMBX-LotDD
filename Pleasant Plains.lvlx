@@ -8776,7 +8776,7 @@ ID:1;X:-181696;Y:-200192;
 ID:6;X:-181216;Y:-200288;
 BGO_END
 NPC
-ID:94;X:-199904;Y:-200118;D:-1;MG:"Oh\, hey Mario! Bowser went storming off that way and his troops weren't listening to him! I heard them saying something that sounded vaugely like... \"wah.\" What's that supposed to mean!?!";FD:1;
+ID:94;X:-199904;Y:-200118;D:-1;MG:"Gus T. Oh\, hey Mario! Bowser went storming off that way and his troops weren't listening to him! I heard them saying something that sounded vaugely like... \"wah.\" What's that supposed to mean!?!";FD:1;
 ID:8;X:-198064;Y:-200304;D:-1;MG:"Don't worry\, I'm not going to eat you\, I'm a vegetarian. What does that mean\, that makes me a cannibal!?! Oh yeah\, some burly turtle guy asked me if I knew where a star was. I told him in the sky. He punched me. It hurt. Now I want to obey him for no good reason.";FD:1;NM:1;
 ID:1;X:-198752;Y:-200096;D:-1;
 ID:1;X:-198272;Y:-200224;D:-1;
@@ -8910,7 +8910,7 @@ ET:"Level - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - End";AS:0;AX:0;AY:0;
 ET:"Boom Boom Music";LS:["Boss Walls"];TE:"Boom Boom";TD:1;DS:1;AS:0;AX:0;AY:0;
-ET:"Boom Boom";MG:"Boom Boom\:                 Oh look who it is\, here to stop Boss? Well too bad\, cause I'll stop you first!";SSS:["ID\:0\;SL\:-197120\;ST\:-200984\;SB\:-200384\;SR\:-196320\;"];AS:0;AX:0;AY:0;
+ET:"Boom Boom";MG:"<x=100><y=100>Boom Boom\:                 Oh look who it is\, here to stop Boss? <tremble>Well too bad\, cause I'll stop you first!</tremble>";SSS:["ID\:0\;SL\:-197120\;ST\:-200984\;SB\:-200384\;SR\:-196320\;"];AS:0;AX:0;AY:0;
 ET:"Boom Boom Killed";MG:"Gaaaaaah! Cuuuurse Yooooou!";AS:0;AX:0;AY:0;
 ET:"Boom Boom Reset";LH:["Boss Walls"];SSS:["ID\:0\;SL\:-2\;"];TE:"Boom Boom Killed";DS:1;AS:0;AX:0;AY:0;
 ET:"Larry Music";LS:["Boss Walls"];TE:"Larry";DS:1;AS:0;AX:0;AY:0;

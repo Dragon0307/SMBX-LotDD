@@ -28,7 +28,7 @@ If you want the extra height, I can flutter jump instead. Just press the jump bu
 
 WIGGLERS
 
-Oh yolk, this is worse than I thought. Luckilly, we Yoshis have a saying that if you can't beat 'em, eat 'em!
+Oh yolk, this is worse than I thought. Luckilly, we Yoshis have a saying: if you can't beat 'em, eat 'em!
 We'll need to hit them enough that they'll get mad, and then once their guard's down, I can slurp 'em up!
 Just... don't get me hit. Okay?
 

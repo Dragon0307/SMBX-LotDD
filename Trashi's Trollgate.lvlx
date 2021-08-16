@@ -216,7 +216,7 @@ BLOCK_END
 NPC
 ID:151;X:-199912;Y:-200144;D:-1;MG:"TRASHI'S TROLLGATE - NO ADMISSION BEYOND THIS POINT";FD:1;
 ID:255;X:-199354;Y:-200288;D:-1;
-ID:148;X:-199552;Y:-200128;D:-1;MG:"Trashi\:                     Num! I'm Trashi and this is my Trollgate! By order of my superiors\, I must secure this mountain at all costs to make sure nobody climbs it\, and I won't let anyone past! Not even for a Yoshi Cookie! Beat it\, punk!";FD:1;
+ID:148;X:-199552;Y:-200128;D:-1;MG:"Trashi\: Num! I'm Trashi and this is my Trollgate! By order of my superiors\, I must secure this mountain at all costs to make sure nobody climbs it\, and I won't let anyone past! Not even for a Yoshi Cookie! Beat it\, punk!";FD:1;
 NPC_END
 LAYERS
 LR:"Default";

@@ -6,6 +6,9 @@ SC:0;L:-201952;R:-198048;T:-200600;B:-200000;MZ:24;MF:"Paper Mario Star Haven.og
 SC:1;L:-180000;R:-179200;T:-180600;B:-180000;MZ:24;MF:"Paper Mario Star Haven.ogg";BG:26;
 SC:2;L:-160000;R:-158016;T:-160600;B:-160000;MZ:24;MF:"Pokemon Gold & Silver.gbs|16";BG:27;
 SECTION_END
+STARTPOINT
+ID:1;X:-201900;Y:-200150;D:1;
+STARTPOINT_END
 BLOCK
 ID:10;X:-198560;Y:-200160;W:32;H:32;
 ID:10;X:-198592;Y:-200160;W:32;H:32;
@@ -1032,8 +1035,8 @@ ID:669;X:-159488;Y:-160128;W:32;H:32;SL:1;
 ID:669;X:-159488;Y:-160096;W:32;H:32;SL:1;
 BLOCK_END
 NPC
-ID:94;X:-199872;Y:-200278;D:0;MG:"I've been living amongst the Star Sprites for quite a while. They all seem to hate Luigi for some reason.";FD:1;NM:1;
-ID:94;X:-198240;Y:-200150;D:0;MG:"Some clown blocked the pipe to Piranha Woods! I think he was tall and lanky and wore purple. Looks like you're going to need a big hammer to wreck this stuff.";FD:1;NM:1;
+ID:94;X:-199872;Y:-200278;D:0;MG:"Sage\: I've been living amongst the Star Sprites for quite a while. They all seem to hate Luigi for some reason.";FD:1;NM:1;
+ID:94;X:-198240;Y:-200150;D:0;MG:"Toad\: Some clown blocked the pipe to Piranha Woods! I think he was tall and lanky and wore purple. Looks like you're going to need a bigger hammer to wreck this stuff.";FD:1;NM:1;
 ID:94;X:-179456;Y:-180150;D:-1;MG:"Star Sage\:               Ah\, yes. You have come. You see\, the Star Blade was made for one purpose\: Keeping a monster in check...";FD:1;
 ID:94;X:-159808;Y:-160118;D:-1;MG:"Star Sage\:                 Good\, you're here. Now\, you may already be aware of this but there is a value in the top corner of what I shall refer to from hereon as your Heads Up Display or HUD for short.";FD:1;
 NPC_END

@@ -14,11 +14,6 @@ Since that day, the sword became known as the Star Blade, the barrier became kno
 
 ]]
 
-
-
-
-}
-
 -- Run code on level start
 function onStart()
     --Your code here

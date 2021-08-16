@@ -3,6 +3,10 @@ TL:"Yoshi's Island";CPID:"SMBX2";
 HEAD_END
 SECTION
 SC:0;L:-200832;R:-187072;T:-201440;B:-200000;MZ:24;MF:"mrpg-mushroompass.spc";BG:32;
+SC:1;L:-180000;R:-179200;T:-180600;B:-180000;MZ:0;MF:"";BG:0;
+SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:0;MF:"";BG:0;
+SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:0;MF:"";BG:0;
+SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:0;MF:"";BG:0;
 SECTION_END
 STARTPOINT
 ID:1;X:-200428;Y:-200310;D:1;
@@ -1058,7 +1062,8 @@ ID:265;X:-200544;Y:-200064;
 ID:265;X:-200544;Y:-200032;
 BGO_END
 NPC
-ID:94;X:-200288;Y:-200310;D:-1;MG:"This is Yoshi's Island\, home of the Yoshis. The monsters native to here don't seem to be aligned with anyone and are somewhat tougher than the guys over at the Mushroom Kingdom. But\, I think you get a better experience from fighting them\, if you know what I mean.";FD:1;
+ID:94;X:-200288;Y:-200310;D:-1;MG:"Boa T.\: This is Yoshi's Island\, home of the Yoshis. The monsters native to here don't seem to be aligned with anyone and are somewhat tougher than the guys over at the Mushroom Kingdom. But I think you get a better experience from fighting them\, if you know what I mean.";FD:1;
+ID:125;X:-198338;Y:-200792;D:-1;MG:"wassup";FD:1;NM:1;
 NPC_END
 LAYERS
 LR:"Default";

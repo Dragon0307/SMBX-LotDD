@@ -4,6 +4,9 @@ HEAD_END
 SECTION
 SC:0;L:-200000;R:-195456;T:-200600;B:-200000;MZ:53;MF:"";BG:8;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 0\,\n        \"weather\"\: 1\n    }\n}\n";
 SECTION_END
+STARTPOINT
+ID:1;X:-199948;Y:-200182;D:1;
+STARTPOINT_END
 BLOCK
 ID:1058;X:-200000;Y:-200128;W:32;H:32;
 ID:1058;X:-200000;Y:-200096;W:32;H:32;
@@ -127,7 +130,7 @@ ID:1058;X:-199072;Y:-200064;W:32;H:32;
 ID:1058;X:-199072;Y:-200032;W:32;H:32;
 BLOCK_END
 NPC
-ID:94;X:-199328;Y:-200182;D:-1;MG:"....Wah. Welcome to Wario's Diamond Wah City... He hypnotized everyone here\, but I was on holiday when that happened\, so I wasn't. He's kicked the taxes up a notch\, and has monopolized the entire city! Not only that\, he stuffed all the Power Stars through a crack in the Dark Door\, so it's an apocalyptic\, crime ridden mess now!";FD:1;
+ID:94;X:-199328;Y:-200182;D:-1;MG:"WaToad\: ....Wah. Welcome to Wario's Diamond Wah City... He hypnotized everyone here\, but I was on holiday when that happened\, so I wasn't. He's kicked the taxes up a notch\, and has monopolized the entire city! Not only that\, he stuffed all the Power Stars through a crack in the Dark Door\, so it's an apocalyptic\, crime ridden mess now!";FD:1;
 NPC_END
 LAYERS
 LR:"Default";

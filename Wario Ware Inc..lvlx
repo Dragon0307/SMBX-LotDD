@@ -4,7 +4,7 @@ HEAD_END
 SECTION
 SC:0;L:-200000;R:-197792;T:-201664;B:-200000;MZ:24;MF:"Wario's Castle.spc";BG:54;
 SC:1;L:-180000;R:-173472;T:-181152;B:-180000;MZ:24;MF:"Outside Wario's Castle.amk.spc";BG:3;
-SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:0;MF:"";BG:3;
+SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:24;MF:"Pokemon Gold & Silver.gbs|92\;t=0.5";BG:3;
 SECTION_END
 STARTPOINT
 ID:1;X:-199980;Y:-200150;D:1;
@@ -2805,9 +2805,9 @@ ID:141;X:-173616;Y:-180640;
 ID:141;X:-159968;Y:-160256;
 BGO_END
 NPC
-ID:94;X:-199744;Y:-200150;D:-1;MG:"Sssssh! Get closer! We're in Wario's Warehouse\,the main headquaters of WarioWare Inc. The Wario Bros. have all of our Star Shards locked up in Wario's personal quaters\, where he is most likely right now. Reports suggest that he's building something big. Very big.";FD:1;
+ID:94;X:-199744;Y:-200150;D:-1;MG:"Agent Toad\: Sssssh! Get closer! We're in Wario's Warehouse\,the main headquaters of WarioWare Inc. The Wario Bros. have all of our Star Shards locked up in Wario's personal quaters\, where he is most likely right now. Reports suggest that he's building something big. Very big.";FD:1;
 ID:4;X:-178273;Y:-180484;D:-1;
-ID:94;X:-179680;Y:-180214;D:-1;MG:"Good\, you're in. These are Wario's personal quaters\, so obviously this room has an awful garlicky scent. The end is ahead!";FD:1;NM:1;
+ID:94;X:-179680;Y:-180214;D:-1;MG:"Agent Toad\: Good\, you're in. These are Wario's personal quaters\, so obviously this room has an awful garlicky scent. The end is ahead!";FD:1;NM:1;
 ID:280;X:-174440;Y:-180603;D:-1;EA:"Wario Music";
 ID:465;X:-179008;Y:-180128;D:-1;MG:"THE GREAT AND POWAHFUL WARIO! THIS STATUE WAS ERRECTED BY WARIO TO COMMEMORATE THE GREAT WARIO ON REQUEST FROM WARIO!";FD:1;
 ID:465;X:-179296;Y:-180128;D:-1;MG:"THE GREAT AND POWAHFUL WARIO! THIS STATUE WAS ERRECTED BY WARIO TO COMMEMORATE THE GREAT WARIO ON REQUEST FROM WARIO!";FD:1;
@@ -2849,9 +2849,10 @@ EVENTS_CLASSIC
 ET:"Level - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - End";AS:0;AX:0;AY:0;
-ET:"Wario Boss";MG:"Wario\:                   Wah ha ha! What a fool you are\, bringing the Star Shards to WARIO! You're even dumber than you look\, and you look like idiots!";SSS:["ID\:1\;SL\:-174848\;ST\:-181080\;SB\:-180480\;SR\:-174048\;"];AS:0;AX:0;AY:0;
+ET:"Wario Boss";MG:"Wario\:                   Wah ha ha! What a fool you wah\, bringing the Star Shards to WARIO! You're even dumber than you look\, and you look like idiots!";AS:0;AX:0;AY:0;
 ET:"Wario Boss 2";MG:"I knew that if I sent Waluigi to raid your storage and bring the Star Shards to me\, you would go after them! So while you are distracted raiding my base\, Waluigi is off taking the other shard you found!";AS:0;AX:0;AY:0;
 ET:"Wario Boss 3";MG:"Of course\, considering my fleet blew up Toad Town you have nothing to lose... EXCEPT YOUR LIVES! So prepare to die!";AS:0;AX:0;AY:0;
-ET:"Wario Music";TE:"Wario Boss";TD:1;AS:0;AX:0;AY:0;
+ET:"Wario Music";TE:"Wario Stuff";TD:1;AS:0;AX:0;AY:0;
 ET:"Wario Killed";MG:"Wario\:                     Oh wah.... THIS CANNOT BE! I WAH-S PROMISED UNBELIEVEABLE RICHES! WAAAAAAAAAAAAAAAAAH!!!!!!!";AS:0;AX:0;AY:0;
+ET:"Wario Stuff";SSS:["ID\:1\;SL\:-174848\;ST\:-181080\;SB\:-180480\;SR\:-174048\;"];TE:"Wario Boss";TD:7;AS:0;AX:0;AY:0;
 EVENTS_CLASSIC_END

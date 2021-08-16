@@ -4,6 +4,9 @@ HEAD_END
 SECTION
 SC:0;L:-202144;R:-199200;T:-200600;B:-200000;MZ:24;MF:"dkq-03.spc";BG:13;
 SECTION_END
+STARTPOINT
+ID:1;X:-202092;Y:-200214;D:1;
+STARTPOINT_END
 BLOCK
 ID:40;X:-202144;Y:-200160;W:32;H:32;
 ID:40;X:-202112;Y:-200160;W:32;H:32;
@@ -337,7 +340,7 @@ ID:265;X:-199232;Y:-200064;
 ID:265;X:-199232;Y:-200032;
 BGO_END
 NPC
-ID:94;X:-201536;Y:-200214;D:-1;MG:"Sailor Toad\:               Oh\, hey Mario. I wasn't expecting you to come here. Those Kremlings covered my anchor in waterproof super glue and now I'm stuck here. Donkey Kong's currently trying to pull it out because\, you know\, he's dumb like that.";FD:1;NM:1;
+ID:94;X:-201536;Y:-200214;D:-1;MG:"Boa T\: Oh\, hey Mario. I wasn't expecting you to come here. Those Kremlings covered my anchor in waterproof super glue and now I'm stuck here. Donkey Kong's currently trying to pull it out because\, you know\, he's dumb like that.";FD:1;NM:1;
 NPC_END
 LAYERS
 LR:"Default";

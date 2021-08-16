@@ -4,6 +4,9 @@ HEAD_END
 SECTION
 SC:0;L:-200000;R:-192832;T:-200600;B:-200000;MZ:24;MF:"loz3-21.spc";BG:29;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 8\n    }\n}\n";
 SECTION_END
+STARTPOINT
+ID:1;X:-199980;Y:-200150;D:1;
+STARTPOINT_END
 BLOCK
 ID:10;X:-200000;Y:-200096;W:32;H:32;
 ID:10;X:-199968;Y:-200096;W:32;H:32;
@@ -677,7 +680,7 @@ ID:109;X:-197632;Y:-200064;W:32;H:32;
 ID:109;X:-197632;Y:-200032;W:32;H:32;
 BLOCK_END
 NPC
-ID:94;X:-198496;Y:-200438;D:1;MG:"This world makes even less sense every time I look at it.";FD:1;NM:1;
+ID:94;X:-198496;Y:-200438;D:1;MG:"Toad\:<voice slide> This world makes even less sense every time I look at it.";FD:1;NM:1;
 ID:375;X:-199136;Y:-200352;D:-1;
 ID:375;X:-198656;Y:-200448;D:-1;
 NPC_END

@@ -4975,7 +4975,7 @@ ID:264;X:-198624;Y:-200160;
 ID:264;X:-198592;Y:-200160;
 BGO_END
 NPC
-ID:94;X:-199651;Y:-200246;D:-1;MG:"I think there is an undersea ruin around here. There are no Star Shards here\, but there's lots of treasure! Also\, it seems that within the ruins a mysterious force is blocking use of special attacks.";FD:1;NM:1;
+ID:94;X:-199651;Y:-200246;D:-1;MG:"Boa T.\: I think there is an undersea ruin around here. There are no Star Shards here\, but there's lots of treasure! Also\, it seems that within the ruins a mysterious force is blocking use of special attacks.";FD:1;NM:1;
 ID:188;X:-175999;Y:-180512;D:-1;
 ID:258;X:-175964;Y:-180512;D:-1;
 ID:258;X:-175932;Y:-180512;D:-1;

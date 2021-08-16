@@ -13531,9 +13531,9 @@ ID:107;X:-17824;Y:-21632;
 ID:107;X:-59488;Y:-60160;
 BGO_END
 NPC
-ID:94;X:-179744;Y:-180118;D:-1;MG:"'Sup. This is the main entrance to Kero Sewers. Why we have an absurdly spacious sewer that links up the whole kingdom\, I don't know. Also\, it stinks. A lot. Mind\, you're a plumber so you should be used to it by now. ";FD:1;
-ID:94;X:-179488;Y:-180118;D:-1;MG:"A little bird told me that you can use the sewers to get pretty much anywhere! ";FD:1;
-ID:503;X:-179424;Y:-180080;D:-1;MG:"I told that Toad you can use the sewers to get pretty much anywhere.";FD:1;
+ID:94;X:-179744;Y:-180118;D:-1;MG:"Toad\: 'Sup. This is the main entrance to Kero Sewers. Why we have an absurdly spacious sewer that links up the whole kingdom\, I don't know. Also\, it stinks. A lot. Mind\, you're a plumber so you should be used to it by now. ";FD:1;
+ID:94;X:-179488;Y:-180118;D:-1;MG:"Toad\: A little bird told me that you can use the sewers to get pretty much anywhere! ";FD:1;
+ID:503;X:-179424;Y:-180080;D:-1;MG:"Little Bird\: I told that Toad you can use the sewers to get pretty much anywhere.";FD:1;
 ID:151;X:-119912;Y:-120144;D:-1;MG:"This is the top-secret item storage room in Kero Sewers. Don't tell ANYONE!";FD:1;
 ID:221;X:-119992;Y:-120416;D:-1;
 ID:221;X:-119992;Y:-120384;D:-1;
@@ -13555,12 +13555,12 @@ ID:221;X:-119960;Y:-120224;D:-1;
 ID:221;X:-119960;Y:-120192;D:-1;
 ID:221;X:-119960;Y:-120160;D:-1;
 ID:221;X:-119960;Y:-120128;D:-1;
-ID:94;X:-138848;Y:-140342;D:-1;MG:"Only the top secret members of the top secret club may enter the top secret pipe to enter the top secret room where we keep our top secret stuff. And to get in\, you need the top secret key.";FD:1;
-ID:94;X:-139776;Y:-140118;D:-1;MG:"Intruder! Only authorised personell are allowed down here! Actually\, I'm not authorised to come down here so I guess I can let you off.";FD:1;
+ID:94;X:-138848;Y:-140342;D:-1;MG:"Top Secret Toad\: Only the top secret members of the top secret club may enter the top secret pipe to enter the top secret room where we keep our top secret stuff. And to get in\, you need the top secret key.";FD:1;
+ID:94;X:-139776;Y:-140118;D:-1;MG:"Top Secret Toad\: Intruder! Only authorised personell are allowed down here! Actually\, I'm not authorised to come down here so I guess I can let you off.";FD:1;
 ID:151;X:-195016;Y:-200336;D:-1;MG:"Entrance to the Mario Bros. Plumbing Company. ";FD:1;
 ID:198;X:-79461;Y:-80970;D:-1;MG:"Hey\, It's me! Chett Rippo! Remember me? No? Is it because I shrank in the wash?";FD:1;
 ID:151;X:-79400;Y:-80176;D:-1;MG:"Entrance to the Pipe Plaza on Yoshi's Island";FD:1;
-ID:111;X:-59744;Y:-60128;D:-1;MG:"Whoa! Bowser said I shouldn't let anyone down here\, let alone tell you of all people about these pipes! Mind\, he doesn't pay me enough\, so I will tell you about the pipes anyway.";FD:1;
+ID:111;X:-59744;Y:-60128;D:-1;MG:"Koopa Troopa\: Whoa! Bowser said I shouldn't let anyone down here\, let alone tell you of all people about these pipes! Mind\, he doesn't pay me enough\, so I will tell you about the pipes anyway.";FD:1;
 ID:28;X:-99392;Y:-99776;D:-1;
 ID:28;X:-99392;Y:-100000;D:-1;
 ID:28;X:-99392;Y:-100224;D:-1;
