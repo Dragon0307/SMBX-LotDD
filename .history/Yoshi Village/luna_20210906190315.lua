@@ -1,4 +1,4 @@
---<<<<<<< HEAD
+<<<<<<< HEAD
 SaveData[Level.filename()] = SaveData[Level.filename()] or {}
 local LevelSD = SaveData[Level.filename()]
 
@@ -72,7 +72,7 @@ Oh yolk, this is worse than I thought. Luckilly, we Yoshis have a saying that if
 We'll need to hit them enough that they'll get mad, and then once their guard's down, I can slurp 'em up!
 Just... don't get me hit. Okay?
 
-
+]]
 
 
 

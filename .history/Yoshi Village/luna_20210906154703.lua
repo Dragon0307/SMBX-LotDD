@@ -1,4 +1,4 @@
---<<<<<<< HEAD
+<<<<<<< HEAD
 SaveData[Level.filename()] = SaveData[Level.filename()] or {}
 local LevelSD = SaveData[Level.filename()]
 
@@ -37,7 +37,7 @@ Just... don't get me hit. Okay?
 
 
 
---[[=======
+=======
 SaveData[Level.filename()] = SaveData[Level.filename()] or {}
 local LevelSD = SaveData[Level.filename()]
 
@@ -72,8 +72,8 @@ Oh yolk, this is worse than I thought. Luckilly, we Yoshis have a saying that if
 We'll need to hit them enough that they'll get mad, and then once their guard's down, I can slurp 'em up!
 Just... don't get me hit. Okay?
 
+]]
 
 
 
-
->>>>>>> 9d4d6182c4ee6b3d8c8010a828eef394ffe00337 ]]
+>>>>>>> 9d4d6182c4ee6b3d8c8010a828eef394ffe00337
