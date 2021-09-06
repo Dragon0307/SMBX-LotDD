@@ -1,0 +1,2 @@
+-- Yo, ya don't have a card! If ya reeeeally wanna get in, say, I heard you can get 'em from that crazy game show. Y'know, Sniffit or Whiffit? It's even more illegal than this
+-- casino.
