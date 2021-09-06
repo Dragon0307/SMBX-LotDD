@@ -10,11 +10,11 @@
 
 stats = require("Stats") -- Installs a custom library that I should not be proud of but I am. Provides the levels and experience
 allAchievements = Achievements.get() -- Stuffs all the achievements into a useable state.
---local attack = require("attacks") -- May be deleted at some point; is a special attack script that conjures special attacks.
+attack = require("attacks") -- May be deleted at some point; is a special attack script that conjures special attacks.
 
 --playerHP = 0 -- Suprise! There's limited HP. Why else would I have reskinned Mario to be Uncle Broadsword unless I wanted that sweet sweet knockback mechanic?
 
---[[local function onKeyboardPress(keyCode)
+function onKeyboardPress(keyCode)
     if keyCode == VK_Q then
         attack.fireOrb()
     elseif keyCode == VK_W then
@@ -22,7 +22,7 @@ allAchievements = Achievements.get() -- Stuffs all the achievements into a useab
     elseif keyCode == VK_E then
         attack.chillout()
     end
-end]]
+end
 
 function onNPCKill(EventObj, killedNPC, killReason) -- Restore mana when collecting an SMB1 axe trigger.
     if killedNPC.id == 178 then
@@ -37,7 +37,7 @@ SaveData["episode"] = SaveData["episode"] or {}
 local stat = SaveData["episode"]
 
 lhp = require("LightHitPoint") -- Needs to be global for per-level health bars.
---anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
+anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
 local textbox = require("customTextbox") -- Vanilla textboxes are gunk
 local textplus = require("textplus")
 local flutter = require("flutterjump") --Yoshi is NOT a tool to be used and discarded, he has rights! Use the flutter jump instead of cruelly sacrificing him.
@@ -53,9 +53,9 @@ local fontA = textplus.loadFont("textplus/font/smw-b.ini")
 --Textplus setup--
 ------------------
 
---function onStart()
+function onStart()
     --playerHP = 5 + (stat.level * 5) RIP; it's all in the stat script now
---end
+end
  
 function onDraw() -- Prints your stats. It has to be global for some reason.
     --[[textplus.print{
@@ -104,13 +104,13 @@ function onDraw() -- Prints your stats. It has to be global for some reason.
     player.powerup = 2
 end
 
---function onPlayerHarm() --Handles playerHP
-    --playerHP = playerHP - 1
-   -- SFX.play("Sounds/SmallExplosion8-Bit.ogg")
-    --if playerHP == 0 then
-        --player:kill()
-    --end
---end
+function onPlayerHarm() --Handles playerHP
+    playerHP = playerHP - 1
+    SFX.play("Sounds/SmallExplosion8-Bit.ogg")
+    if playerHP == 0 then
+        player:kill()
+    end
+end
 ---------------------------
 --LightHitPoint.lua setup--
 ---------------------------
@@ -154,7 +154,7 @@ lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 stats.xpDrop(1, 1) -- SMB3 Goomba
 
--- Git could you please stop screwing up my levels
+=======
 --luna.lua for Legend of the Dark Door, an SMBX episode.
 --This code will make the X2 devs cry
 
@@ -277,4 +277,5 @@ lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 stats.xpDrop(1, 1) -- SMB3 Goomba
 
+>>>>>>> 9d4d6182c4ee6b3d8c8010a828eef394ffe00337
 -- I know, really bad practice.

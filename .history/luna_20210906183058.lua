@@ -37,7 +37,7 @@ SaveData["episode"] = SaveData["episode"] or {}
 local stat = SaveData["episode"]
 
 lhp = require("LightHitPoint") -- Needs to be global for per-level health bars.
---anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
+anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
 local textbox = require("customTextbox") -- Vanilla textboxes are gunk
 local textplus = require("textplus")
 local flutter = require("flutterjump") --Yoshi is NOT a tool to be used and discarded, he has rights! Use the flutter jump instead of cruelly sacrificing him.
