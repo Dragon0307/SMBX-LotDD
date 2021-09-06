@@ -119,7 +119,7 @@ end
 
 
 --HARM TYPES
-function onTick() --This is really the only way I thought I could add dynamic level stats, seeing as onDraw was taken.
+function onTick() --This is really the only way I thought I could add dynamic level stats. And besides,
 lhp.setHarmtypeDamage(HARM_TYPE_JUMP, stat.level * 0.75) -- When Mario jumps on an enemy
 lhp.setHarmtypeSound(HARM_TYPE_JUMP, "Sounds/SmallExplosion8-Bit.ogg")
 lhp.setHarmtypeDamage(HARM_TYPE_FROMBELOW, stat.level * 3) -- When Mario hits a block, damaging enemies on it.

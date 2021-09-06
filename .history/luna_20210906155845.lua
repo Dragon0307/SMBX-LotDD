@@ -59,7 +59,7 @@ function onStart()
 end
  
 function onDraw() -- Prints your stats. It has to be global for some reason.
-    --[[textplus.print{
+    textplus.print{
         x = 30,
         y = 550,
         xscale = 2,
@@ -101,7 +101,7 @@ function onDraw() -- Prints your stats. It has to be global for some reason.
             font = fontB,
             text = "HP: <color red><tremble strength=1>" .. playerHP .."!</tremble></color>"
         }
-    end--]]
+    end
     player.powerup = 2
 end
 
@@ -119,7 +119,7 @@ end
 
 
 --HARM TYPES
-function onTick() --This is really the only way I thought I could add dynamic level stats, seeing as onDraw was taken.
+function onTick() --This is really the only way I thought I could add dynamic level stats.
 lhp.setHarmtypeDamage(HARM_TYPE_JUMP, stat.level * 0.75) -- When Mario jumps on an enemy
 lhp.setHarmtypeSound(HARM_TYPE_JUMP, "Sounds/SmallExplosion8-Bit.ogg")
 lhp.setHarmtypeDamage(HARM_TYPE_FROMBELOW, stat.level * 3) -- When Mario hits a block, damaging enemies on it.

@@ -6,6 +6,7 @@
 
 local playerStun = require("playerStun")
 local freeze = require("freezeHighlight")
+local luna = require("luna") -- Yes, I really am pulling from my luna.lua
 local attack = {}  -- API Table. I don't have a clue what this does.
 
 --[[
@@ -55,8 +56,8 @@ end
 
 
 function attack.powerSlam()
-    if attack.MPCheck(0) == true then
-        --playerStun.stunPlayer(10, 200) --...then stuns you to balance having such an OP attack.
+    if attack.MPCheck(30) == true then
+        playerStun.stunPlayer(10, 200) --...then stuns you to balance having such an OP attack.
         Misc.doPOW() -- Causes a POW block earthquake...
         freeze.set(20) -- Does a flash of Powah
     end
@@ -65,7 +66,7 @@ end
 function attack.chillout()
     if attack.MPCheck(5) == true then
         Audio.playSFX("Sounds/FreezeMagic.ogg")
-        NPC.spawn(237, player.x, player.y, player.section, false, true) --spawns a Yoshi fireball at your exact location.
+        NPC.spawn(237, player.x, player.y, player.section, false, true) --spawns an ice cube at your exact location.
         for index,myNPC in ipairs(NPC.get(237)) do
             myNPC.speedX = 4 * player.direction
         end
