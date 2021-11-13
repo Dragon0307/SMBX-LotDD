@@ -7,7 +7,7 @@ map3d = require("map3d")
 travl = require("travl")
 
 map3d.HUDMode = 2
-
+--map3d.Skybox = "64skybox-bowser.jpg"
 map3d.Heightmap.texture = Graphics.loadImage("heightmap.png")
 
 

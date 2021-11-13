@@ -5135,7 +5135,7 @@ ID:163;X:-59616;Y:-60128;
 ID:163;X:-59616;Y:-60160;
 BGO_END
 NPC
-ID:94;X:-198848;Y:-200374;D:-1;MG:"STOP! This room is for authorized personell only! Although\, I'm not authorized to go in here either so I don't see the point in guarding it.";FD:1;
+ID:94;X:-198848;Y:-200374;D:-1;MG:"Guard Toad\: STOP! This room is for authorized personell only! Although\, I'm not authorized to go in here either so I don't see the point in guarding it.";FD:1;
 ID:22;X:-139488;Y:-140128;D:-1;LR:"Billy Gun";
 ID:465;X:-140000;Y:-140128;D:-1;LR:"Chomp Starter";EA:"Toilet Dialouge";
 ID:752;X:-139840;Y:-140224;D:1;LR:"Chomp";ED:"Chomp Phase 2";
@@ -5145,20 +5145,20 @@ ID:94;X:-159424;Y:-160150;D:-1;MG:"To your left\, you will find the deeper parts
 ID:94;X:-160160;Y:-160150;D:1;MG:"Behold\, beyond this door... is another corridor\, leading to Peach's bedroom and the kitchen.";FD:1;LR:"Toads";
 ID:151;X:-198784;Y:-200384;D:-1;MG:"Spare Weapons Containment Room";FD:1;
 ID:151;X:-200448;Y:-200384;D:-1;MG:"The Dungeons";FD:1;
-ID:94;X:-200384;Y:-200374;D:1;MG:"Hold on\, this is the dungeon! We only put the really\, really bad criminals in here. You don't want to go in there\, trust me on this one.";FD:1;
+ID:94;X:-200384;Y:-200374;D:1;MG:"Guard Toad\: Hold on\, this is the dungeon! We only put the really\, really bad criminals in here. You don't want to go in there\, trust me on this one.";FD:1;
 ID:198;X:-178656;Y:-180320;D:-1;MG:"Oh\, hey Mario. Have you come to fix my toilet? It's always blocked. The door is right there.";FD:1;
-ID:94;X:-119712;Y:-120150;D:1;MG:"Hey\, you can't go upstairs. You can only go downstairs. We still haven't solved the mystery of the Endless Stairs\, and I doubt Bowser will tell us what its secret is. For the time being\, stay down here.";FD:1;
-ID:94;X:-118432;Y:-120150;D:1;MG:"Why is this corridor green?";FD:1;NM:1;
+ID:94;X:-119712;Y:-120150;D:1;MG:"Guard Toad\: Hey\, you can't go upstairs. You can only go downstairs. We still haven't solved the mystery of the Endless Stairs\, and I doubt Bowser will tell us what its secret is. For the time being\, stay down here.";FD:1;
+ID:94;X:-118432;Y:-120150;D:1;MG:"Mushroom Retainer\: Why is this corridor green?";FD:1;NM:1;
 ID:151;X:-118816;Y:-120160;D:-1;MG:"Spare Powerups";FD:1;
 ID:151;X:-119328;Y:-120160;D:-1;MG:"Kitchen";FD:1;
-ID:94;X:-118784;Y:-120150;D:1;MG:"Sorry\, but you can't get any power ups today. All we have left are a few mushrooms and a fire flower\, because somebody came in and stole them all. I think they said something about a secret room?";FD:1;NM:1;
+ID:94;X:-118784;Y:-120150;D:1;MG:"Guard Toad\: Sorry\, but you can't get any power ups today. All we have left are a few mushrooms and a fire flower\, because somebody came in and stole them all. I think they said something about a secret room?";FD:1;NM:1;
 ID:86;X:-79407;Y:-80176;D:-1;FD:1;NM:1;
-ID:75;X:-159427;Y:-160150;D:-1;MG:"B... B... B... Bowser was here! H... He was covered in scratches\, gunshots\, lava burns and bruises!";FD:1;
-ID:75;X:-160163;Y:-160150;D:1;MG:"B... B... B... Bowser was here! H... He stormed into the kitchen to look for Peach!";FD:1;
+ID:75;X:-159427;Y:-160150;D:-1;MG:"Mushroom Retainer\: B... B... B... Bowser was here! H... He was covered in scratches\, gunshots\, lava burns and bruises!";FD:1;
+ID:75;X:-160163;Y:-160150;D:1;MG:"Mushroom Retainer\: B... B... B... Bowser was here! H... He stormed into the kitchen to look for Peach!";FD:1;
 ID:465;X:-158768;Y:-160256;D:-1;ED:"Bowser Dialouge";
-ID:198;X:-79680;Y:-80160;D:1;MG:"Peach\:                     Oh\, hey Mario. Bad news. As you may know\, Bowser was here and asked about the Star Blade. Let me explain...";FD:1;
+ID:198;X:-79680;Y:-80160;D:1;MG:"Peach\: Oh\, hey Mario. Bad news. As you may know\, Bowser was here and asked about the Star Blade. Let me explain...";FD:1;
 ID:279;X:-59584;Y:-60204;D:-1;MG:"What a curious weapon.";FD:1;
-ID:94;X:-59424;Y:-60118;D:-1;MG:"See this cool weapon we've been designing? Well\, I haven't actually got a clue how it works. According to the specs\, it's a propeller block filled with petroleum that has been hooked up to a cannon\, which it fires at intense rates\, or something like that. I'm afraid I can't let you have it though because according to my superiors it's too OP\, or something along the lines of that.";FD:1;
+ID:94;X:-59424;Y:-60118;D:-1;MG:"Weapons Designer\: See this cool weapon we've been designing? Well\, I haven't actually got a clue how it works. <br> Weapons Designer\: According to the specs\, it's a propeller block filled with petroleum that has been hooked up to a cannon\, which it fires at intense rates\, or something like that. <br> Weapons Designer\: I'm afraid I can't let you have it though because according to my superiors it's too OP\, or something along the lines of that.";FD:1;NM:1;
 NPC_END
 DOORS
 OX:-199632;OY:-200128;DT:2;ID:1;OD:1;ET:1;

@@ -800,8 +800,9 @@ ID:92;X:-179296;Y:-180224;
 ID:92;X:-197024;Y:-200224;
 BGO_END
 NPC
-ID:101;X:-199503;Y:-200214;D:1;MG:"This is the border between here and Bowser's Kingdom. This area is guarded by both sides 24/7\, yet Bowser is never seen going this way to kidnap Peach. Maybe there is a secret entrance somewhere?";FD:1;
+ID:101;X:-199503;Y:-200214;D:1;MG:"<boxStyle ml><speakerName \"Border Toad\">This is the border between here and Bowser's Kingdom. This area is guarded by both sides 24/7\, yet Bowser is never seen going this way to kidnap Peach. Maybe there is a secret entrance somewhere?";FD:1;
 ID:151;X:-197768;Y:-200208;D:-1;MG:"YOU ARE NOW ENTERING BOWSER'S KINGDOM";FD:1;
+ID:29;X:-198144;Y:-200208;D:-1;
 NPC_END
 DOORS
 IX:-179296;IY:-180192;OX:-197024;OY:-200192;DT:2;ID:1;OD:1;TW:1;

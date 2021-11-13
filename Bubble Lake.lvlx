@@ -1622,10 +1622,11 @@ ID:83;X:-159808;Y:-160032;
 BGO_END
 NPC
 ID:386;X:-159776;Y:-160096;D:1;
-ID:94;X:-199840;Y:-200182;D:-1;MG:"Toad\: Welcome to Bubble Lake? Come to relax by the shores? Or are you going to attempt to swim? Well\, if the latter\, be sure to come up for air! Unless you find a bubble or something\, you're gong to drown. Fast.";FD:1;NM:1;
+ID:94;X:-199840;Y:-200182;D:-1;MG:"<boxStyle ml><speakerName \"Toad\"> Welcome to Bubble Lake! Come to relax by the shores? Or are you going to attempt to swim?";FD:1;NM:1;
 NPC_END
 PHYSICS
 ET:0;X:-199776;Y:-200112;W:1440;H:112;
+ET:0;X:-160000;Y:-160208;W:800;H:208;
 PHYSICS_END
 DOORS
 IX:-159328;IY:-160256;DT:2;ID:1;OD:1;LF:"Kero Sewers.lvlx";LI:0;EX:1;
