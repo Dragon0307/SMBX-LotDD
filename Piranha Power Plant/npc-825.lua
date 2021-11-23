@@ -4,29 +4,33 @@ local redstone = require("redstone")
 local npcManager = require("npcManager")
 
 broadcaster.name = "broadcaster"
-broadcaster.id = 825
+broadcaster.id = NPC_ID
 
 broadcaster.test = function()
   return "isBroadcaster", function(x)
-    return (x == broadcaster.name or x == broadcaster.id)
+    return (x == broadcaster.id or x == broadcaster.name)
   end
+end
+
+broadcaster.onRedPower = function(n, c, power, dir, hitbox)
+  redstone.setEnergy(n, power)
 end
 
 broadcaster.config = npcManager.setNpcSettings({
 	id = broadcaster.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 4,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
   notcointransformable = true,
@@ -43,32 +47,28 @@ broadcaster.config = npcManager.setNpcSettings({
 function broadcaster.prime(n)
   local data = n.data
 
-  data.frameX = data.frameX or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.powdir = data.powdir or 0
-  data.powerPrev = data.powerPrev or false
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
 
   data.redarea = data.redarea or redstone.basicRedArea(n)
   data.redhitbox = data.redhitbox or redstone.basicRedHitBox(n)
 end
 
-function broadcaster.onTick(n)
+function broadcaster.onRedTick(n)
   local data = n.data
   data.observ = false
 
-  if data.power > 0 then
+  if data.power > 0 and redstone.npcList[1] then
     redstone.updateRedArea(n)
     redstone.updateRedHitBox(n)
     redstone.passEnergy{source = n, npcList = redstone.npcList, power = data.power, hitbox = data.redhitbox, area = data.redarea}
   end
 
-  if data.powerPrev ~= data.power then
+  if (data.power == 0 and data.powerPrev ~= 0) or (data.power ~= 0 and data.powerPrev == 0) then
     data.observ = true
-  else
-    data.observ = false
   end
 
   if data.power == 0 then
@@ -77,11 +77,10 @@ function broadcaster.onTick(n)
     data.frameY = 1
   end
 
-  data.powerPrev = data.power
-  data.power = 0
+  redstone.resetPower(n)
 end
 
-function broadcaster.onDraw(n)
+function broadcaster.onRedDraw(n)
   redstone.drawNPC(n)
 end
 

@@ -12,21 +12,33 @@ flamethrower.test = function()
   end
 end
 
+flamethrower.onRedPower = function(n, c, power, dir, hitbox)
+  redstone.setEnergy(n, power)
+end
+
+flamethrower.onRedInventory = function(n, c, inv, dir, hitbox)
+  local data = n.data
+
+  data.angleList = {inv}
+  data.angleCurr = 1
+  data.invspace = false
+end
+
 flamethrower.config = npcManager.setNpcSettings({
 	id = flamethrower.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 4,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
   notcointransformable = true,
@@ -45,56 +57,47 @@ local sfxfire = 16
 function flamethrower.prime(n)
   local data = n.data
 
-  data.angle = data._settings.angle or 0
-
-  data.frameX = data.frameX or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.prevPower = data.prevPower or false
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
+
+  data.angleList = redstone.parseNumList(data._settings.angle or "0")
+  data.angle = data.angleList[1]
+  data.angleCurr = 1
   data.invspace = true
 
   data.redarea = data.redarea or Colliders.Box(0, 0, n.width + 4, n.height + 2)
+  data.redhitbox = redstone.basicDirectionalRedHitBox(n, 3)
 end
 
-function flamethrower.onTick(n)
+function flamethrower.onRedTick(n)
   if Defines.levelFreeze then return end
+  redstone.setLayerLineguideSpeed(n)
+
   local data = n.data
   data.observ = false
 
-  data.redarea.x, data.redarea.y = n.x - 2, n.y
-  for _, p in ipairs(Player.get()) do
-    if (p.standingNPC and p.standingNPC == n) or Colliders.collide(p, data.redarea) then
-      p:harm()
+  data.redarea.x, data.redarea.y = n.x - 2, n.y - 1
+
+  -- Melt any ice blocks that are in the way
+  local iceList = Colliders.getColliding{a = data.redarea, b = redstone.iceBlock_MAP, btype = Colliders.BLOCK, filter = function(b)
+    if not b.isHidden then
+      redstone.iceBlock[b.id](b, n)
     end
-  end
+  end}
 
-  data.redarea.y = data.redarea.y - 1
-  local iceList = Colliders.getColliding{a = data.redarea, b = {620, 621, 633}, btype = Colliders.BLOCK, filter = function(v) return not v.isHidden end}
-  for _, b in ipairs(iceList) do
-    Animation.spawn(10, b.x, b.y)
-    if b.id == 621 then
-      b.id = 109
-    elseif b.id == 633 then
-      b:remove()
-    else
-      NPC.spawn(10, b.x, b.y, n.section)
-      b:remove()
-    end
-  end
-
-
-
-  if data.inv ~= 0 then
-    data.angle = data.inv
-    data.inv = 0
-    data.invspace = false
-  end
-
-  if data.power > 0 and data.prevPower == 0 then
+  if data.power > 0 and data.powerPrev == 0 then
     data.invspace = true
-    data.observ = true
+
+    data.angle = data.angleList[data.angleCurr]
+    data.angleCurr = data.angleCurr + 1
+    if data.angleCurr > #data.angleList then
+      data.observ = true
+      data.angleCurr = 1
+    end
+
     if redstone.onScreenSound(n) then
       SFX.play(sfxfire)
     end
@@ -103,15 +106,31 @@ function flamethrower.onTick(n)
     v.x = v.x + 0.5*(n.width - v.width)
     v.y = v.y + 0.5*(n.height - v.height)
     v.data.angle = data.angle
+    v.data.parent = n
+    v.data.immuneparent = true
     redstone.component.flame.prime(v)
   end
 
-  data.prevPower = data.power
-  data.power = 0
+  redstone.updateDirectionalRedHitBox(n, 3)
+  local passed = redstone.passInventory{source = n, npcList = redstone.component.hopper.id, inventory = data.angle, hitbox = data.redhitbox}
+
+
+  redstone.resetPower(n)
 end
 
-function flamethrower.onDraw(n)
-  redstone.drawNPC(n)
+function flamethrower.onTick()
+  for k, p in ipairs(Player.get()) do
+    local list = Colliders.getColliding{a = Colliders.Box(p.x - 2, p.y - 2, p.width + 4, p.height + 4), b = flamethrower.id, btype = Colliders.NPC, filter = redstone.nofilter}
+    if list[1] then
+      p:harm()
+    end
+  end
+end
+
+flamethrower.onRedDraw = redstone.drawNPC
+
+function flamethrower.onInitAPI()
+  registerEvent(flamethrower, "onTick", "onTick")
 end
 
 redstone.register(flamethrower)

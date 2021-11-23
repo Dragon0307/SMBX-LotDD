@@ -8,35 +8,41 @@ deadsickblock.id = NPC_ID
 
 deadsickblock.test = function()
   return "isDeadsickblock", function(x)
-    return (x == deadsickblock.name or x == deadsickblock.id)
+    return (x == deadsickblock.id or x == deadsickblock.name)
   end
 end
 
-deadsickblock.filter = function(n, c, p, d, hitbox)
-  if (n.data.power == 0 and n.data.mode == 1 or c.id ~= deadsickblock.id) then
-    redstone.setEnergy(n, p)
+local MODE_NORMAL = 0
+local MODE_ANGELIC = 1
+
+deadsickblock.onRedPower = function(n, c, power, dir, hitbox)
+  if n.data.power == 0 and n.data.mode == MODE_ANGELIC then
+    redstone.setEnergy(n, power)
     redstone.updateRedArea(n)
     redstone.updateRedHitBox(n)
-    redstone.passEnergy{source = n, power = 15, hitbox = n.data.redhitbox, area = n.data.redarea, npcList = deadsickblock.id, filter = function(v) return v.data.mode == 1 and v.data.power == 0 and c ~= v end}
+    redstone.passEnergy{source = n, power = 15, hitbox = n.data.redhitbox, area = n.data.redarea, npcList = {deadsickblock.id, redstone.component.reflector.id}, filter = function(v) return (v.data.mode == MODE_ANGELIC and v.data.power == 0 and c ~= v) or redstone.isReflector(v.id) end}
+  else
+    return true
   end
 end
 
 deadsickblock.config = npcManager.setNpcSettings({
 	id = deadsickblock.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
   foreground = true,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
+  mute = false,
 
   nogravity = true,
 	jumphurt = true,
@@ -50,41 +56,46 @@ deadsickblock.config = npcManager.setNpcSettings({
   playerblocktop = false
 })
 
+local function revive(n)
+  local data = n.data
+
+  n.friendly = false
+  if redstone.onScreenSound(n) then
+    SFX.play(14)
+  end
+  data.isDead = false
+  data.pistIgnore = false
+  n.id = redstone.component.sickblock.id
+end
+
 deadsickblock.prime = redstone.component.sickblock.prime
 
-function deadsickblock.onTick(n)
+function deadsickblock.onRedTick(n)
   local data = n.data
   data.observ = false
 
-  if data.mode == 1 and data.power == 0 and data.deathTimer == 0 then
-    data.deathTimer = 5
+  if data.mode == MODE_ANGELIC and data.power == 0 and data.deathTimer == 0 then
+    data.deathTimer = redstone.component.sickblock.config.deathtimer + 1
     data.observ = true
   end
 
-  data.frameY = data.mode
-
   if data.deathTimer > 0 then
     data.deathTimer = data.deathTimer - 1
-    data.frameY = 2
     if data.deathTimer == 0 then
-      data.isDead = false
-      data.power = 0
-      data.pistIgnore = false
-      n.friendly = false
-      data.priority = nil
-      n.id = redstone.component.sickblock.id
-      if redstone.onScreenSound(n) then
-        SFX.play(14)
-      end
+      revive(n)
     end
   end
 
-  data.power = 0
+  if data.deathTimer > 0 then
+    data.frameY = 2
+  else
+    data.frameY = data.mode
+  end
+
+  redstone.resetPower(n)
 end
 
-function deadsickblock.onDraw(n)
-  redstone.drawNPC(n)
-end
+deadsickblock.onRedDraw =  redstone.drawNPC
 
 redstone.register(deadsickblock)
 

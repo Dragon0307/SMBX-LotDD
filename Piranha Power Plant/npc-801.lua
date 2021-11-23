@@ -8,31 +8,33 @@ torch.id = NPC_ID
 
 torch.test = function()
   return "isTorch", function(x)
-    return (x == torch.name or x == torch.id)
+    return (x == torch.id or x == torch.name)
   end
 end
 
-torch.filter = function(n, c, p, d, hitbox)
-  if redstone.isBlock(c.id) and d == 1 then
-    redstone.setEnergy(n, p)
+torch.onRedPower = function(n, c, power, dir, hitbox)
+  if (redstone.isBlock(c.id) and dir == 1) or redstone.isChip(c.id) then
+    redstone.setEnergy(n, power)
+  else
+    return true
   end
 end
 
 torch.config = npcManager.setNpcSettings({
 	id = torch.id,
 
+  width = 32,
+  height = 64,
+
 	gfxwidth = 32,
 	gfxheight = 64,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 2,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 64,
+  invisible = false,
 
   noblockcollision = true,
   notcointransformable = true,
@@ -45,18 +47,17 @@ torch.config = npcManager.setNpcSettings({
 function torch.prime(n)
   local data = n.data
 
-  data.frameX = data.frameX or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.powerPrev = data.powerPrev or 0
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
 
   data.redarea = data.redarea or redstone.basicRedArea(n)
   data.redhitbox = data.redhitbox or redstone.basicRedHitBox(n)
 end
 
-function torch.onTick(n)
+function torch.onRedTick(n)
   local data = n.data
   data.observ = false
 
@@ -66,7 +67,7 @@ function torch.onTick(n)
     redstone.passEnergy{source = n, power = 15, hitbox = data.redhitbox, area = data.redarea}
   end
 
-  if data.powerPrev ~= data.power then
+  if (data.power == 0 and data.powerPrev ~= 0) or (data.power ~= 0 and data.powerPrev == 0) then
     data.observ = true
   end
 
@@ -76,13 +77,10 @@ function torch.onTick(n)
     data.frameY = 1
   end
 
-  data.powerPrev = data.power
-  data.power = 0
+  redstone.resetPower(n)
 end
 
-function torch.onDraw(n)
-  redstone.drawNPC(n)
-end
+torch.onRedDraw = redstone.drawNPC
 
 redstone.register(torch)
 

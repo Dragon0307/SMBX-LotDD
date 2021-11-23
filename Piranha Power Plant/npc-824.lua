@@ -8,12 +8,19 @@ note.id = NPC_ID
 
 note.test = function()
   return "isNote", function(x)
-    return (x == note.name or x == note.id)
+    return (x == note.id or x == note.name)
   end
+end
+
+note.onRedPower = function(n, c, power, dir, hitbox)
+  return true
 end
 
 note.config = npcManager.setNpcSettings({
 	id = note.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
@@ -24,9 +31,6 @@ note.config = npcManager.setNpcSettings({
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
 
   nogravity = true,
   notcointransformable = true,
@@ -39,16 +43,16 @@ note.config = npcManager.setNpcSettings({
 function note.prime(n)
   local data = n.data
 
-  data.frameX = data.frameX or data._settings.type or 0
-
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
+
+  data.frameX = data._settings.type or 0
+  data.frameY = data.frameY or 0
 
   data.timer = data.timer or 0
 end
 
-function note.onTick(n)
+function note.onRedTick(n)
   local data = n.data
   n.friendly = true
   n.speedY = -1.4
@@ -62,9 +66,7 @@ function note.onTick(n)
   end
 end
 
-function note.onDraw(n)
-  redstone.drawNPC(n)
-end
+note.onRedDraw = redstone.drawNPC
 
 redstone.register(note)
 

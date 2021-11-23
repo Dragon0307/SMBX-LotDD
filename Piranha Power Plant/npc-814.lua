@@ -8,25 +8,33 @@ hopper.id = NPC_ID
 
 hopper.test = function()
   return "isHopper", function(x)
-    return (x == hopper.name or x == hopper.id)
+    return (x == hopper.id or x == hopper.name)
   end
+end
+
+hopper.onRedPower = function(n, c, power, dir, hitbox)
+  redstone.setEnergy(n, power)
+end
+
+hopper.onRedInventory = function(n, c, inv, dir, hitbox)
+  n.data.inv = inv
 end
 
 hopper.config = npcManager.setNpcSettings({
 	id = hopper.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
   noblockcollision = true,
@@ -40,33 +48,22 @@ hopper.config = npcManager.setNpcSettings({
   npcblock = true
 })
 
-local function chooseDir(n, frameX)
-  if frameX == 0 then
-    return -n.width*0.5, n.height*0.05, n.width*0.5, n.height*0.9
-  elseif frameX == 1 then
-    return n.width*0.05, -n.height*0.5, n.width*0.9, n.height*0.5
-  elseif frameX == 2 then
-    return n.width, n.height*0.05, n.width*0.5, n.height*0.9
-  else
-    return n.width*0.05, n.height, n.width*0.9, n.height*0.5
-  end
-end
-
 function hopper.prime(n)
   local data = n.data
 
-  data.frameX = data._settings.dir or 0
-  data.inv = data._settings.inv or 0
-
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.powerPrev = data.powerPrev or 0
+  data.frameX = data._settings.dir or 0
+  data.frameY = data.frameY or 0
+
+  data.inv = data._settings.inv or 0
   data.timer = data.timer or 0
+
+  data.redhitbox = redstone.basicDirectionalRedHitBox(n, data.frameX)
 end
 
-function hopper.onTick(n)
+function hopper.onRedTick(n)
   local data = n.data
 
   if data.inv ~= 0 then
@@ -76,7 +73,6 @@ function hopper.onTick(n)
     data.observ = false
     data.invspace = true
   end
-
 
   if data.power == 0 and data.inv ~= 0 then
     data.timer = data.timer + 1
@@ -99,15 +95,10 @@ function hopper.onTick(n)
     data.frameY = 1
   end
 
-  data.powerPrev = data.power
-  data.power = 0
-
-  data.redhitbox = redstone.basicDirectionalRedHitBox(n, data.frameX)
+  redstone.resetPower(n)
 end
 
-function hopper.onDraw(n)
-  redstone.drawNPC(n)
-end
+hopper.onRedDraw = redstone.drawNPC
 
 redstone.register(hopper)
 

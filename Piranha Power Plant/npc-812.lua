@@ -8,14 +8,16 @@ spyblock.id = NPC_ID
 
 spyblock.test = function()
   return "isSpyblock", function(x)
-    return (x == spyblock.name or x == spyblock.id)
+    return (x == spyblock.id or x == spyblock.name)
   end
 end
 
-spyblock.filter = function(n, c, p, d, hitbox)
-  if redstone.isOperator(c.id) then
-    redstone.setEnergy(n, p)
+spyblock.onRedPower = function(n, c, power, dir, hitbox)
+  if redstone.isOperator(c.id) and power > 0 then
+    n.data.isOn = true
+    redstone.setEnergy(n, power)
   end
+  return true
 end
 
 spyblock.config = npcManager.setNpcSettings({
@@ -23,18 +25,16 @@ spyblock.config = npcManager.setNpcSettings({
 
   width = 32,
   height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
   notcointransformable = true,
@@ -48,76 +48,89 @@ spyblock.config = npcManager.setNpcSettings({
   npcblock = true
 })
 
-
-
 function spyblock.prime(n)
   local data = n.data
-
-  data.frameX = data._settings.dir or 0
-  data.frameY = data._settings.type or 0
 
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.prevState = data.prevState or 0
-  data.type = data.frameY or 0
-
-  if data._settings.whitelist ~= "" then
-    local t = string.split(data._settings.whitelist, ",")
-    data.whitelist = {}
-    for k, v in ipairs(t) do
-      data.whitelist[tonumber(v)] = true
-    end
-  else
-    data.whitelist = false
-  end
+  data.frameX = data._settings.dir or 0
+  data.frameY = data._settings.type or 0
 
   data.isOn = data.isOn or false
+  data.prevState = data.prevState or false
+  data.type = data._settings.type or 0
+  data.whitelist = data.whitelist or redstone.parseList(data._settings.whitelist)
 
   data.redhitbox = redstone.basicDirectionalRedHitBox(n, (data.frameX + 2)%4)
 end
 
-function spyblock.onTick(n)
+local TYPE_PLAYER = 0
+local TYPE_NPC = 1
+local TYPE_BLOCK = 2
+local TYPE_POWERED = 3
+
+local function passPower(n, power)
+  local data = n.data
+
+  redstone.updateDirectionalRedHitBox(n, (data.frameX + 2)%4)
+  redstone.passDirectionEnergy{source = n, power = power, hitbox = data.redhitbox}
+  if not data.prevState then
+    data.observ = true
+  end
+end
+
+local getFuncType = {}
+local getCheckType = {}
+getFuncType[TYPE_PLAYER] = Player.getIntersecting
+getCheckType[TYPE_PLAYER] = "character"
+
+getFuncType[TYPE_NPC] = NPC.iterateIntersecting
+getCheckType[TYPE_NPC] = "id"
+
+getFuncType[TYPE_BLOCK] = Block.iterateIntersecting
+getCheckType[TYPE_BLOCK] = "id"
+
+
+local function scanBox(n, dir)
+  if dir == 0 then
+    return n.x - 2, n.y, 2, n.height
+  elseif dir == 1 then
+    return n.x, n.y - 2, n.width, 2
+  elseif dir == 2 then
+    return n.x + n.width, n.y, 2, n.height
+  else
+    return n.x, n.y + n.height, n.width, 2
+  end
+end
+
+local function scan(n, v, check)
+  local data = n.data
+
+  if v and (not data.whitelist or data.whitelist[v[check]]) and not v.isHidden then
+    data.isOn = true
+    passPower(n, 15)
+    return true
+  end
+end
+
+function spyblock.onRedTick(n)
   local data = n.data
   data.observ = false
 
-  if data.frameY < 3 then
-    data.type = data.frameY
-  end
-
-  local func, check
-  if data.type == 0 then
-    func = Player.getIntersecting
-    check = "character"
-  elseif data.type == 1 then
-    func = NPC.getIntersecting
-    check = "id"
-  elseif data.type == 2 then
-    func = Block.getIntersecting
-    check = "id"
-  end
-
   if data.power > 0 then
-    data.isOn = true
-    redstone.updateDirectionalRedHitBox(n, (data.frameX + 2)%4)
-    redstone.passDirectionEnergy{source = n, power = data.power, hitbox = data.redhitbox}
-    if not data.prevState then
-      data.observ = true
-    end
-  end
-
-  local x, y, w, h = redstone.collisionBox(n, data.frameX)
-  for _, v in ipairs(func(x, y, x + w, y + h)) do
-    if v and (not data.whitelist or data.whitelist[v[check]]) and not v.isHidden then
-      data.isOn = true
-
-      redstone.updateDirectionalRedHitBox(n, (data.frameX + 2)%4)
-      redstone.passDirectionEnergy{source = n, power = 15, hitbox = data.redhitbox}
-
-      if not data.prevState then
-        data.observ = true
+    passPower(n, data.power)
+  else
+    local func, check = getFuncType[data.type], getCheckType[data.type]
+    local x, y, w, h = scanBox(n, data.frameX)
+    if data.type == TYPE_PLAYER then
+      for _, v in ipairs(func(x, y, x + w, y + h)) do
+        if scan(n, v, check) then break end
       end
-      break
+    else
+      for _, v in func(x, y, x + w, y + h) do
+        if scan(n, v, check) then break end
+      end
     end
   end
 
@@ -125,21 +138,19 @@ function spyblock.onTick(n)
     data.observ = true
   end
 
-
   if data.isOn  then
-    data.frameY = 3
+    data.frameY = TYPE_POWERED
   else
     data.frameY = data.type
   end
 
   data.prevState = data.isOn
   data.isOn = false
-  data.power = 0
+
+  redstone.resetPower(n)
 end
 
-function spyblock.onDraw(n)
-  redstone.drawNPC(n)
-end
+spyblock.onRedDraw = redstone.drawNPC
 
 redstone.register(spyblock)
 

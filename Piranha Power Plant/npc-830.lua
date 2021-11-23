@@ -5,30 +5,35 @@ local npcManager = require("npcManager")
 local npcutils = require("npcs/npcutils")
 local lineguide = require("lineguide")
 
+local min = math.min
+local insert, remove = table.insert, table.remove
+local split, trim = string.split, string.trim
+
 jewel.name = "jewel"
 jewel.id = NPC_ID
 
 jewel.test = function()
   return "isJewel", function(x)
-    return (x == jewel.name or x == jewel.id)
+    return (x == jewel.id or x == jewel.name)
   end
 end
 
 jewel.config = npcManager.setNpcSettings({
 	id = jewel.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
+  mute = false,
 
 	jumphurt = false,
   noblockcollision = true,
@@ -38,17 +43,20 @@ jewel.config = npcManager.setNpcSettings({
 	nohurt = true,
 	noyoshi = true,
 
-  poweredframes = 1,
-  lightningframes = 3,
-  lightningframespeed = 2
+  lightningframes = 3,  -- The amount of frames in the lightning image
+  lightningframespeed = 2,  -- The framespeed for the lightning animation
+  lightningthickness = -1,  -- Set -1 for random, otherwise use this value
 })
 npcManager.registerHarmTypes(jewel.id, {HARM_TYPE_JUMP, HARM_TYPE_SPINJUMP}, {[HARM_TYPE_JUMP] = 10, [HARM_TYPE_SPINJUMP] = 10})
 
 lineguide.registerNpcs(jewel.id)
-local light = Graphics.loadImage(Misc.resolveFile("npc-"..jewel.id.."-1.png"))
-local sfxpower = Audio.SfxOpen(Misc.resolveFile("ampedjewel-powered.ogg"))
 
+local ilightning = Graphics.loadImage(Misc.resolveFile("npc-"..jewel.id.."-1.png"))
+local rayWidth, rayHeight = ilightning.width, ilightning.height/jewel.config.lightningframes
+
+local sfxpower = Audio.SfxOpen(Misc.resolveFile("ampedjewel-powered.ogg"))
 local sfxjump = 2
+
 local jewid = 0
 local reset = {}
 local rays = {}
@@ -61,87 +69,96 @@ local function shareval(t1, t2)
   end
 end
 
+local function tableMultiInsert(tbl,tbl2)
+  for _, v in ipairs(tbl2) do
+    insert(tbl, v)
+  end
+end
+
 function jewel.prime(n)
   local data = n.data
 
-  data.frameX = data._settings.type or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
-  data.powerPre = 0
-  data.powerPrev = 0
 
-  data.hitbox = Colliders.Circle(0, 0, 1000)
-  data.active = false
-  data.connections = {}
-
-
-  data.tags = {}
-  data.tagstext = string.split(data._settings.tagstext, ",")
-  for i = 1, #data.tagstext do
-    data.tags[i] = data.tagstext[i]
-  end
+  data.frameX = data._settings.type or 0
+  data.frameY = data.frameY or 0
 
   jewid = jewid + 1
-  data.index = jewid
+  data.index = data.inedx or jewid
+  data.active = data.ective or false
+  data.connections = {}
 
-  data.lightframe = 0
-  data.lightanimationframe = 0
+  local tagstext = split(data._settings.tagstext, ",")
+  data.pins = {}
+  for i = 1, #tagstext do
+    data.pins[i] = trim(tagstext[i])
+  end
+
+  data.lightAnimFrame = data.lightAnimFrame or 0
+  data.lightAnimTimer = data.lightAnimTimer or 0
+  data.lightThickness = data.lightThickness or RNG.random(1, 2)
+
+  data.hitbox = Colliders.Circle(0, 0, 1000)
 end
 
-function jewel.onTick(n)
+function jewel.onRedTick(n)
   local data = n.data
   data.observ = false
 
-  if not (data._basegame.lineguide and data._basegame.lineguide.state == 1) then
-		n.speedX, n.speedY = npcutils.getLayerSpeed(n)
-	end
-
+  redstone.setLayerLineguideSpeed(n)
   if reset then
     rays = {}
     reset = false
   end
 
-  if data.power > 0 then
+  if data.power == 0 then
+    data.frameY = 0
+  else
     data.frameY = 1
     data.hitbox.x, data.hitbox.y = n.x + 0.5*n.width, n.y + 0.5*n.height
 
-
-    if n.data.tags[1] ~= "" then
-      for _, npc in ipairs(Colliders.getColliding{a = data.hitbox, b = jewel.id, btype = Colliders.NPC, filter = function(npc) return n ~= npc and (not npc.data.connections[n.data.index]) and (npc.data.power > 0 or npc.data.powerPre > 0) and shareval(n.data.tags, npc.data.tags) end}) do
-        n.data.active = true
+    if n.data.pins[1] ~= "" then
+      for _, npc in ipairs(Colliders.getColliding{a = data.hitbox, b = jewel.id, btype = Colliders.NPC, filter = function(npc) return n ~= npc and (not npc.data.connections[n.data.index]) and (npc.data.power > 0 or npc.data.powerPrev > 0) and shareval(n.data.pins, npc.data.pins) end}) do
         npc.data.active = true
+        n.data.active = true
         n.data.connections[npc.data.index] = true
-        table.insert(rays, {start = n, stop = npc, frame = data.lightframe})
+        insert(rays, {startNPC = n, stopNPC = npc, frame = data.lightAnimFrame, thickness = data.lightThickness})
       end
     end
 
     if data.powerPrev == 0 and redstone.onScreenSound(n) then
       SFX.play(sfxpower)
     end
-  else
-    data.frameY = 0
   end
 
-  if data.power ~= data.powerPrev then
+  if (data.power ~= 0 and data.powerPrev == 0) or (data.power == 0 and data.powerPrev ~= 0) then
     data.observ = true
   end
 
-  data.powerPre = data.power
-  data.powerPrev = data.power
-  data.power = 0
+  data.lightAnimTimer = data.lightAnimTimer + 1
+  if data.lightAnimTimer >= jewel.config.lightningframespeed then
+    data.lightAnimTimer =  0
+    data.lightAnimFrame = data.lightAnimFrame + 1
+    if data.lightAnimFrame >= jewel.config.lightningframes then
+      data.lightAnimFrame =  0
+    end
+  end
+
+  redstone.resetPower(n)
 end
 
-function jewel.onTickR()
-  local pl = Player.get()
+function jewel.onTick()
+  local playerList = Player.get()
+
   for i = #rays, 1, -1 do
     local ray = rays[i]
-    if not ray.start or not ray.stop then
-      table.remove(rays, i)
+    if not (ray.startNPC and ray.stopNPC) and not (ray.startNPC.isValid and ray.stopNPC.isValid) then
+      remove(rays, i)
     else
-      local start = vector.v2(ray.start.x + 0.5*ray.start.width, ray.start.y + 0.5*ray.start.height)
-      local stop = vector.v2(ray.stop.x + 0.5*ray.stop.width, ray.stop.y + 0.5*ray.stop.height)
-      for k, p in ipairs(pl) do
+      local start = vector(ray.startNPC.x + 0.5*ray.startNPC.width, ray.startNPC.y + 0.5*ray.startNPC.height)
+      local stop = vector(ray.stopNPC.x + 0.5*ray.stopNPC.width, ray.stopNPC.y + 0.5*ray.stopNPC.height)
+      for k, p in ipairs(playerList) do
         if Colliders.linecast(start, stop, p) then
           p:harm()
         end
@@ -150,61 +167,63 @@ function jewel.onTickR()
   end
 end
 
-function jewel.onTickEnd(n)
+function jewel.onRedTickEnd(n)
   n.data.connections = {}
   n.data.active = false
-  n.data.powerPre = 0
 
 	reset = true
 end
 
-function jewel.onDraw(n)
-  n.data.lightanimationframe = n.data.lightanimationframe + 1
-  if n.data.lightanimationframe > jewel.config.lightningframespeed then
-    n.data.lightanimationframe =  0
-    n.data.lightframe = n.data.lightframe + 1
-    if n.data.lightframe >= jewel.config.lightningframes then
-      n.data.lightframe =  0
-    end
+jewel.onRedDraw = redstone.drawNPC
+
+
+local function drawRay(start, stop, frame, thickness)
+  local p = -45
+  if jewel.config.foreground then p = -15 end
+  if jewel.config.lightningthickness ~= -1 then thickness = jewel.config.lightningthickness end
+
+  local lenght = (start - stop).length
+  local vertexCoords,textureCoords = {}, {}
+  local direction = (stop - start):normalize()
+  local lineWidth = thickness*direction:rotate(90)*rayHeight/jewel.config.lightningframes
+
+  local texX, texY, texH = (1 - (1.8*lunatime.tick() % rayWidth)/rayWidth),  frame/jewel.config.lightningframes, (frame + 1)/jewel.config.lightningframes
+  local segment = start
+
+  local j = 0
+  while j < lenght do
+    local segmentLength = math.min(lenght - j, (1 - texX)*rayWidth)
+    local texW = segmentLength/rayWidth + texX
+
+    local y = direction*segmentLength
+    local z1, z2, z3, z4 = segment + lineWidth, segment - lineWidth, segment + y + lineWidth, segment + y - lineWidth
+
+    tableMultiInsert(vertexCoords, {z1.x, z1.y, z2.x, z2.y, z4.x, z4.y, z1.x, z1.y, z3.x, z3.y, z4.x, z4.y})
+    tableMultiInsert(textureCoords,{texX, texY, texX, texH, texW, texH, texX, texY, texW, texY, texW, texH})
+
+    texX = 0
+    segment = segment + y
+    j = j + segmentLength
   end
-  redstone.drawNPC(n)
+
+  Graphics.glDraw{texture = ilightning, vertexCoords = vertexCoords,textureCoords = textureCoords, priority = p - 0.01, sceneCoords = true}
 end
 
 -- Huge Thanks to Mr.DoubleA for helping me getting this to work!
-local function tableMultiInsert(tbl,tbl2) -- I suppose that I now use this any time I use glDraw, huh
-    for _,v in ipairs(tbl2) do
-        table.insert(tbl,v)
-    end
-end
-
-function jewel.onDrawR()
+function jewel.onDraw()
   if jewel.config.invisible then return end
+
   local p = -45
-  if jewel.config.foreground then
-    p = -15
-  end
+  if jewel.config.foreground then p = -15 end
+
   for i = #rays, 1, -1 do
     local ray = rays[i]
-    if ray.start and ray.stop and ray.start.isValid and ray.stop.isValid then
-      local start = vector.v2(ray.start.x + 0.5*ray.start.width, ray.start.y + 0.5*ray.start.height)
-      local stop = vector.v2(ray.stop.x + 0.5*ray.stop.width, ray.stop.y + 0.5*ray.stop.height)
-			local frames = jewel.config.lightningframes
-      local frame = ray.frame
-      local laserLength = (start - stop).length
-      local vertexCoords,textureCoords = {},{}
-      local v = start
-      local w = (stop - start):normalize()
-      local n = (w:normalize()):rotate(90)*light.height/(frames*2)
-      while i <= laserLength do
-        local segmentLength = math.min(light.width, laserLength - i)
-        local y = w*segmentLength
-        local z1, z2, z3, z4 = v + n, v - n, v + y + n, v + y - n
-        tableMultiInsert(vertexCoords,{z1.x, z1.y, z2.x, z2.y, z4.x, z4.y, z1.x, z1.y, z3.x, z3.y, z4.x, z4.y})
-        tableMultiInsert(textureCoords,{0,((frame  )/frames), 0 ,((frame+1)/frames), (segmentLength/light.width),((frame+1)/frames), 0,((frame  )/frames), (segmentLength/light.width),((frame  )/frames), (segmentLength/light.width),((frame+1)/frames)})
-        v = v + y
-        i = i + light.width
-      end
-      Graphics.glDraw{texture = light, vertexCoords = vertexCoords,textureCoords = textureCoords, priority = p-0.01,sceneCoords = true}
+    if (ray.startNPC and ray.stopNPC) and (ray.startNPC.isValid and ray.stopNPC.isValid) then
+      local start = vector.v2(ray.startNPC.x + 0.5*ray.startNPC.width, ray.startNPC.y + 0.5*ray.startNPC.height)
+      local stop = vector.v2(ray.stopNPC.x + 0.5*ray.stopNPC.width, ray.stopNPC.y + 0.5*ray.stopNPC.height)
+      drawRay(start, stop, ray.frame, ray.thickness)
+    else
+      remove(rays, i)
     end
   end
 end
@@ -212,7 +231,7 @@ end
 function jewel.onNPCHarm(event, n, reason, culprit)
   if n.id == jewel.id and (reason == HARM_TYPE_JUMP or reason == HARM_TYPE_SPINJUMP) then
     SFX.play(sfxjump)
-    if n.data.power > 0 or n.data.powerPre > 0 then
+    if n.data.power > 0 or n.data.powerPrev > 0 then
       culprit:harm()
     end
     event.cancelled = true
@@ -221,8 +240,8 @@ end
 
 function jewel.onInitAPI()
 	registerEvent(jewel, "onNPCHarm", "onNPCHarm")
-  registerEvent(jewel, "onTick", "onTickR")
-  registerEvent(jewel, "onDraw", "onDrawR")
+  registerEvent(jewel, "onTick", "onTick")
+  registerEvent(jewel, "onDraw", "onDraw")
 end
 
 redstone.register(jewel)

@@ -9,26 +9,30 @@ chip.id = NPC_ID
 
 chip.test = function()
   return "isChip", function(x)
-    return (x == chip.name or x == chip.id)
+    return (x == chip.id or x == chip.name)
   end
+end
+
+chip.onRedPower = function(n, c, power, dir, hitbox)
+  return true
 end
 
 chip.config = npcManager.setNpcSettings({
 	id = chip.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
   foreground = true,
-  invisible = true,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = true,
 
 	jumphurt = true,
   noblockcollision = true,
@@ -38,116 +42,72 @@ chip.config = npcManager.setNpcSettings({
 	noyoshi = true
 })
 
-
-local proxytbl = {
-	rng = RNG,
-	lunatime = lunatime,
-	e = 2.718281828459,
-	toBlocks = function(pixels)
-		return pixels / 32
-	end,
-	toPixels = function(blocks)
-		return blocks * 32
-	end
-}
-
-local proxymt = {
-	__index = function(t, k)
-		return lunatime[k] or RNG[k] or math[k] or _G[k]
-	end,
-	__newindex = function() end
-}
-setmetatable(proxytbl, proxymt)
-
-local funcCache = {}
-local parse -- Local outside for recursion
-function parse(msg, recurse)
-	if funcCache[msg] then
-		return funcCache[msg]
-	end
-	local str = "return function(timer, npc, powerLevel) "..msg.." return {timer = timer, powerLevel = powerLevel} end"
-	local chunk, err = load(str, str, "t", proxytbl)
-	if chunk then
-		local func = chunk()
-		funcCache[msg] = func
-		return func
-	elseif not recurse then
-		return parse(msg:gsub("\r?\n", ";\n"), true)
-	else
-		return nil, err
-	end
+local function luafy(msg)
+  return "return function(param) local timer, npc, powerLevel = param.timer, param.attachedNPC, param.powerLevel "..msg.." return {timer = timer, powerLevel = powerLevel} end"
 end
 
-local function call(npc)
-	local data = npc.data
-	local t = data.func(data.timer, data.attachedNPC, data.power)
-
-	data.timer = t.timer or data.timer
-  data.power = t.powerLevel or data.power
+local function defaultfunc(onTime, offTime, power)
+  return "if timer <= "..onTime.." then powerLevel = "..power.." else powerLevel = 0 end if timer >= "..(offTime + onTime).." then timer = 0 end"
 end
 
 function chip.prime(n)
   local data = n.data
 
-  data.frameX = data._settings.type or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.timer = 0
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
+
+  data.timer = data.timer or 0
+
   if data._settings.advanced then
-    data.func = data._settings.func
+    data.script = data._settings.func or ""
   else
-    data._settings.onTime = data._settings.onTime or 200
-    data._settings.offTime = data._settings.offTime or 200
-    data._settings.powerlevel = data._settings.powerlevel or 15
-    data.func = "if timer <= "..data._settings.onTime.." then powerLevel = "..data._settings.powerlevel.." else powerLevel = 0 end if timer >= "..(data._settings.offTime + data._settings.onTime).." then timer = 0 end"
+    data.script = defaultfunc(data._settings.onTime or 200, data._settings.offTime or 200, data._settings.powerlevel or 15)
     if not data._settings.active then
       data.timer = data._settings.ontime or 200
     end
   end
 
-  local func, err = parse(data.func or "")
-  if err then
-    table.insert(repl.log, "[CONTROL CHIP] "..n.x..", "..n.y)
-    table.insert(repl.log, err)
-    n:kill()
-  else
-    data.func = func
-  end
-
+  data.func = redstone.luaParse("CONTROL CHIP", n, luafy(data.script))
 end
 
-function chip.onTick(n)
+function chip.onRedTick(n)
   local data = n.data
+
   if data.attached then
-    data.timer = data.timer + 1
-    if not data.attachedNPC.isValid then
+    local npc = data.attachedNPC
+    if not (npc and npc.isValid) then
       n:kill() return
     end
-    local npc = data.attachedNPC
+
     n.x, n.y = npc.x, npc.y
-    call(n)
+    data.timer = data.timer + 1
+
+    local results = redstone.luaCall(data.func, {timer = data.timer, attachedNPC = npc})
+    data.timer = results.timer or data.timer
+    data.power = results.powerLevel or data.power
+
     if data.power > 0 then
-      if redstone.isDust(npc.id) or redstone.isDeadsickblock(npc.id) then
-        redstone.energyFilter(npc, n, data.power, 1, npc)
-      else
-        npc.data.power = data.power
-      end
-      data.frameY = 1
-    else
-      data.frameY = 0
+      redstone.energyFilter(npc, n, data.power, -1, npc)
     end
   else
-    local npc = Colliders.getColliding{a = n, b = NPC.ALL, atype = Colliders.NPC, btype = Colliders.NPC, filter = function(npc) return npc.isValid and not npc.isHidden and n ~= npc end}
+    local npc = Colliders.getColliding{a = n, b = NPC.ALL, atype = Colliders.NPC, btype = Colliders.NPC, filter = function(npc) return npc.isValid and not npc.isHidden and n ~= npc and (redstone.comList[npc.id] or redstone.npcAI[npc.id]) end}
     if npc[1] then
       data.attached = true
       data.attachedNPC = npc[1]
     end
   end
+
+  if data.power > 0 then
+    data.frameY = 1
+  else
+    data.frameY = 0
+  end
 end
 
-function chip.onDraw(n)
+function chip.onRedDraw(n)
   redstone.drawNPC(n)
 end
 

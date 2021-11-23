@@ -8,27 +8,30 @@ button.id = NPC_ID
 
 button.test = function()
   return "isButton", function(x)
-    return (x == button.name or x == button.id)
+    return (x == button.id or x == button.name)
   end
 end
 
-button.filter = function() end
+button.onRedPower = function(n, c, power, dir, hitbox)
+  return true
+end
 
 button.config = npcManager.setNpcSettings({
 	id = button.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
+  mute = false,
 
   jumphurt = 0,
   nohurt = true,
@@ -46,46 +49,40 @@ npcManager.registerHarmTypes(button.id, {HARM_TYPE_JUMP, HARM_TYPE_SPINJUMP}, {[
 
 local sfxtoggle = 2
 
+local TYPE_NORMAL = 0
+local TYPE_DETERIORATED = 1
+
 function button.prime(n)
   local data = n.data
 
-  data.delay = data._settings.delay or 2
-  data.frameX = data._settings.type or 0
-  if data._settings.state == 1 then
-    data.isOn = true
-  else
-    data.isOn = false
-  end
-
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.observTimer = data.observTimer or 0
+  data.frameX = data._settings.type or 0
+  data.frameY = data.frameY or 0
+
+  data.delay = (data._settings.delay or 2)*10
   data.countdown = data.countdown or 0
+  data.isOn = (data._settings.state == 1)
+  if data.isOn then
+    data.countdown = n.data.delay
+  end
 
   data.redarea = data.redarea or redstone.basicRedArea(n)
   data.redhitbox = data.redhitbox or redstone.basicRedHitBox(n)
 end
 
-function button.onTick(n)
+function button.onRedTick(n)
   local data = n.data
-  if data.observTimer > 0 then
-    data.observTimer = data.observTimer - 1
-  else
-    data.observ = false
-  end
-
-  if data.isOn and data.countdown == 0 then
-    n.data.countdown = n.data.delay*10
-  end
+  data.observ = false
 
   if data.countdown > 0 then
     data.countdown = data.countdown - 1
     if data.countdown == 0 then
-      n.data.observ = true
+      data.observ = true
       data.isOn = false
-      if data.frameX == 1 then
+
+      if data.frameX == TYPE_DETERIORATED then
         n:kill()
       end
     end
@@ -102,25 +99,27 @@ function button.onTick(n)
   else
     data.frameY = 0
   end
-
-  data.power = 0
 end
 
-function button.onDraw(n)
-  redstone.drawNPC(n)
-end
+button.onRedDraw = redstone.drawNPC
 
 function button.onNPCHarm(event, n, reason, culprit)
   if n.id == button.id and (reason == HARM_TYPE_JUMP or reason == HARM_TYPE_SPINJUMP) then
-    n.data.isOn = true
-    if n.data.countdown == 0 then
-      n.data.observ = true
-      n.data.observTimer = 1
+    local data = n.data
+
+    data.isOn = true
+    if data.countdown == 0 then
+      data.observ = true
+      data.observTimer = 1
     end
-    if n.data.frameX == 0 or (n.data.frameX == 1 and n.data.countdown == 0) then
-      n.data.countdown = n.data.delay*10
+    if data.frameX == TYPE_NORMAL or (data.frameX == TYPE_DETERIORATED and data.countdown == 0) then
+      data.countdown = data.delay
     end
-    SFX.play(sfxtoggle)
+
+    if redstone.onScreenSound(n) then
+      SFX.play(sfxtoggle)
+    end
+
     event.cancelled = true
   end
 end

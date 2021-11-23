@@ -13,7 +13,7 @@ piston_ehor.test = function()
   end
 end
 
-piston_ehor.filter = function(n, c, p, d, hitbox)
+piston_ehor.onRedPower = function(n, c, p, d, hitbox)
   local px, py, pw, ph = n.x, n.y, redstone.component.piston.config.width, n.height
   if n.data.frameX == 0 then
     px = n.x + n.width - pw
@@ -55,10 +55,10 @@ piston_ehor.config = npcManager.setNpcSettings({
 })
 
 piston_ehor.prime = redstone.component.piston.prime
-piston_ehor.onTick = redstone.component.piston.ext_onTick
+piston_ehor.onRedTick = redstone.component.piston.ext_onTick
 
 
-function piston_ehor.onDraw(n)
+function piston_ehor.onRedDraw(n)
   redstone.drawNPC(n)
 end
 

@@ -8,31 +8,31 @@ reciever.id = NPC_ID
 
 reciever.test = function()
   return "isReciever", function(x)
-    return (x == reciever.name or x == reciever.id)
+    return (x == reciever.id or x == reciever.name)
   end
 end
 
-reciever.filter = function(n, c, p, d, hitbox)
-  if redstone.isTransmitter(c.id) then
-    redstone.setEnergy(n, p)
+reciever.onRedPower = function(n, c, power, dir, hitbox)
+  if redstone.isTransmitter(c.id) or redstone.isChip(c.id) then
+    redstone.setEnergy(n, power)
   end
 end
 
 reciever.config = npcManager.setNpcSettings({
 	id = reciever.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 8,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
 	jumphurt = true,
@@ -49,18 +49,17 @@ reciever.config = npcManager.setNpcSettings({
 function reciever.prime(n)
   local data = n.data
 
-  data.frameX = data.frameX or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.powerPrev = data.powerPrev or 0
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
 
   data.redarea = data.redarea or redstone.basicRedArea(n)
   data.redhitbox = data.redhitbox or redstone.basicRedHitBox(n)
 end
 
-function reciever.onTick(n)
+function reciever.onRedTick(n)
   local data = n.data
   data.observ = false
 
@@ -80,13 +79,10 @@ function reciever.onTick(n)
     data.observ = true
   end
 
-  data.powerPrev = data.power
-  data.power = 0
+  redstone.resetPower(n)
 end
 
-function reciever.onDraw(n)
-  redstone.drawNPC(n)
-end
+reciever.onRedDraw = redstone.drawNPC
 
 redstone.register(reciever)
 

@@ -15,7 +15,7 @@
 			"control": "lineEdit",
 			"name": "whitelist",
 			"title": "White List",
-			"tooltip": "The reaper will only scan for NPCs with matching ID. If left blank, only NPCs that follow the RS.hasSoul() will be scanned",
+			"tooltip": "The reaper will only scan for NPCs with matching ID. You can multiple IDs by seperating them by commas, ex <i>1, 2, 3</i><br>If left blank, only NPCs defined in the redconfig will be scanned.",
 			"value-default": ""
 		}
 	]

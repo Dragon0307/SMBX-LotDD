@@ -1,9 +1,115 @@
 local RS = {}
 
------------------------
---  Redstone.lua v1.0
---  SetaYoshi
--------------------------
+--  ===============================
+--  ====   Redstone.lua v1.2   ====
+--  ====     By  SetaYoshi     ====
+--  ===============================
+
+--[[
+        :::::::::   ::::::::::  :::::::::    ::::::::  :::::::::::  ::::::::   ::::    :::  ::::::::::
+       :+:    :+:  :+:         :+:    :+:  :+:    :+:     :+:     :+:    :+:  :+:+:   :+:  :+:
+      +:+    +:+  +:+         +:+    +:+  +:+            +:+     +:+    +:+  :+:+:+  +:+  +:+
+     +#++:++#:   +#++:++#    +#+    +:+  +#++:++#++     +#+     +#+    +:+  +#+ +:+ +#+  +#++:++#
+    +#+    +#+  +#+         +#+    +#+         +#+     +#+     +#+    +#+  +#+  +#+#+#  +#+
+   #+#    #+#  #+#         #+#    #+#  #+#    #+#     #+#     #+#    #+#  #+#   #+#+#  #+#
+  ###    ###  ##########  #########    ########      ###      ########   ###    ####  ##########
+
+        :::     :::     :::         ::::::::
+       :+:     :+:   :+:+:        :+:    :+:
+      +:+     +:+     +:+              +:+
+     +#+     +:+     +#+            +#+
+     +#+   +#+      +#+          +#+
+     #+#+#+#       #+#   #+#   #+#
+      ###       #######  ### ##########
+
+        :::::::::   :::   :::          ::::::::   ::::::::::  :::::::::::  :::    :::   :::   ::::::::    ::::::::   :::    :::  :::::::::::
+       :+:    :+:  :+:   :+:         :+:    :+:  :+:             :+:    :+: :+:  :+:   :+:  :+:    :+:  :+:    :+:  :+:    :+:      :+:
+      +:+    +:+   +:+ +:+          +:+         +:+             +:+   +:+   +:+  +:+ +:+   +:+    +:+  +:+         +:+    +:+      +:+
+     +#++:++#+     +#++:           +#++:++#++  +#++:++#        +#+  +#++:++#++:  +#++:    +#+    +:+  +#++:++#++  +#++:++#++      +#+
+    +#+    +#+     +#+                   +#+  +#+             +#+  +#+     +#+   +#+     +#+    +#+         +#+  +#+    +#+      +#+
+   #+#    #+#     #+#            #+#    #+#  #+#             #+#  #+#     #+#   #+#     #+#    #+#  #+#    #+#  #+#    #+#      #+#
+  #########      ###             ########   ##########      ###  ###     ###   ###      ########    ########   ###    ###  ###########
+
+
+
+
+
+
+
+
+
+
+   ::::::::::: :::    ::: ::::::::::: ::::::::      ::::::::::: :::::::::: :::    ::: :::::::::::          :::        ::::::::   ::::::::  :::    ::: ::::::::          :::::::::  :::::::::  :::::::::: ::::::::::: ::::::::::: :::   :::          ::::::::   ::::::::   ::::::::  :::                    :::::::::  ::::::::::: ::::::::  :::    ::: ::::::::::: :::::::::
+      :+:     :+:    :+:     :+:    :+:    :+:         :+:     :+:        :+:    :+:     :+:              :+:       :+:    :+: :+:    :+: :+:   :+: :+:    :+:         :+:    :+: :+:    :+: :+:            :+:         :+:     :+:   :+:         :+:    :+: :+:    :+: :+:    :+: :+:                    :+:    :+:     :+:    :+:    :+: :+:    :+:     :+:    :+:     :+:
+     +:+     +:+    +:+     +:+    +:+                +:+     +:+         +:+  +:+      +:+              +:+       +:+    +:+ +:+    +:+ +:+  +:+  +:+                +:+    +:+ +:+    +:+ +:+            +:+         +:+      +:+ +:+          +:+        +:+    +:+ +:+    +:+ +:+                    +:+    +:+     +:+    +:+        +:+    +:+     +:+           +:+
+    +#+     +#++:++#++     +#+    +#++:++#++         +#+     +#++:++#     +#++:+       +#+              +#+       +#+    +:+ +#+    +:+ +#++:++   +#++:++#++         +#++:++#+  +#++:++#:  +#++:++#       +#+         +#+       +#++:           +#+        +#+    +:+ +#+    +:+ +#+                    +#++:++#:      +#+    :#:        +#++:++#++     +#+          +#+
+   +#+     +#+    +#+     +#+           +#+         +#+     +#+         +#+  +#+      +#+              +#+       +#+    +#+ +#+    +#+ +#+  +#+         +#+         +#+        +#+    +#+ +#+            +#+         +#+        +#+            +#+        +#+    +#+ +#+    +#+ +#+                    +#+    +#+     +#+    +#+   +#+# +#+    +#+     +#+        +#+
+  #+#     #+#    #+#     #+#    #+#    #+#         #+#     #+#        #+#    #+#     #+#              #+#       #+#    #+# #+#    #+# #+#   #+# #+#    #+#         #+#        #+#    #+# #+#            #+#         #+#        #+#            #+#    #+# #+#    #+# #+#    #+# #+#        #+#         #+#    #+#     #+#    #+#    #+# #+#    #+#     #+#
+  ###     ###    ### ########### ########          ###     ########## ###    ###     ###              ########## ########   ########  ###    ### ########          ###        ###    ### ##########     ###         ###        ###             ########   ########   ########  ########## ##          ###    ### ########### ########  ###    ###     ###        ###
+
+]]
+
+
+-- local npcManager = require("npcManager")
+local npcutils = require("npcs/npcutils")
+local textplus = require("textplus")
+local repl = require("base/game/repl")
+
+local insert, remove, unmap = table.insert, table.remove, table.unmap
+local split = string.split
+
+--[[
+  TODO
+  fix up transmitter
+  fix up source (use flame algorithm)
+]]
+
+
+-- Defines redstone event order
+RS.componentList = {
+  "chip",           --DONE
+  "chest",          --DONE
+  "hopper",         --DONE
+  "redblock",       --DONE
+  "button",         --DONE
+  "lever",          --DONE
+  "block",          --DONE
+  "torch",          --DONE
+  "reflector",      --DONE
+  "beamsource",     --DONE
+  "absorber",       --DONE
+  "alternator",     --DONE
+  "repeater",       --DONE
+  "capacitor",      --DONE
+  "transmitter",    --DONE
+  "reciever",       --DONE
+  "operator",       --DONE
+  "reaper",         --DONE
+  "spyblock",       --DONE
+  "soundblock",     --DONE
+  "noteblock",      --DONE
+  "note",           --DONE
+  "broadcaster",    --DONE
+  "dropper",        --DONE
+  "flamethrower",   --DONE
+  "flame",          --DONE
+  "sickblock",      --DONE
+  "deadsickblock",  --DONE
+  "tnt",            --DONE
+  "jewel",          --DONE
+  "lectern",        --DONE
+  "reddoor",        --DONE
+  "piston",         -- pistons will be done in a later update
+  "piston_ehor",
+  "piston_ever",
+  "dust",           --DONE
+  "commandblock",   --DONE
+  "observer"        --DONE
+}
+
+-- AI, a file meant to be edited by the level author
+RS.redConfig = require("redstone_config")
+local redConfig = RS.redConfig
 
 -- Function to register a component
 RS.component = {}
@@ -11,63 +117,43 @@ function RS.register(module)
   RS.component[module.name] = module
 end
 
--- Defines redstone event order
-RS.componentList = {
-  "chip",
-  "chest",
-  "hopper",
-  "redblock",
-  "button",
-  "lever",
-  "block",
-  "torch",
-  "alternator",
-  "repeater",
-  "capacitor",
-  "transmitter",
-  "reciever",
-  "operator",
-  "reaper",
-  "spyblock",
-  "soundblock",
-  "noteblock",
-  "broadcaster",
-  "note",
-  "dropper",
-  "flamethrower",
-  "flame",
-  "sickblock",
-  "deadsickblock",
-  "tnt",
-  "jewel",
-  "lectern",
-  "reddoor",
-  "piston",
-  "piston_ehor",
-  "piston_ever",
-  "commandblock",
-  "dust",
-  "observer"
-}
-
-
-local npcAI = {}
-local function tie(a, b, n)
-  if n < a then return b - (a - n) + 1
-  elseif n > b then return a + (n - b) - 1 end
-  return n
+RS.npcAI = {}
+RS.npcList = {}
+--[[
+  Function to register NPC AI
+  @registerNPC(NPCID, AI)
+  NPCID: The ID to apply the AI
+  AI:    An AI table. Must be built as the following:
+    npcAI = {
+       onRedPower = function()
+       onRedInventory = function()
+       onRedTick = function()
+       onDispense = function()
+    }
+    any function is optional.
+]]
+function RS.registerNPC(ID, npcAI)
+  insert(RS.npcList, ID)
+  RS.npcAI[ID] = npcAI
 end
 
 
-
-
--- Helper function
--- Adds energy to a redstone component
+--[[
+  Adds energy to an NPC
+  @setEnergy(npc, power, dir)
+  npc:   The NPC that energy will be applied to
+  power: The energy level that will be applied. If the NPC already has a higher energy level, nothing will happen
+  dir:   Optional, the direction the energy is applied [0: left, 1:up, 2:right, 3:down]
+]]
 RS.setEnergy = function(n, p, d)
+  if not n.data.power then return end
   if p > n.data.power then
     n.data.power = p
-    d = d or 0
-    n.data.dir = tie(0, 3, d + 2)
+    if d then
+      n.data.dir = (d + 2)%4
+    else
+      n.data.dir = -1
+    end
   end
 end
 
@@ -80,116 +166,33 @@ end
   d: The direction being provided
   hitbox: The hitbox of the power provided
 --]]
-RS.energyAI = function(n, c, p, d, hitbox)
+
+--[[
+  Adds energy to an NPC following standard filter procedures. This function checks if an NPC has criteria for being powered
+  @energyFilter(n, c, power, dir, hitbox)
+  n:       The NPC that energy will be applied to
+  c:       The NPC that is supplying the energy
+  power:   The energy level being applied
+  dir:     The direction the energy is applied [0: left, 1:up, 2:right, 3:down]
+  hitbox:  The hitbox that was used to apply energy
+]]
+RS.energyFilter = function(n, c, p, d, hitbox)
+  if n == c then return end
   n.data.power = n.data.power or 0
 
-  -- Ignore if the component is powering itself
-  if n == c then
-
-  -- Energy from broadcasters only goes to standard NPCs
-  elseif RS.isBroadcaster(c.id) then
-    if table.contains(RS.npcList, n.id) then
-      RS.setEnergy(n, p)
-    end
-
-  -- Energy from sickblocks only goes to other sickblocks
-  elseif RS.isDeadsickblock(c.id) then
-    if RS.isDeadsickblock(n.id) then
-      RS.energyFilter(n, c, p, d, hitbox)
-    end
-  elseif RS.isSickblock(c.id) then
-    if RS.isSickblock(n.id) then
-      if n.data.frameX == 2 then
-        if c.data.frameX == 2 then
-          return
-        end
-        n.data.immune = true
-      end
-      RS.energyFilter(n, c, p, d, hitbox)
-    end
-
-  -- Energy from transmitters only goes to recievers
-  elseif RS.isTransmitter(c.id) then
-    if RS.isReciever(n.id) then
-      RS.setEnergy(n, p)
-    end
-
-  elseif RS.isReciever(c.id) and RS.isTransmitter(n.id) and d == tie(0, 3, n.data.frameX + 2) then
-
-  -- The specifics AI of the operator block
-  elseif RS.isOperator(c.id) then
-    local op = RS.component.operator.op
-    -- Mouth ouput
-    if d == tie(0, 3, c.data.frameX + 2) then
-      if RS.isReaper(n.id) and n.data.frameX == tie(0, 3, d + 2) then  -- inverse operation
-        RS.energyFilter(n, c, 15 - p, d, hitbox)
-        c.data.frameY = 1
-      elseif RS.isCapacitor(n.id) and n.data.frameX == d then  -- equal operation
-        if p == n.data.maxcapacitance then
-          n.data.capacitance = n.data.maxcapacitance + 1
-          RS.energyFilter(n, c, p, d, hitbox)
-        end
-      elseif RS.isAlternator(n.id) then  -- Flip
-        RS.energyFilter(n, c, 15, d, hitbox)
-      elseif RS.isSpyblock(n.id) and n.data.type == 2 and n.data.frameX == tie(0, 3, d + 2) then  -- general diff tracker
-        RS.energyFilter(n, c, op.diff(c), d, hitbox)
-      else
-        RS.energyFilter(n, c, p, d, hitbox)
-      end
-
-    -- Plus output
-    elseif d == tie(0, 3, c.data.frameX - 1) then
-      if RS.isRepeater(n.id) and n.data.frameX == d and op.gand(c) then  -- and gate
-        RS.setEnergy(n, 15)
-      end
-      if RS.isSpyblock(n.id) and n.data.type == 0 and n.data.frameX == tie(0, 3, d + 2) then  -- max comparator
-        RS.setEnergy(n, op.cmax(c))
-      end
-      if RS.isSpyblock(n.id) and n.data.type == 2 and n.data.frameX == tie(0, 3, d + 2) then  -- plus diff tracker
-        RS.setEnergy(n, op.dpos(c))
-      end
-      if RS.isCapacitor(n.id) and n.data.frameX == d then  -- larger than operation
-        if c.data.power > n.data.maxcapacitance then
-          n.data.capacitance = n.data.maxcapacitance + 1
-          RS.energyFilter(n, c, c.data.power, d, hitbox)
-        end
-      end
-
-    -- Minus output
-    elseif d == tie(0, 3, c.data.frameX + 1) then
-      if RS.isRepeater(n.id) and n.data.frameX == d and op.gxor(c) then  -- xor gate
-        RS.setEnergy(n, 15)
-      end
-      if RS.isSpyblock(n.id) and n.data.type == 0 and n.data.frameX == tie(0, 3, d + 2) then  -- min comparator
-        RS.setEnergy(n, op.cmin(c))
-      end
-      if RS.isSpyblock(n.id) and n.data.type == 2 and n.data.frameX == tie(0, 3, d + 2) then  -- negative diff tracker
-        RS.setEnergy(n, op.dneg(c))
-      end
-      if RS.isCapacitor(n.id) and n.data.frameX == d then  -- less than operation
-        if c.data.power < n.data.maxcapacitance then
-          n.data.capacitance = n.data.maxcapacitance + 1
-          RS.energyFilter(n, c, c.data.power, d, hitbox)
-        end
-      end
-    end
-  else
-    return RS.energyFilter(n, c, p, d, hitbox)
-  end
-end
-
-RS.energyFilter = function(n, c, p, d, hitbox)
-  local component = RS.comList[n.id]
-  if component and component.filter then
-    return component.filter(n, c, p, d, hitbox)
+  local component = RS.comList[n.id] or RS.npcAI[n.id]
+  if component and component.onRedPower then
+    return component.onRedPower(n, c, p, d, hitbox)
   else
     RS.setEnergy(n, p)
   end
-
 end
 
+-- A function that returns true. Can be used in filters in getColliding
+RS.nofilter = function() return true end
 
-local nofilter = function() return true end
+-- A function that returns true when an NPC is not hidden. Can be used in filters in getColliding
+RS.nothidden = function(v) return not v.isHidden end
 
 -- Helper function
 -- Passes energy to the sorroundings of the NPC in all directions
@@ -203,17 +206,19 @@ local nofilter = function() return true end
 ]]
 RS.passEnergy = function(args)
   args.npcList = args.npcList or RS.comID
-  args.filter = args.filter or nofilter
+  args.filter = args.filter or RS.nothidden
   local list = Colliders.getColliding{a = args.area, b = args.npcList, btype = Colliders.NPC, filter = args.filter}
   local found = false
   for _, v in ipairs(args.hitbox) do
     for i = #list, 1, -1 do
       local n = list[i]
       if Colliders.collide(v, n) then
-        local cancelled = RS.energyAI(n, args.source, args.power, v.direction, v)
+        local power = args.power
+        if args.powerAI then power = args.powerAI(n, args.source, args.power, v.direction, v) end
+        local cancelled = RS.energyFilter(n, args.source, power, v.direction, v)
         if not cancelled then
           found = true
-          table.remove(list, i)
+          remove(list, i)
         end
       end
     end
@@ -233,10 +238,12 @@ end
 RS.passDirectionEnergy = function(args)
   local c = args.hitbox
   args.npcList = args.npcList or RS.comID
-  local list = Colliders.getColliding{a = c, b = args.npcList, btype = Colliders.NPC, filter = nofilter}
+  local list = Colliders.getColliding{a = c, b = args.npcList, btype = Colliders.NPC, filter = RS.nothidden}
   for _, n in ipairs(list) do
     if Colliders.collide(c, n) then
-      RS.energyAI(n, args.source, args.power, c.direction, c)
+      local power = args.power
+      if args.powerAI then power = args.powerAI(n, args.source, args.power, c.direction, c)  end
+      RS.energyFilter(n, args.source, power, c.direction, c)
     end
   end
 end
@@ -252,28 +259,37 @@ end
 RS.passInventory = function(args)
   local c = args.hitbox
   args.npcList = args.npcList or RS.comID
-  local list = Colliders.getColliding{a = c, b = args.npcList, btype = Colliders.NPC, filter = nofilter}
+  local list = Colliders.getColliding{a = c, b = args.npcList, btype = Colliders.NPC, filter = RS.nofilter}
   for _, n in ipairs(list) do
     if Colliders.collide(c, n) and n.data.invspace then
-      n.data.inv = args.inventory
-      return true
+      local com = RS.comList[n.id] or RS.npcAI[n.id]
+      if com.onRedInventory then
+        return not com.onRedInventory(n, args.source, args.inventory, c.direction, c)
+      else
+        n.data.inv = args.inventory
+        return true
+      end
     end
   end
 end
 
 
-
-
-
-
--- Helper function
--- Creates a common area collider
+--[[
+  Creates a hitbox to be used for internal redstone functions. Used to filter down NPCs when passing power.
+  Hitbox can be updated using @updateRedArea
+  @basicRedArea(npc)
+  npc: NPC whose area will be applied to
+]]
 RS.basicRedArea = function(n)
   return Colliders.Box(0, 0, 1.5*n.width, 1.5*n.height)
 end
 
--- Helper function
--- Creates a common list of hitboxes
+--[[
+  Creates a list of hitboxes to be used for internal redstone functions. Used to pass power in every direction
+  Hitbox can be updated using @updateRedHitBox
+  @basicRedHitBox(npc)
+  npc: NPC whose area will be applied to
+]]
 RS.basicRedHitBox = function(n)
   local list = {
     Colliders.Box(0, 0, 0.25*n.width, 0.9*n.height),
@@ -289,34 +305,44 @@ RS.basicRedHitBox = function(n)
   return list
 end
 
--- Helper function
--- Updates the common hitbox collision for a single direction
-RS.basicDirectionalRedHitBox = function(n, d)
-  local c
-  if d == 0 then
-    c = Colliders.Box(0, 0, 0.25*n.width, 0.9*n.height)
-  elseif d == 1 then
-    c = Colliders.Box(0, 0, 0.9*n.width, 0.25*n.height)
-  elseif d == 2 then
-    c = Colliders.Box(0, 0, 0.25*n.width, 0.9*n.height)
-  elseif d == 3 then
-    c = Colliders.Box(0, 0, 0.9*n.width, 0.25*n.height)
+--[[
+  Creates a hitbox to be used for internal redstone functions. Used to pass power in a specific direction
+  Hitbox can be updated using @updateDirectionalRedHitBox
+  @basicDirectionalRedHitBox(npc, dir)
+  npc: NPC whose area will be applied to
+  dir: The direction the hitbox will be created [0: left, 1:up, 2:right, 3:down]
+]]
+RS.basicDirectionalRedHitBox = function(n, dir)
+  local coll
+  if dir == 0 then
+    coll = Colliders.Box(0, 0, 0.25*n.width, 0.9*n.height)
+  elseif dir == 1 then
+    coll = Colliders.Box(0, 0, 0.9*n.width, 0.25*n.height)
+  elseif dir == 2 then
+    coll = Colliders.Box(0, 0, 0.25*n.width, 0.9*n.height)
+  elseif dir == 3 then
+    coll = Colliders.Box(0, 0, 0.9*n.width, 0.25*n.height)
   end
+  coll.direction = dir
 
-  c.direction = d
-
-  return c
+  return coll
 end
 
--- Helper function
--- Updates the position of the collider
+--[[
+  Updates a red area created using @redarea(). The red are must be stored in NPCObj.data.redarea
+  @updateRedArea(npc)
+  npc: NPC whose redarea will be updated
+]]
 RS.updateRedArea = function(n)
   n.data.redarea.x = n.x - 0.25*n.width
   n.data.redarea.y = n.y - 0.25*n.height
 end
 
--- Helper function
--- Updates the position of the collider
+--[[
+  Updates a red area created using @redhitbox(). The red are must be stored in NPCObj.data.redhitbox
+  @updateRedHitBox(npc)
+  npc: NPC whose redhitbox will be updated
+]]
 RS.updateRedHitBox = function(n)
   local list = n.data.redhitbox
   list[1].x, list[1].y = n.x - 0.25*n.width, n.y + 0.05*n.height
@@ -325,64 +351,42 @@ RS.updateRedHitBox = function(n)
   list[4].x, list[4].y = n.x + 0.05*n.width, n.y + n.height
 end
 
--- Helper function
--- Updates the position of the collider
-RS.updateDirectionalRedHitBox = function(n, d)
-  local c = n.data.redhitbox
-  if d == 0 then
-    c.x, c.y = n.x - 0.5*n.width, n.y + 0.05*n.height
-  elseif d == 1 then
-    c.x, c.y = n.x + 0.05*n.width, n.y - 0.5*n.height
-  elseif d == 2 then
-    c.x, c.y = n.x + n.width, n.y + 0.05*n.height
-  elseif d == 3 then
-    c.x, c.y = n.x + 0.05*n.width, n.y + n.height
+--[[
+  Updates a red area created using @basicDirectionalRedHitBox(). The red are must be stored in NPCObj.data.redhitbox
+  @updateDirectionalRedHitBox(npc)
+  npc: NPC whose redhitbox will be updated
+  dir: The direction the redhitbox is facing [0: left, 1:up, 2:right, 3:down]
+]]
+RS.updateDirectionalRedHitBox = function(n, dir)
+  local coll = n.data.redhitbox
+  if dir == 0 then
+    coll.x, coll.y = n.x - 0.5*n.width, n.y + 0.05*n.height
+  elseif dir == 1 then
+    coll.x, coll.y = n.x + 0.05*n.width, n.y - 0.5*n.height
+  elseif dir == 2 then
+    coll.x, coll.y = n.x + n.width, n.y + 0.05*n.height
+  elseif dir == 3 then
+    coll.x, coll.y = n.x + 0.05*n.width, n.y + n.height
   end
 end
 
--- Helper function
-RS.collisionBox = function(n, d)
-  if d == 0 then
-    return n.x - 2, n.y, 2, n.height
-  elseif d == 1 then
-    return n.x, n.y - 2, n.width, 2
-  elseif d == 2 then
-    return n.x + n.width, n.y, 2, n.height
-  else
-    return n.x, n.y + n.height, n.width, 2
+local conch = {}
+local function configCache(id)
+  if not conch[id] then
+    conch[id] = NPC.config[id]
   end
+
+  return conch[id]
 end
 
--- Helper function
-RS.inputHitBox = function(n, d)
-  if d == 0 then
-    return n.x + n.width, n.y + n.height*0.05, n.width*0.5, n.height*0.9, 2
-  elseif d == 1 then
-    return n.x + n.width*0.05, n.y + n.height, n.width*0.9, n.height*0.5, 3
-  elseif d == 2 then
-    return n.x - n.width*0.5, n.y + n.height*0.05, n.width*0.5, n.height*0.9, 0
-  else
-    return n.x + n.width*0.05, n.y - n.height*0.5, n.width*0.9, n.height*0.5, 1
-  end
-end
-
--- Helper function
-RS.facingHitBox = function(n, d)
-  if d == 0 then
-    return n.x - n.width*0.5, n.y + n.height*0.05, n.width*0.5, n.height*0.9
-  elseif d == 1 then
-    return n.x + n.width*0.05, n.y - n.height*0.5, n.width*0.9, n.height*0.5
-  elseif d == 2 then
-    return n.x + n.width, n.y + n.height*0.05, n.width*0.5, n.height*0.9
-  else
-    return n.x + n.width*0.05, n.y + n.height, n.width*0.9, n.height*0.5
-  end
-end
-
--- Helper function
--- Updates the custom draw timers that most components use
+--[[
+  Updates the animFrame and animTimer data to somewhat replicate SMBX animation system.
+  The values must be stored in NPCObj.data.animTimer and NPCObj.data.animFrame
+  @updateDraw(npc)
+  npc: NPC whose timers will be updated
+]]
 RS.updateDraw = function(n, data)
-  local config = NPC.config[n.id]
+  local config = configCache(n.id)
 
   data.animTimer = data.animTimer + 1
   if data.animTimer >= config.frameSpeed then
@@ -394,18 +398,139 @@ RS.updateDraw = function(n, data)
   end
 end
 
-
-RS.onScreenSound = function(n)
-  return (n.x < camera.x + camera.width  + 100 and n.x + n.width > camera.x - 100) and (n.y < camera.y + camera.height + 100 and n.y + n.height > camera.y - 100)
+--[[
+  Updates the power and powerPrev values
+  @resetPower(npc)
+  npc: NPC that is affected
+]]
+RS.resetPower = function(n)
+  n.data.powerPrev = n.data.power
+  n.data.power = 0
 end
 
+--[[
+  Applies friction to NPCs that are touching the floor. TO be used to fix NPCs that are thrown but will slide in the floor
+  @resetPower(npc)
+  npc: NPC that is affected
+]]
+RS.applyFriction = function(n)
+  if n.collidesBlockBottom then
+    n.speedX = n.speedX*0.5
+  end
+end
+
+--[[
+  Spawns an effect centered to the object
+  @spawnEffect(effectID, obj)
+  obj: OBJ that is affected
+]]
+RS.spawnEffect = function(id, obj)
+  if type(obj) == "NPC" and NPC.config[id].invisible then return end
+  local e = Effect.spawn(id, obj.x + 0.5*obj.width, obj.y + 0.5*obj.height)
+  e.x, e.y = e.x - e.width, e.y - e.height
+end
+
+--[[
+  Returns a vector representing the displacemenent between their positions
+  @spawnEffect(obj1, obj2)
+]]
+RS.displacement = function(a, b)
+  return vector((a.x + 0.5*a.width) - (b.x + 0.5*b.width), (a.y + 0.5*a.height) - (b.y + 0.5*b.height))
+end
+
+RS.printNPC = function(text, n, xo, yo)
+  local x, y = n.x, n.y
+  if xo then x = x + xo end
+  if yo then y = y + yo end
+  textplus.print{text = tostring(text), x = x, y = y, sceneCoords = true, priority = 0}
+end
+
+RS.parseList = function(str)
+  if str == "" then return false end
+  local list = split(str, ",")
+  local t = {}
+  for k, v in ipairs(list) do
+    t[tonumber(v)] = true
+  end
+  return t
+end
+
+RS.parseNumList = function(str)
+  if str == "" then return false end
+  local list = split(str, ",")
+  local t = {}
+  for k, v in ipairs(list) do
+    local n = tonumber(v)
+    if n then insert(t, n) end
+  end
+  return t
+end
+
+RS.setLayerLineguideSpeed = function(n)
+  if not (n.data._basegame.lineguide and n.data._basegame.lineguide.state == 1) then
+    n.speedX, n.speedY = npcutils.getLayerSpeed(n)
+  end
+end
+
+local camlist = {camera, camera2}
+RS.onScreen = function(n)
+  for _, c in ipairs(camlist) do
+    if Colliders.collide(n, Colliders.Box(c.x, c.y, c.width, c.height)) then
+      return true
+    end
+  end
+  return false
+end
+
+RS.isMuted = function(n)
+  return configCache(n.id).mute
+end
+
+RS.onScreenSound = function(n)
+  if RS.isMuted(n) then return false end
+  for _, c in ipairs(camlist) do
+    if Colliders.collide(n, Colliders.Box(c.x - 100, c.y - 100, c.width + 200, c.height + 200)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+RS.getByTag = function(tag)
+  for _, v in NPC.iterate() do
+    if v.data._settings._global.redTag == tag then
+      return v
+    end
+  end
+end
+
+RS.getListByTag = function(tag)
+  local t = {}
+  for _, v in NPC.iterate() do
+    if v.data._settings._global.redTag == tag then
+      insert(t, v)
+    end
+  end
+  return t
+end
+
+RS.powerTag = function(tag, power)
+  local list = RS.getListByTag(tag)
+  power = power or 15
+  for k, v in ipairs(list) do
+    RS.setEnergy(v, power)
+  end
+end
 
 -- Helper function
 -- Draws the custom npc that most components use
 RS.drawNPC = function(n)
   local config = NPC.config[n.id]
   n.animationFrame = -1
-  if config.invisible then return end
+
+  if not RS.onScreen(n) or config.invisible then return end
+
   local z = n.data.priority or -45
   if config.foreground then
     z = -15
@@ -418,8 +543,8 @@ RS.drawNPC = function(n)
     type = RTYPE_IMAGE,
     isSceneCoordinates = true,
     image = Graphics.sprites.npc[n.id].img,
-    x = n.x,-- + n.width*0.5 - config.gfxwidth*0.5 + config.gfxoffsetx,
-    y = n.y,-- + n.height- config.gfxheight + config.gfxoffsety,
+    x = n.x + (n.width - config.gfxwidth)*0.5 + config.gfxoffsetx,
+    y = n.y + n.height- config.gfxheight + config.gfxoffsety,
     sourceX = n.data.frameX*config.gfxwidth,
     sourceY = (n.data.frameY*config.frames + n.data.animFrame)*config.gfxheight,
     sourceWidth = config.gfxwidth,
@@ -429,88 +554,81 @@ RS.drawNPC = function(n)
   }
 end
 
--- Helper function
--- Checks if the NPC is valid
-local function validCheck(v)
-  if v.isHidden or v:mem(0x12A, FIELD_WORD) <= 0 or v:mem(0x124, FIELD_WORD) == 0 then
-    return false
-  end
-  return true
+RS.showLayer = function(layername, hideSmoke)
+  local layer = Layer.get(layername)
+  if layer then layer:show(hideSmoke or false) end
 end
 
+RS.hideLayer = function(layername, hideSmoke)
+  local layer = Layer.get(layername)
+  if layer then layer:hide(hideSmoke or false) end
+end
+
+RS.toggleLayer = function(layername, hideSmoke)
+  local layer = Layer.get(layername)
+  if layer then layer:toggle(hideSmoke or false) end
+end
+
+RS.reddata = {}
+
+local proxytbl = {}
+
+local proxymt = {
+	__index = function(t, k) return RS[k] or lunatime[k] or RNG[k] or math[k] or Routine[k] or _G[k] end,
+	__newindex = function() end
+}
+setmetatable(proxytbl, proxymt)
+
+local funcCache = {}
+RS.luaParse = nil -- Local outside for recursion
+RS.luaParse = function(name, n, msg, recurse)
+	if funcCache[msg] then return funcCache[msg] end
+
+	local str = msg
+	local chunk, err = load(str, str, "t", proxytbl)
+  
+	if chunk then
+		local func = chunk()
+		funcCache[msg] = func
+		return func
+	elseif not recurse then
+		return RS.luaParse(name, n, msg:gsub("\r?\n", ";\n"), true)
+	else
+    insert(repl.log, "ERROR ["..name.."] x:"..n.x..", y:"..n.y..", section:"..n.section)
+    insert(repl.log, err)
+    Misc.dialog("["..name.."] x:"..n.x..", y:"..n.y..", section:"..n.section.."\n\n"..err)
+    return RS.luaParse(name, n, "return function() return {} end")
+	end
+end
+
+RS.luaCall = function(func, params)
+  return func(params)
+end
 
 -- Helper function
--- Passes a function to all NPCs of all component types
---[[
-  I know the profiler took you here, but I can explain
-  In order for the system to work, there has to be some type of order in which the NPCs are called
-  so for example, chest are the first to execute its AI, then hoppers, and at the end, dust and observers
-
-  This order ensures that energy is being passed correctly and that the NPCs interact with each other correctly
-  so because of this, I cannot use onTickNPC, Im sure if the system was built differently at its foundation it might be possible...
-  but this wasnt made this way and Im not to sure how to change the approach at this point.
-
-  So, all NPC AI goes through this function, this is why the profiler takes you here. This is incharge of passing the AI in order
-  Can there be improvememnts to this function? Maybe, but this is the best I got
-
-  Also, dust is laggy, if you have a lot of it, try using the basicdust flag and see if that doesnt break your stuff (it probably wont break anything and it will save you from a LOT of lag)
-]]
-local redstoneLogic = function(func, forceStart)
-  local l = NPC.get(RS.comID, RS.ps)
-  local sort = {}
-
-  for i = #l, 1, -1 do
-    local n = l[i]
-    local order = RS.comOrder[n.id]
-    sort[order] = sort[order] or {}
-    if validCheck(n) then
-      table.insert(sort[order], n)
-    else
-      n.animationFrame = -1
-      if forceStart then table.insert(sort[order], n) end
-    end
+-- Checks if the NPC is valid
+local function sectionList()
+  local t = {}
+  for k, p in ipairs(Player.get()) do
+    t[p.section] = true
   end
-  for i = 1, #RS.comID do
-    if sort[i] then
-      for _, n in ipairs(sort[i]) do
-        func(RS.comList[n.id], n)
-      end
-    end
+  return unmap(t)
+end
+
+local seccah = {}
+local function sectionCache(id)
+  local coll = seccah[id]
+  local s = Section(id).boundary
+  if not coll then
+    seccah[id] = Colliders.Box(0,0,0,0)
+    coll = seccah[id]
   end
+  coll.x, coll.y, coll.width, coll.height = s.left, s.top, s.right - s.left, s.bottom - s.top
+  return coll
+end
 
-  -- for k, com in ipairs(RS.comList) do
-  --   for i = #l, 1, -1 do
-  --     local n = l[i]
-  --     if n.id == com.id then
-  --       table.remove(l, i)
-  --       if validCheck(n) then
-  --         func(com, n)
-  --       else
-  --         n.animationFrame = -1
-  --       end
-  --     end
-  --   end
-  -- end
-
-  -- for k, v in ipairs(RS.componentList) do
-  --   local com = RS.component[v]
-  --   for _, n in ipairs(NPC.get(com.id, RS.ps)) do
-  --     if validCheck(n) then
-  --       func(com, n)
-  --     else
-  --       n.animationFrame = -1
-  --     end
-  --   end
-  -- end
-
-  -- for _, n in ipairs(NPC.get(RS.comID, RS.ps)) do
-  --   local com = RS.component[RS.id2name[n.id]]
-  --   if validCheck(n) then
-  --     func(com, n)
-  --   else
-  --     n.animationFrame = -1
-  --   end
-  -- end
+local function validCheck(v)
+  return not (v.isHidden or v:mem(0x12A, FIELD_WORD) <= 0 or v:mem(0x124, FIELD_WORD) == 0)
 end
 
 -- List of important per-NPC variables
@@ -520,6 +638,9 @@ local function primechecker(n)
 
   -- Power of the NPC, ranges from 0 to 15
   data.power = data.power or 0
+
+  -- Power of the NPC, in the previous frame
+  data.powerPrev = data.powerPrev or 0
 
   -- When true, an observer facing this NPC gets powered
   data.observ = data.observ or false
@@ -534,6 +655,30 @@ local function primechecker(n)
   data.invspace = data.invspace or false
 end
 
+
+
+local function forceStart()
+  local sort = {}
+
+  for _, n in ipairs(NPC.get(RS.comID, -1)) do
+    local order = RS.comOrder[n.id]
+    sort[order] = sort[order] or {}
+    n.animationFrame = -1
+    insert(sort[order], n)
+  end
+
+  for i = 1, #RS.comID do
+    if sort[i] then
+      for _, n in ipairs(sort[i]) do
+        if not n.data.prime then
+          primechecker(n)
+          RS.comList[n.id].prime(n)
+        end
+      end
+    end
+  end
+end
+
 local function tickLogic(com, n)
   if not n.data.prime then
     primechecker(n)
@@ -544,37 +689,127 @@ local function tickLogic(com, n)
     if n:mem(0x124,FIELD_BOOL) then
       n:mem(0x12A, FIELD_WORD, 180)
     elseif n:mem(0x12A, FIELD_WORD) == -1 then
-      if n.x + n.width < camera.x or n.x > camera.x + camera.width then
+      if not RS.onScreen(n) then
         n:mem(0x124,FIELD_BOOL, true)
         n:mem(0x12A, FIELD_WORD, 180)
       end
     end
     n:mem(0x74, FIELD_BOOL, true)
   end
-  com.onTick(n)
+
+  if com.config.grabfix then n:mem(0x134, FIELD_WORD, 0) end -- Custom grabfix (thx mrdoublea)
+
+  com.onRedTick(n)
 end
 
-local function tickendLogic(com, n)
-  if com.onTickEnd then
-    com.onTickEnd(n)
+local function tickendLogic(n)
+  local com = RS.comList[n.id]
+  if not n.data.prime then
+    primechecker(n)
+    com.prime(n)
   end
+
+  if com.onRedTickEnd then
+    com.onRedTickEnd(n)
+  end
+
   if n.data.animTimer then
     RS.updateDraw(n, n.data)
   end
 end
 
-local function drawLogic(com, n)
-  if not n.data.prime then
-    primechecker(n)
-    com.prime(n)
-  end
-  if com.onDraw then
-    com.onDraw(n)
+local function drawLogic(n)
+  local com = RS.comList[n.id]
+
+  if validCheck(n) then
+    if not n.data.prime then
+      primechecker(n)
+      com.prime(n)
+    end
+
+    if com.onRedDraw then
+      com.onRedDraw(n)
+    end
+  else
+    n.animationFrame = -1
   end
 end
 
-RS.ps = {}
+local function npcTickLogic(n)
+  if n.data and validCheck(n) then
+    local dat = RS.npcAI[n.id]
+    if not n.data.prime then
+      primechecker(n)
+      if dat.prime then
+        dat.prime(n, n.data)
+      end
+    end
+
+    if dat.onRedTick then
+      dat.onRedTick(n, n.data)
+    end
+  end
+end
+
+-- Helper function
+-- Passes a function to all NPCs of all component types
+--[[
+  I know the profiler took you here, but I can explain
+  In order for the system to work, there has to be some type of order in which the NPCs are called
+  so for example, chest are the first to execute its AI, then hoppers, and at the end, dust and observers
+
+  This order ensures that energy is being passed correctly and that the NPCs interact with each other properly
+  so because of this, I cannot use onTickNPC, Im sure if the system was built differently at its foundation it might be possible...
+  but this wasnt made that way and Im not to sure how to change the approach at this point.
+
+  So, all NPC AI goes through this function, this is why the profiler takes you here. This is incharge of passing the AI in order
+  Can there be improvememnts to this function? Maybe, but this is the best I got
+
+  Also, dust is laggy, if you have a lot of it, try using the basicdust flag and see if that doesnt break your stuff (it probably wont break anything and it will save you from a LOT of lag)
+]]
+
+local redstoneLogic = function(func)
+  local sort = {}
+  local f = function(n)
+    local order = RS.comOrder[n.id]
+    sort[order] = sort[order] or {}
+    if validCheck(n) then
+      insert(sort[order], n)
+    else
+      n.animationFrame = -1
+    end
+  end
+
+  for _, v in ipairs(sectionList()) do
+    Colliders.getColliding{a = sectionCache(v), b = RS.comID, btype = Colliders.NPC, filter = f}
+  end
+
+  for i = 1, #RS.comID do
+    if sort[i] then
+      local com = RS.comList[RS.comID[i]]
+      for _, n in ipairs(sort[i]) do
+        func(com, n)
+      end
+    end
+  end
+end
+
+local redstoneLogic_UNSORT = function(func)
+  for _, v in ipairs(sectionList()) do
+    Colliders.getColliding{a = sectionCache(v), b = RS.comID, btype = Colliders.NPC, filter = func}
+  end
+end
+
 function RS.onStart()
+  -- Load config functions
+  local config = redConfig.loadconfig(RS)
+  for k, v in pairs(config) do
+    RS[k] = v
+  end
+
+  redConfig.loadAI(RS)
+
+
   -- Adds a check for each component. e.g. RS.isDust()
   RS.comID = {}
   RS.comOrder = {}
@@ -583,73 +818,50 @@ function RS.onStart()
     local com = RS.component[v]
     local testname, func = com.test()
     RS[testname] = func
-    table.insert(RS.comID, com.id)
+
+    -- com.onTickNPC = tickLogic
+    -- npcManager.registerEvent(com.id, com, "onTickNPC")
+    -- com.onDrawNPC = drawLogic
+    -- npcManager.registerEvent(com.id, com, "onDrawNPC")
+    -- com.onTickEndNPC = tickendLogic
+    -- npcManager.registerEvent(com.id, com, "onTickEndNPC")
+
+    insert(RS.comID, com.id)
     RS.comList[com.id] = com
     RS.comOrder[com.id] = k
   end
 
-
-  RS.ps = -1
-  redstoneLogic(function(com, n)
-    if not n.data.prime then
-      primechecker(n)
-      com.prime(n)
-    end
-  end, true)
-  RS.ps = {}
+  forceStart()
 end
 
 function RS.onTick()
-  RS.ps[1] = player.section
-  if player2 then RS.ps[2] = player2.section end
-
   -- component onTick
-  redstoneLogic(tickLogic)
+   redstoneLogic(tickLogic)
 
-  -- Regular NPCs AI for broadcaster component
-  for _, n in ipairs(NPC.get(RS.npcList, RS.ps)) do
-    if n.data and validCheck(n) then
-      local dat = npcAI[n.id]
-      if not n.data.prime then
-        primechecker(n)
-        dat.prime(n, n.data)
-      end
-      dat.onTick(n, n.data)
-    end
+  -- Basegame NPCs AI for broadcaster component
+  for k, v in ipairs(sectionList()) do
+    Colliders.getColliding{a = sectionCache(v), b = RS.npcList, btype = Colliders.NPC, filter = npcTickLogic}
   end
 end
 
 
 function RS.onTickEnd()
-  redstoneLogic(tickendLogic)
+  -- component onTickEnd
+  redstoneLogic_UNSORT(tickendLogic)
 
-  -- Observers need this special case to work properly
-  for _, n in ipairs(NPC.get(RS.component.observer.id, RS.ps)) do
-    if n.data and validCheck(n) then
-      RS.component.observer.onTickObserver(n, RS)
+  -- Observers need this special case to work properly!
+  local onRedTickObserver = RS.component.observer.onRedTickObserver
+  for k, v in ipairs(sectionList()) do
+    local l = Colliders.getColliding{a = sectionCache(v), b = RS.component.observer.id, btype = Colliders.NPC, filter = validCheck}
+    for _, n in ipairs(l) do
+      onRedTickObserver(n)
     end
   end
 end
 
 function RS.onDraw()
-  redstoneLogic(drawLogic)
-end
-
--- Fix for Grabable NPCs that die when thrown into a wall
-function RS.onNPCKill(event, n, reason, culprit)
-  if reason == 3 and (RS.isRedblock(n.id) or RS.isChest(n.id)) then
-     event.cancelled = true
-  end
-end
-
-
--- NPC AI, a file meant to be edited by the level author
-RS.npcAI = require("redstone_ai")
-npcAI = RS.npcAI
-npcAI.registerRedstoneAI(RS)
-RS.npcList = {}
-for k in pairs(npcAI) do
-  table.insert(RS.npcList, k)
+  -- component onDraw
+  redstoneLogic_UNSORT(drawLogic)
 end
 
 
@@ -657,8 +869,7 @@ function RS.onInitAPI()
 	registerEvent(RS, "onStart", "onStart")
 	registerEvent(RS, "onTick", "onTick")
   registerEvent(RS, "onTickEnd", "onTickEnd")
-	registerEvent(RS, "onDraw", "onDraw")
-	registerEvent(RS, "onNPCKill", "onNPCKill")
+  registerEvent(RS, "onDraw", "onDraw")
 end
 
 return RS

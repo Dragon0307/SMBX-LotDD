@@ -5,9 +5,9 @@
 		{
 			"control": "comboBox",
 			"name": "state",
-			"title": "State",
+			"title": "On/Off State",
 			"type": "int",
-			"tooltip": "Should it be on?",
+			"tooltip": "Should the lever initialize by being on or off?",
 			"value-default": 0,
 			"elements": ["Off", "On"]
 		}

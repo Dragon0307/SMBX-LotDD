@@ -7,7 +7,7 @@
 			"name": "type",
 			"title": "Type",
 			"type": "int",
-			"tooltip": "What type of button?",
+			"tooltip": "Which subvariation should it use? Check the behavior section in the NPC's tooltip for more info.",
 			"value-default": 0,
 			"elements": ["Normal", "Deteriorated Button"]
 		},
@@ -16,7 +16,7 @@
 			"type": "int",
 			"name": "delay",
 			"title": "Delay",
-			"tooltip": "How long should the button stay pressed? Delay is in units of 10 frames (1 = 10 frames, 2 = 20 frames)",
+			"tooltip": "How long should the button stay pressed? Delay is in units of 10 frames ex <i>(1 = 10 frames, 2 = 20 frames)</i>",
 			"value-default": 2,
 			"value-min": 1,
 			"value-max": 99,
@@ -25,9 +25,9 @@
 		{
 			"control": "comboBox",
 			"name": "state",
-			"title": "State",
+			"title": "On/Off State",
 			"type": "int",
-			"tooltip": "Should it be on?",
+			"tooltip": "Should the button initialize by being on or off?",
 			"value-default": 0,
 			"elements": ["Off", "On"]
 		}

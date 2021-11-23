@@ -8,15 +8,17 @@ repeater.id = NPC_ID
 
 repeater.test = function()
   return "isRepeater", function(x)
-    return (x == repeater.name or x == repeater.id)
+    return (x == repeater.id or x == repeater.name)
   end
 end
 
-repeater.filter = function(n, c, p, d, hitbox)
-  if d == n.data.frameX then
-    redstone.setEnergy(n, p)
-  elseif c.id == repeater.id and (d == (n.data.frameX + 1)%3 or d == (n.data.frameX - 1)%3) then
-    n.data.locked = true
+repeater.onRedPower = function(n, c, power, dir, hitbox)
+  local data = n.data
+  if (dir == -1 or dir == data.frameX) then
+    redstone.setEnergy(n, power)
+  elseif c.id == repeater.id and (dir == (data.frameX + 1)%4 or dir == (data.frameX - 1)%4) then
+    data.locked = true
+    data.lockedCooldown = 2
   else
     return true
   end
@@ -25,18 +27,18 @@ end
 repeater.config = npcManager.setNpcSettings({
 	id = repeater.id,
 
+  width = 32,
+  height = 32,
+
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   nogravity = true,
   notcointransformable = true,
@@ -50,69 +52,60 @@ repeater.config = npcManager.setNpcSettings({
   npcblock = true
 })
 
-local function chooseDir(n, frameX)
-  if frameX == 0 then
-    return n.width*-0.5, 0, n.width*0.5, n.height
-  elseif frameX == 1 then
-    return 0, -n.height*0.5, n.width, n.height*0.5
-  elseif frameX == 2 then
-    return n.width, 0, n.width*0.5, n.height
-  else
-    return 0, n.height, n.width, n.height*0.5
-  end
-end
 
 function repeater.prime(n)
   local data = n.data
 
-  data.frameX = data._settings.dir or 0
-  data.delay = data._settings.delay or 2
-
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
+  data.frameX = data._settings.dir or 0
+  data.frameY = data.frameY or 0
+
+  data.delay = (data._settings.delay or 2)*10
   data.isOn = data.isOn or false
   data.onTimer = data.onTimer or 0
-
-  data.powerPrev = data.powerPrev or 0
   data.timerPrev = data.timerPrev or 0
+  data.locked = data.locked or false
+  data.lockedCooldown = data.lockedCooldown or 0
 
-  data.redhitbox = redstone.basicDirectionalRedHitBox(n, data.frameX)
+  data.redhitbox = data.redhitbox or redstone.basicDirectionalRedHitBox(n, data.frameX)
 end
 
-function repeater.onTick(n)
+function repeater.onRedTick(n)
   local data = n.data
   data.observ = false
-
-  if data.locked then
-    data.power = data.powerPrev
-    data.onTimer = data.timerPrev
-  end
-  data.timerPrev = data.onTimer
 
   if data.isOn then
     redstone.updateDirectionalRedHitBox(n, data.frameX)
     redstone.passDirectionEnergy{source = n, power = 15, hitbox = data.redhitbox}
-
     if data.power == 0 and data.onTimer == 0 then
-      data.onTimer = data.delay*10
-    elseif data.onTimer > 0 then
-      data.onTimer = data.onTimer - 1
-      if data.onTimer == 0 then
-        data.isOn = false
-        data.observ = true
-      end
+      data.onTimer = data.delay
+    elseif data.power > 0 then
+      data.onTimer = 0
     end
   else
     if data.power > 0 and data.onTimer == 0 then
-      data.onTimer = data.delay*10
-    elseif data.onTimer > 0 then
-      data.onTimer = data.onTimer - 1
-      if data.onTimer == 0 then
-        data.isOn = true
-        data.observ = true
-      end
+      data.onTimer = data.delay
+    end
+  end
+
+  if data.locked then
+    data.power = data.powerPrev
+    data.onTimer = data.timerPrev
+  elseif data.onTimer > 0 then
+    data.onTimer = data.onTimer - 1
+    if data.onTimer == 0 then
+      data.isOn = not data.isOn
+      data.observ = true
+    end
+  end
+  data.timerPrev = data.onTimer
+
+  if data.lockedCooldown > 0 then
+    data.lockedCooldown = data.lockedCooldown - 1
+    if data.lockedCooldown == 0 then
+      data.locked = false
     end
   end
 
@@ -125,14 +118,10 @@ function repeater.onTick(n)
     data.frameY = data.frameY + 2
   end
 
-  data.locked = false
-  data.powerPrev = data.power
-  data.power = 0
+  redstone.resetPower(n)
 end
 
-function repeater.onDraw(n)
-  redstone.drawNPC(n)
-end
+repeater.onRedDraw = redstone.drawNPC
 
 redstone.register(repeater)
 

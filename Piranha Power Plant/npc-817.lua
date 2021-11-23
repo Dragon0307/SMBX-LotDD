@@ -2,7 +2,8 @@ local piston = {}
 
 local redstone = require("redstone")
 local npcManager = require("npcManager")
-local colliders = require("colliders")
+
+local insert = table.insert
 
 piston.name = "piston"
 piston.id = NPC_ID
@@ -225,7 +226,7 @@ local function getEasy(n, data)
       if (k == 1 and redstone.blockImmovable(v)) or (k == 2 and redstone.npcImmovable(v)) or (k == 3 and data.frameY == 2 and redstone.playerImmovable(v)) then
         return -1
       elseif ((k == 1 and not redstone.blockIgnore(v)) or (k == 2 and not redstone.npcIgnore(v))) or (k == 3) and v ~= n then
-        table.insert(list, v)
+        insert(list, v)
       end
     end
   end
@@ -251,7 +252,7 @@ local function getHard(n, data, l)
   for k, c in ipairs({Block, NPC}) do
     for _, v in ipairs(c.getIntersecting(x, y, x + w, y + h)) do
       if (k == 1 and not redstone.blockIgnore(v)) or (k == 2 and not redstone.npcIgnore(v)) and v ~= n then
-        table.insert(list, v)
+        insert(list, v)
       end
     end
   end
@@ -260,14 +261,14 @@ local function getHard(n, data, l)
   for _, v in ipairs(Player.getIntersecting(x, y, x + w, y + h)) do
     -- Misc.dialog("A")/
     if not redstone.playerIgnore(v) then
-      table.insert(list, v)
+      insert(list, v)
     end
   end
 
   return list
 end
 
-function piston.onTick(n)
+function piston.onRedTick(n)
   local data = n.data
   data.observ = false
   if data.power > 0 then
@@ -371,7 +372,7 @@ function piston.ext_onTick(n)
 end
 
 
-function piston.onDraw(n)
+function piston.onRedDraw(n)
   redstone.drawNPC(n)
 end
 

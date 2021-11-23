@@ -13,7 +13,7 @@ piston_ever.test = function()
   end
 end
 
-piston_ever.filter = function(n, c, p, d, hitbox)
+piston_ever.onRedPower = function(n, c, p, d, hitbox)
   local px, py, pw, ph = n.x, n.y, n.width, redstone.component.piston.config.height
   if n.data.frameX == 0 then
     py = n.y + n.height - ph
@@ -56,10 +56,10 @@ piston_ever.config = npcManager.setNpcSettings({
 })
 
 piston_ever.prime = redstone.component.piston.prime
-piston_ever.onTick = redstone.component.piston.ext_onTick
+piston_ever.onRedTick = redstone.component.piston.ext_onTick
 
 
-function piston_ever.onDraw(n)
+function piston_ever.onRedDraw(n)
   redstone.drawNPC(n)
 end
 

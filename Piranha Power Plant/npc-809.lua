@@ -8,27 +8,30 @@ lever.id = NPC_ID
 
 lever.test = function()
   return "isLever", function(x)
-    return (x == lever.name or x == lever.id)
+    return (x == lever.id or x == lever.name)
   end
 end
 
-lever.filter = function() end
+lever.onRedPower = function(n, c, power, dir, hitbox)
+  return true
+end
 
 lever.config = npcManager.setNpcSettings({
 	id = lever.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
+  mute = false,
 
   jumphurt = 0,
 	nogravity = false,
@@ -49,30 +52,25 @@ local sfxtoggle = 2
 function lever.prime(n)
   local data = n.data
 
-  data.isOn = data._settings.state == 1
-
-  data.frameX = data.frameX or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.observTimer = data.observTimer or 0
-  data.countdown = data.countdown or 0
+  data.frameX = data.frameX or 0
+  data.frameY = data.frameY or 0
+
+  data.isOn = data._settings.state == 1
+  data.cooldown = data.cooldown or 0
 
   data.redarea = data.redarea or redstone.basicRedArea(n)
   data.redhitbox = data.redhitbox or redstone.basicRedHitBox(n)
 end
 
-function lever.onTick(n)
+function lever.onRedTick(n)
   local data = n.data
-  if data.observTimer > 0 then
-    data.observTimer = data.observTimer - 1
-  else
-    data.observ = false
-  end
+  data.observ = false
 
-  if data.countdown > 0 then
-    data.countdown = data.countdown - 1
+  if data.cooldown > 0 then
+    data.cooldown = data.cooldown - 1
   end
 
   if data.isOn then
@@ -86,22 +84,19 @@ function lever.onTick(n)
   else
     data.frameY = 0
   end
-
-  data.power = 0
 end
 
-function lever.onDraw(n)
-  redstone.drawNPC(n)
-end
+lever.onRedDraw = redstone.drawNPC
 
 function lever.onNPCHarm(event, n, reason, culprit)
 	if n.id == lever.id and (reason == HARM_TYPE_JUMP or reason == HARM_TYPE_SPINJUMP) then
-    if n.data.countdown == 0 then
+    if n.data.cooldown == 0 then
       n.data.isOn = not n.data.isOn
       n.data.observ = true
-      n.data.observTimer = 1
-      n.data.countdown = 5
-      SFX.play(sfxtoggle)
+      n.data.cooldown = 5
+      if redstone.onScreenSound(n) then
+        SFX.play(sfxtoggle)
+      end
     end
     event.cancelled = true
   end

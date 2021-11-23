@@ -7,7 +7,7 @@
 			"type": "int",
 			"name": "angle",
 			"title": "Angle",
-			"tooltip": "At what angles should the flame travel?",
+			"tooltip": "The angle, in degrees & counterclockwise, the flame travel will travel to.",
 			"value-default": 0,
 			"value-min": -360,
 			"value-max": 360,

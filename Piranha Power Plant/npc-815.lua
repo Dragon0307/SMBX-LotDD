@@ -3,32 +3,58 @@ local chest = {}
 local redstone = require("redstone")
 local npcManager = require("npcManager")
 
+local iclone = table.iclone
+local split = string.split
+
 chest.name = "chest"
 chest.id = NPC_ID
 
+local TYPE_NORMAL = 0
+local TYPE_BARREL = 1
+local TYPE_ENDER = 2
+
+local enderchestinvIDList = {0}
+
+
 chest.test = function()
   return "isChest", function(x)
-    return (x == chest.name or x == chest.id)
+    return (x == chest.id or x == chest.name)
   end
 end
 
-chest.filter = function() end
+chest.onRedPower = function(n, c, power, dir, hitbox)
+  return true
+end
+
+chest.onRedInventory = function(n, c, inv, dir, hitbox)
+  local data = n.data
+
+  if data.frameX == TYPE_ENDER then
+    enderchestinvIDList = {inv}
+  else
+    data.invList = {inv}
+  end
+
+  data.invCurr = 1
+end
+
+chest.enderID = 0
 
 chest.config = npcManager.setNpcSettings({
   id = chest.id,
+
+  width = 32,
+  height = 32,
 
 	gfxwidth = 32,
 	gfxheight = 32,
 	gfxoffsetx = 0,
 	gfxoffsety = 0,
-  invisible = false,
 
 	frames = 1,
 	framespeed = 8,
 	framestyle = 0,
-
-	width = 32,
-	height = 32,
+  invisible = false,
 
   grabtop = true,
   grabside = true,
@@ -41,30 +67,31 @@ chest.config = npcManager.setNpcSettings({
   blocknpc = true,
   blocknpctop = true,
   playerblock = false,
-  playerblocktop = true
+  playerblocktop = true,
+
+  grabfix = true -- custom fix for the "death when thrown inside a wall"
 })
 
-local sfxbreak = Audio.SfxOpen(Misc.resolveFile("piston-extend.ogg"))
-local enderchestinvIDList = {0}
-
+local sfxbreak = Audio.SfxOpen(Misc.resolveFile("chest-break.ogg"))
 
 function chest.prime(n)
   local data = n.data
 
-  data.frameX = data._settings.type or 0
-  data.frameY = data.frameY or 0
   data.animFrame = data.animFrame or 0
   data.animTimer = data.animTimer or 0
 
-  data.invList = data._settings.inv
+  data.frameX = data._settings.type or 0
+  data.frameY = data.frameY or 0
+
+  data.invList = data._settings.inv or "0"
 
   if data.invList ~= "" and data.invList ~= "0" then
-    data.invList = string.split(data.invList, ",")
+    data.invList = split(data.invList, ",")
     for i = 1, #data.invList do
       data.invList[i] = tonumber(data.invList[i])
     end
     if data.frameX == 2 then
-      enderchestinvIDList = table.iclone(data.invList)
+      enderchestinvIDList = iclone(data.invList)
     end
   else
     data.invList = {0}
@@ -80,66 +107,51 @@ function chest.prime(n)
   data.invspace = true
 end
 
-function chest.onTick(n)
+function chest.onRedTick(n)
   local data = n.data
+  redstone.applyFriction(n)
 
-  if n.collidesBlockBottom then
-		n.speedX = n.speedX * 0.5
-	end
-
-  if data.inv ~= 0 then
-    if data.frameX == 2 then
-      enderchestinvIDList = {data.inv}
-    else
-      data.invList = {data.inv}
-    end
-    data.invCurr = 1
-    data.inv = 0
-  end
-
-  if data.frameX == 2 then
+  if data.frameX == TYPE_ENDER then
     data.invList = enderchestinvIDList
-
+    chest.enderID = enderchestinvIDList
+    if data.invCurr > #data.invList then
+      data.invCurr = 1
+    end
   end
 
   data.invOut = data.invList[data.invCurr]
 
-  if data.invOut == 0 then
-    data.observ = false
-  else
-    data.observ = true
-  end
-
-  if data.invOut and data.invOut ~= 0 then
+  if data.invOut ~= 0 then
     redstone.updateDirectionalRedHitBox(n, 3)
     local passed = redstone.passInventory{source = n, npcList = redstone.component.hopper.id, inventory = data.invOut, hitbox = data.redhitbox}
+
     if passed then
       data.invCurr = data.invCurr + 1
       if data.invCurr > #data.invList then
         data.invCurr = 1
       end
 
-      if data.frameX == 1 then
+      if data.frameX == TYPE_BARREL then
         data.amount = data.amount - 1
         if data.amount == 0 then
-          local e = Animation.spawn(10, n.x, n.y)
-          e.x = n.x + 0.5*n.width - e.width*0.5
-          e.y = n.y + 0.5*n.height - e.height*0.5
-          SFX.play(sfxbreak)
+          if not redstone.isMuted(n) then
+            SFX.play(sfxbreak)
+          end
+          redstone.spawnEffect(10, n)
           n:kill()
         end
       end
     end
   end
 
-  data.power = 0
+  if data.invOut == 0 then
+    data.observ = false
+  else
+    data.observ = true
+  end
 end
 
-function chest.onDraw(n)
-  redstone.drawNPC(n)
-end
-
-
+chest.onRedDraw = redstone.drawNPC
 
 redstone.register(chest)
 
