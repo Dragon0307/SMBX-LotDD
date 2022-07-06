@@ -523,10 +523,10 @@ ID:65;X:-199520;Y:-200096;
 BGO_END
 NPC
 ID:151;X:-196456;Y:-200144;D:-1;MG:"SEASIDE PORT               If you want it\, we've probably imported it already.";FD:1;
-ID:94;X:-198816;Y:-200182;D:1;MG:"Sailor Toad\:            Hey\, I recieved word from Captain Toad that you would be coming here. If you head below deck\, I'll take you to where you want.";FD:1;ET:"Toad Start";
+ID:94;X:-198816;Y:-200182;D:1;MG:"<boxStyle ml><speakerName \"Boa T.\">Hey\, I recieved word from Captain Toad that you would be coming here. If you head below deck\, I'll take you to where you want.";FD:1;ET:"Toad Start";
 ID:94;X:-197632;Y:-200150;D:-1;MG:"Transporter Toad\:       Hey\, you lookin' for a job?  Help me lug these crates over to my lorry and I'll pay ya. But they're fragile\, and if you break them\, you'll be screwed big time. Climb aboard to head to the transport bay.";FD:1;NM:1;
 ID:94;X:-197024;Y:-200470;D:-1;MG:"Well\, I didn't stack these boxes. Seriously. There's a guy over there looking for crate stackers. I heard the pay is great\, but I saw a couple of mutilated corpses over by the stacking bay next to a couple of wooden planks... What IS in those boxes!?!";FD:1;
-ID:433;X:-198288;Y:-200208;D:-1;GE:1;GT:1;GD:1;GM:20;XTRA:"{\n    \"contents\"\: \"{id=666\, count=3}\"\n}\n";
+ID:433;X:-198280;Y:-200208;D:-1;GE:1;GT:1;GD:1;GM:20;XTRA:"{\n    \"contents\"\: \"{id=666\, count=3}\"\n}\n";
 ID:151;X:-198152;Y:-200144;D:-1;MG:"This pipe spews out empty crates for you to practice your technique. Manuevering is key.";FD:1;
 NPC_END
 LAYERS

@@ -10601,7 +10601,7 @@ ID:221;X:-178264;Y:-180160;D:-1;
 ID:221;X:-178264;Y:-180192;D:-1;
 ID:434;X:-178704;Y:-179696;D:-1;LR:"Crates";XTRA:"{\n    \"contents\"\: \"{id=178\, count=1}\"\n}\n";
 ID:151;X:-179816;Y:-180272;D:-1;MG:"OUT OF ORDER";FD:1;
-ID:151;X:-178504;Y:-179696;D:-1;MG:"Due to budget constraints\, all shipments have to be made of cheap and nast wood that is reeeealy delicate. Any crates which contain exploisives are marked with ominous yet familiar-looking red faces as a warning that they can and will blow up if mishandled. Any goods and crates that get damaged will be replaced using YOUR paycheck\, so to avoid breaking them\, put them down carefully by releasing the Run key while standing still.";FD:1;
+ID:151;X:-178504;Y:-179696;D:-1;MG:"Due to budget constraints\, all shipments have to be made of cheap wood that is reeeealy delicate. Any crates which contain exploisives are marked with ominous yet familiar-looking red faces as a warning that they can and will blow up if mishandled. Any goods and crates that get damaged will be replaced using YOUR paycheck\, so to avoid breaking them\, put them down carefully by releasing the Run key while pressing down.";FD:1;
 ID:433;X:-179264;Y:-179280;D:-1;LR:"Crates";
 ID:433;X:-179200;Y:-179280;D:-1;LR:"Crates";
 ID:433;X:-179232;Y:-179328;D:-1;LR:"Crates";
@@ -10688,7 +10688,7 @@ ID:589;X:-118462;Y:-120384;D:-1;
 ID:589;X:-117918;Y:-120256;D:-1;
 ID:618;X:-116864;Y:-120256;D:-1;
 ID:9;X:-118944;Y:-120192;D:-1;NM:1;
-ID:71;X:-139816;Y:-140206;D:-1;MG:"Oi you. I'm in charge of running this warehouse. Uhfortunately\, we're running a bit low on funds so we have to sell some of this junk. I'll let you buy some of this as long as you don't tell anyone!";FD:1;NM:1;
+ID:71;X:-139816;Y:-140206;D:-1;MG:"Oi\, you. I'm in charge of running this warehouse. Uhfortunately\, we're running a bit low on funds so we have to sell some of this junk. I'll let you buy some of this as long as you don't tell anyone!";FD:1;NM:1;
 ID:151;X:-139592;Y:-140208;D:-1;MG:"Dried Mushroom - 10 Coins\nA nice and dusty mushroom which is dried out of maximumn grossness. I don't know why anyone would want to eat one.";FD:1;
 ID:151;X:-139208;Y:-140208;D:-1;MG:"Mini Mushroom - 40 Coins    Bigger is better\, and that means this tiny mushroom doesn't exactly pack a punch. But\, it packs a kick\, so that should do the trick\, right?";FD:1;
 ID:151;X:-138856;Y:-140208;D:-1;MG:"Hopslippers - 300 Coins     \nThese are weird shoes that are a pain to walk in thanks to the stupid springs on the bottom. But\, they'll extend your jumping height\, and that actually sounds quite fun!";FD:1;
@@ -10696,6 +10696,7 @@ ID:151;X:-99464;Y:-100144;D:-1;MG:"No fighting in the cafeteria! Please understa
 ID:151;X:-158504;Y:-159600;D:-1;MG:"Storage Room";FD:1;
 ID:151;X:-159784;Y:-159536;D:-1;MG:"Cafeteria";FD:1;
 ID:151;X:-158664;Y:-158256;D:-1;MG:"Deep Fortress              \nFOR AUTHORIZED PERSONELL ONLY!";FD:1;
+ID:9;X:-199584;Y:-200128;D:-1;NM:1;
 NPC_END
 DOORS
 IX:-196192;IY:-200256;OX:-179936;OY:-180192;DT:2;ID:1;OD:1;TW:1;
@@ -10715,7 +10716,7 @@ EVENTS_CLASSIC
 ET:"Level - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - Start";AS:0;AX:0;AY:0;
 ET:"P Switch - End";AS:0;AX:0;AY:0;
-ET:"Elite Koopa";MG:"Elite Koopa\:                Oh\, you you beat my bumbling minion? Ha! I know the real reason why you came here - after a Star Shard by any chance? Well too bad\, 'cause you're gonna have tp feel the burn!";LS:["Boss Walls"];SSS:["ID\:4\;SL\:-113472\;ST\:-120600\;SB\:-120000\;SR\:-112672\;"];DS:1;AS:0;AX:0;AY:0;
+ET:"Elite Koopa";MG:"Elite Koopa\:                Oh\, you you beat my bumbling minion? Ha! I know the real reason why you came here - after a Star Shard by any chance? Well too bad\, 'cause you're gonna have to feel the burn!";LS:["Boss Walls"];SSS:["ID\:4\;SL\:-113472\;ST\:-120600\;SB\:-120000\;SR\:-112672\;"];DS:1;AS:0;AX:0;AY:0;
 ET:"Elite Koopa Killed";MG:"Elite Koopa\:               Blast! But just 'cause you've beaten me\, that doesn't mean you've seen the last of us - there are still six other Shards\, and we'll find them all first! Just you waaaaaait!";LH:["Boss Walls"];SSS:["ID\:4\;SL\:-113472\;ST\:-120600\;SB\:-120000\;SR\:-111328\;MI\:0\;"];AS:0;AX:0;AY:0;
 ET:"Foreman Sledge";MG:"Foreman Sledge\:            This area is for authorized personell only! That\, and we still haven't finished building down here\, but still! I'll have to escort you out - of this life if need be!";AS:0;AX:0;AY:0;
 ET:"The Cratest Showman";AS:0;AX:0;AY:0;

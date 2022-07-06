@@ -130,7 +130,7 @@ ID:1058;X:-199072;Y:-200064;W:32;H:32;
 ID:1058;X:-199072;Y:-200032;W:32;H:32;
 BLOCK_END
 NPC
-ID:94;X:-199328;Y:-200182;D:-1;MG:"WaToad\: ....Wah. Welcome to Wario's Diamond Wah City... He hypnotized everyone here\, but I was on holiday when that happened\, so I wasn't. He's kicked the taxes up a notch\, and has monopolized the entire city! Not only that\, he stuffed all the Power Stars through a crack in the Dark Door\, so it's an apocalyptic\, crime ridden mess now!";FD:1;
+ID:94;X:-199328;Y:-200182;D:-1;MG:"<boxStyle ml><speakerName \"WaToad\">....Wah. Welcome to Wario's Diamond Wah City... He hypnotized everyone here\, but I was on holiday when that happened\, so I wasn't. He's also elected himself as the mayor of the city.<page>He's kicked the taxes up a notch\, and has monopolised the entire city! Not only that\, he stuffed all the Power Stars through a crack in the Dark Door\, so it's an apocalyptic\, crime ridden mess now!";FD:1;
 NPC_END
 LAYERS
 LR:"Default";

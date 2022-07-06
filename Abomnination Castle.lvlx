@@ -2,7 +2,7 @@ HEAD
 TL:"Abomnination Castle";CPID:"SMBX2";
 HEAD_END
 SECTION
-SC:0;L:-200000;R:-198048;T:-200600;B:-200000;MZ:24;MF:"Peach’s Castle (Inside) - Mario & Luigi Bowser's Inside Story + Bowser Jr.'s Journey Soundtrack.ogg";BG:16;XTRA:"{\n    \"darkness\"\: {\n        \"ambient\"\: \"#000000ff\"\,\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"enabled\"\: true\,\n            \"flicker\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 6\,\n        \"weather\"\: 6\n    }\n}\n";
+SC:0;L:-200000;R:-198048;T:-200600;B:-200000;MZ:24;MF:"Peach’s Castle (Inside) - Mario & Luigi Bowser's Inside Story + Bowser Jr.'s Journey Soundtrack.ogg";BG:16;XTRA:"{\n    \"darkness\"\: {\n        \"ambient\"\: \"#000000ff\"\,\n        \"enableDarkness\"\: false\,\n        \"playerlight\"\: {\n            \"enabled\"\: true\,\n            \"flicker\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 6\,\n        \"weather\"\: 6\n    }\n}\n";
 SC:8;L:-40000;R:-37632;T:-40600;B:-40000;MZ:24;MF:"Magolor Phase 1.ogg";BG:29;
 SECTION_END
 STARTPOINT
@@ -331,6 +331,9 @@ ID:422;X:-200000;Y:-200064;W:32;H:32;
 ID:422;X:-199968;Y:-200032;W:32;H:32;
 ID:422;X:-200000;Y:-200032;W:32;H:32;
 BLOCK_END
+NPC
+ID:86;X:-198703;Y:-200272;D:-1;
+NPC_END
 LAYERS
 LR:"Default";
 LR:"Destroyed Blocks";HD:1;

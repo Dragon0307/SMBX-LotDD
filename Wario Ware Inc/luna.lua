@@ -3,7 +3,7 @@ warioPhase = 0
 
 function onEvent(event)
     if event == "Wario Music" then
-        Audio.MusicChange(1, "YukariIsLove.spc")
+        Audio.MusicChange(1, "Sonic 3 & Knuckles - Final Boss.vgz")
     elseif event == "Hammer Bro Killed" then
         Audio.MusicChange(0, "mrpg-mushroompass.spc")
     elseif event == "Stop Music" then

@@ -10,26 +10,30 @@
 
 stats = require("Stats") -- Installs a custom library that I should not be proud of but I am. Provides the levels and experience
 allAchievements = Achievements.get() -- Stuffs all the achievements into a useable state.
---local attack = require("attacks") -- May be deleted at some point; is a special attack script that conjures special attacks.
+local attack = require("attacks") -- May be deleted at some point; is a special attack script that conjures special attacks.
 
 --playerHP = 0 -- Suprise! There's limited HP. Why else would I have reskinned Mario to be Uncle Broadsword unless I wanted that sweet sweet knockback mechanic?
-
---[[local function onKeyboardPress(keyCode)
-    if keyCode == VK_Q then
-        attack.fireOrb()
-    elseif keyCode == VK_W then
-        attack.powerSlam()
-    elseif keyCode == VK_E then
-        attack.chillout()
-    end
-end]]
-
 
 
 --WARNING: Spaghetti Code Ahead!
 
 SaveData["episode"] = SaveData["episode"] or {}
-local stat = SaveData["episode"]
+local unlocks = SaveData["episode"]
+
+function onKeyboardPress(keyCode)
+    if keyCode == VK_Q then
+        attack.fireOrb()
+    --elseif keyCode == VK_W then
+      --  attack.powerSlam()
+    elseif keyCode == VK_E then
+        attack.chillout()
+    elseif keyCode == VK_R then
+        attack.recover()
+    end
+end
+
+
+-- Story savedatas
 
 lhp = require("LightHitPoint") -- Needs to be global for per-level health bars.
 --anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
@@ -51,12 +55,18 @@ local fontA = textplus.loadFont("textplus/font/smw-b.ini")
 --Textplus setup--
 ------------------
 
---function onStart()
-    --playerHP = 5 + (stat.level * 5) RIP; it's all in the stat script now
---end
- 
-function onDraw() -- Prints your stats. It has to be global for some reason.
-    --[[textplus.print{
+function onStart()
+    --player.character = 15 -- You have to be Broadsword. He's busy pretending to be Mario.
+end
+
+function onDraw()
+    if player.keys.altRun == KEYS_DOWN and unlocks.fireOrb == 1 then
+        attack.fireOrb()
+    end
+end
+
+function onHUDDraw()
+    textplus.print{
         x = 30,
         y = 550,
         xscale = 2,
@@ -72,22 +82,22 @@ function onDraw() -- Prints your stats. It has to be global for some reason.
         font = fontB,
         text = "EXPERIENCE: " .. stat.xp
     }
-    textplus.print{
-        x = 0,
-        y = 20,
-        xscale = 2,
-        yscale = 2,
-        font = fontB,
-        text = "FP: " .. attack.Mana
-    }
-    if playerHP >= 6 then
+    --textplus.print{
+      --  x = 0,
+        --y = 20,
+    --    xscale = 2,
+      --  yscale = 2,
+        --font = fontB,
+       -- text = "FP: " .. stat.fp
+    --}
+    if stat.hp >= stats.criticalHP then
         textplus.print{
             x = 0,
             y = 0,
             xscale = 2,
             yscale = 2,
             font = fontB,
-            text = "HP: " .. playerHP
+            text = "HP: " .. stat.hp .. "/" .. stat.maxhp
         }
     else
         textplus.print{
@@ -96,19 +106,26 @@ function onDraw() -- Prints your stats. It has to be global for some reason.
             xscale =2,
             yscale = 2,
             font = fontB,
-            text = "HP: <color red><tremble strength=1>" .. playerHP .."!</tremble></color>"
+            text = "HP: " .. stat.hp .."!/" .. stat.maxhp
         }
-    end--]]
-    player.powerup = 2
+    end
 end
 
---function onPlayerHarm() --Handles playerHP
-    --playerHP = playerHP - 1
-   -- SFX.play("Sounds/SmallExplosion8-Bit.ogg")
-    --if playerHP == 0 then
-        --player:kill()
-    --end
---end
+
+function onEvent(eventName)
+    if eventName == "Unlock Fire Power" then
+        SFX.play("Sounds/samus_item_sound.ogg")
+    elseif eventName == "Resume" then
+        unlocks.fireOrb = 1
+    end
+end
+
+function onNPCKill(t,k,h) -- t = Event Token, k = Killed NPC, h = Harm Type
+    if h == HARM_TYPE_VANISH and k.id == 9 then
+        stats.heal(5)
+    end
+end
+
 ---------------------------
 --LightHitPoint.lua setup--
 ---------------------------
@@ -116,7 +133,7 @@ end
 
 
 --HARM TYPES
-function onTick() --This is really the only way I thought I could add dynamic level stats, seeing as onDraw was taken.
+local function onTick() --This is really the only way I thought I could add dynamic level stats, seeing as onDraw was taken.
 lhp.setHarmtypeDamage(HARM_TYPE_JUMP, stat.level * 0.75) -- When Mario jumps on an enemy
 lhp.setHarmtypeSound(HARM_TYPE_JUMP, "Sounds/SmallExplosion8-Bit.ogg")
 lhp.setHarmtypeDamage(HARM_TYPE_FROMBELOW, stat.level * 3) -- When Mario hits a block, damaging enemies on it.
@@ -150,6 +167,7 @@ lhp.setHP(27, 4.25) -- SMB1 Gloomba
 
 --Leveling Up and EXP stats
 
-stats.xpDrop(1, 1) -- SMB3 Goomba
+stats.registerNPC(1, 1, 0, 1) -- SMB3 Goomba
+stats.registerNPC(89, 5, 0, 12) -- SMB1 Goomba
 
 -- Git could you please stop screwing up my levels

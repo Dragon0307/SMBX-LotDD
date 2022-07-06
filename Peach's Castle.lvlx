@@ -5135,30 +5135,30 @@ ID:163;X:-59616;Y:-60128;
 ID:163;X:-59616;Y:-60160;
 BGO_END
 NPC
-ID:94;X:-198848;Y:-200374;D:-1;MG:"Guard Toad\: STOP! This room is for authorized personell only! Although\, I'm not authorized to go in here either so I don't see the point in guarding it.";FD:1;
+ID:94;X:-198816;Y:-200374;D:-1;MG:"<boxStyle ml><speakerName \"Guard Toad\">STOP! This room is for authorized personell only! Although\, I'm not authorized to go in here either so I don't see the point in guarding it.";FD:1;
 ID:22;X:-139488;Y:-140128;D:-1;LR:"Billy Gun";
 ID:465;X:-140000;Y:-140128;D:-1;LR:"Chomp Starter";EA:"Toilet Dialouge";
 ID:752;X:-139840;Y:-140224;D:1;LR:"Chomp";ED:"Chomp Phase 2";
 ID:754;X:-139840;Y:-140224;D:1;LR:"Chomp 2";LA:"Chomp";ED:"Chomp Killed";
 ID:198;X:-138784;Y:-140160;D:-1;FD:1;LR:"Toilet Peach";
-ID:94;X:-159424;Y:-160150;D:-1;MG:"To your left\, you will find the deeper parts of the castle. To your right\, you will find Peach's throne room\, which in turn connects to Peach's throne room\, if you know what I mean.";FD:1;LR:"Toads";
-ID:94;X:-160160;Y:-160150;D:1;MG:"Behold\, beyond this door... is another corridor\, leading to Peach's bedroom and the kitchen.";FD:1;LR:"Toads";
+ID:94;X:-159424;Y:-160150;D:-1;MG:"<boxStyle ml><speakerName \"Mushroom Retainer\">To your left\, you will find the deeper parts of the castle. To your right\, you will find Peach's throne room\, which in turn connects to Peach's throne room\, if you know what I mean.";FD:1;LR:"Toads";
+ID:94;X:-160160;Y:-160150;D:1;MG:"<boxStyle ml><speakerName \"Mushroom Retainer\">Behold\, beyond this door... is another corridor\, leading to Peach's bedroom and the kitchen.";FD:1;LR:"Toads";
 ID:151;X:-198784;Y:-200384;D:-1;MG:"Spare Weapons Containment Room";FD:1;
 ID:151;X:-200448;Y:-200384;D:-1;MG:"The Dungeons";FD:1;
-ID:94;X:-200384;Y:-200374;D:1;MG:"Guard Toad\: Hold on\, this is the dungeon! We only put the really\, really bad criminals in here. You don't want to go in there\, trust me on this one.";FD:1;
-ID:198;X:-178656;Y:-180320;D:-1;MG:"Oh\, hey Mario. Have you come to fix my toilet? It's always blocked. The door is right there.";FD:1;
+ID:94;X:-200416;Y:-200374;D:1;MG:"<boxStyle ml><speakerName \"Guard Toad\">Hold on\, this is the dungeon! We only put the really\, really bad criminals in here. You don't want to go in there\, trust me on this one.";FD:1;
+ID:198;X:-178656;Y:-180320;D:-1;MG:"<boxStyle ml><speakerName \"Princess Peach\">Oh\, hey Mario. Have you come to fix my toilet? It's always blocked. The door is right there.";FD:1;
 ID:94;X:-119712;Y:-120150;D:1;MG:"Guard Toad\: Hey\, you can't go upstairs. You can only go downstairs. We still haven't solved the mystery of the Endless Stairs\, and I doubt Bowser will tell us what its secret is. For the time being\, stay down here.";FD:1;
-ID:94;X:-118432;Y:-120150;D:1;MG:"Mushroom Retainer\: Why is this corridor green?";FD:1;NM:1;
+ID:94;X:-118432;Y:-120150;D:1;MG:"<boxStyle ml><speakerName \"Mushroom Retainer\">Why is this corridor green?";FD:1;NM:1;
 ID:151;X:-118816;Y:-120160;D:-1;MG:"Spare Powerups";FD:1;
 ID:151;X:-119328;Y:-120160;D:-1;MG:"Kitchen";FD:1;
-ID:94;X:-118784;Y:-120150;D:1;MG:"Guard Toad\: Sorry\, but you can't get any power ups today. All we have left are a few mushrooms and a fire flower\, because somebody came in and stole them all. I think they said something about a secret room?";FD:1;NM:1;
+ID:94;X:-118784;Y:-120150;D:1;MG:"<boxStyle ml><speakerName \"Guard Toad\">Sorry\, but you can't get any power ups today. All we have left are a few mushrooms and a fire flower\, because somebody came in and stole them all. I think they said something about a secret room?";FD:1;NM:1;
 ID:86;X:-79407;Y:-80176;D:-1;FD:1;NM:1;
-ID:75;X:-159427;Y:-160150;D:-1;MG:"Mushroom Retainer\: B... B... B... Bowser was here! H... He was covered in scratches\, gunshots\, lava burns and bruises!";FD:1;
-ID:75;X:-160163;Y:-160150;D:1;MG:"Mushroom Retainer\: B... B... B... Bowser was here! H... He stormed into the kitchen to look for Peach!";FD:1;
+ID:75;X:-159427;Y:-160150;D:-1;MG:"<boxStyle ml><speakerName \"Mushroom Retainer\">B... B... B... Bowser was here! H... He was covered in scratches\, gunshots\, lava burns and bruises!";FD:1;LR:"Scared Toads";
+ID:75;X:-160163;Y:-160150;D:1;MG:"<boxStyle ml><speakerName \"Mushroom Retainer\">B... B... B... Bowser was here! H... He stormed into the kitchen to look for Peach!";FD:1;LR:"Scared Toads";
 ID:465;X:-158768;Y:-160256;D:-1;ED:"Bowser Dialouge";
-ID:198;X:-79680;Y:-80160;D:1;MG:"Peach\: Oh\, hey Mario. Bad news. As you may know\, Bowser was here and asked about the Star Blade. Let me explain...";FD:1;
+ID:198;X:-79680;Y:-80160;D:1;MG:"<boxStyle ml><speakerName \"Peach\">Oh\, hey Mario. Bad news. As you may know\, Bowser was here and asked about the Star Blade. Let me explain...";FD:1;
 ID:279;X:-59584;Y:-60204;D:-1;MG:"What a curious weapon.";FD:1;
-ID:94;X:-59424;Y:-60118;D:-1;MG:"Weapons Designer\: See this cool weapon we've been designing? Well\, I haven't actually got a clue how it works. <br> Weapons Designer\: According to the specs\, it's a propeller block filled with petroleum that has been hooked up to a cannon\, which it fires at intense rates\, or something like that. <br> Weapons Designer\: I'm afraid I can't let you have it though because according to my superiors it's too OP\, or something along the lines of that.";FD:1;NM:1;
+ID:94;X:-59424;Y:-60118;D:-1;MG:"<boxStyle ml><speakerName \"Toads\">See this cool weapon we've been designing? Well\, I haven't actually got a clue how it works.<page>According to the specs\, it's a propeller block filled with petroleum that has been hooked up to a cannon\, which it fires at intense rates\, or something like that.<page>I'm afraid I can't let you have it though because according to my superiors it's too OP\, or something along the lines of that.";FD:1;NM:1;
 NPC_END
 DOORS
 OX:-199632;OY:-200128;DT:2;ID:1;OD:1;ET:1;
@@ -5167,6 +5167,8 @@ IX:-178400;IY:-180288;OX:-138688;OY:-140128;DT:2;ID:1;OD:1;TW:1;
 IX:-199632;IY:-200448;OX:-159568;OY:-160128;DT:2;ID:1;OD:1;TW:1;
 IX:-158768;IY:-160256;OX:-179936;OY:-180096;DT:2;ID:1;OD:1;TW:1;
 IX:-118256;IY:-120128;OX:-160480;OY:-160256;DT:2;ID:1;OD:1;TW:1;
+IX:-198848;IY:-200352;OX:-59904;OY:-60096;DT:2;ID:1;OD:1;TW:1;
+IX:-99296;IY:-100224;OX:-200384;OY:-200352;DT:2;ID:1;OD:1;TW:1;
 DOORS_END
 LAYERS
 LR:"Default";
@@ -5177,8 +5179,8 @@ LR:"Billy Gun";HD:1;
 LR:"Chomp Starter";
 LR:"Chomp 2";HD:1;
 LR:"Toilet Peach";HD:1;
-LR:"Toads";HD:1;
-LR:"Scared Toads";
+LR:"Toads";
+LR:"Scared Toads";HD:1;
 LAYERS_END
 EVENTS_CLASSIC
 ET:"Level - Start";AS:0;AX:0;AY:0;
@@ -5199,9 +5201,9 @@ ET:"Chomp Killed 4";MG:"Chompy\:                    Woof Woof!";TE:"Chomp Killed
 ET:"Chomp Killed 5";MG:"Peach\:                     Oh! I guess that means the toilet is unblocked\, too! To say thanks\, I'll double your payment and bake you a cake. Now\, if you don't mind\, I'm off to the kitchen. I'll have Chompy sent to the groomers to do something about the dents and holes on his metal\, which I presume have something to do with him being stuck down the toilet for ages.";TE:"Chomp Killed 6";AS:0;AX:0;AY:0;
 ET:"Chomp Killed 6";MG:"Mario\:                     Hey\, Luigi. Should-a-we tell ze Princess that those dents and holes are actually us shooting Chompy?";SD:46;LH:["Toilet Peach"];SSS:["ID\:3\;SL\:-2\;"];TE:"Chomp Killed 7";AS:0;AX:0;AY:0;
 ET:"Chomp Killed 7";MG:"Luigi\:                     Nah\, that'll cause lots of trouble. I really don't know how zey can get rid of ze dents and-a holes\, though.";AS:0;AX:0;AY:0;
-ET:"Bowser Warning";MG:"Toads\:                     \nAaaaah! It's Bowser!";LH:["Toads"];LS:["Scared Toads"];SSS:["ID\:2\;MI\:19\;","ID\:4\;MI\:19\;","ID\:6\;MI\:19\;"];AS:0;AX:0;AY:0;
-ET:"Bowser Warning 2";MG:"Bowser\:                    Bwahahaha! Your silly weapons have nothing against me! I resist it all! Lava\, black holes\, you name it! Now\, where's the princess!";SSS:["ID\:6\;MI\:19\;"];AS:0;AX:0;AY:0;
-ET:"Bowser Warning 3";MG:"Bowser\:                    Let me guess\, baking a cake again? She must have her defences down\, due to all your cute little guns.";SSS:["ID\:2\;MI\:19\;"];AS:0;AX:0;AY:0;
+ET:"Bowser Warning";MG:"<boxStyle ml><speakerName \"Toads\">Aaaaah! It's Bowser!<page><speakerName \"Bowser\">Bwahahaha! Your silly weapons have nothing against me! I resist it all! Lava\, black holes\, you name it! Now\, where's the princess?!<page>Let me guess\, baking a cake again? She must have her defences down\, due to all your cute little guns.";LH:["Toads"];LS:["Scared Toads"];SSS:["ID\:2\;MI\:19\;","ID\:4\;MI\:19\;","ID\:6\;MI\:19\;"];AS:0;AX:0;AY:0;
+ET:"Bowser Warning 2";MG:"<boxStyle ml><speakerName \"Bowser\">Bwahahaha! Your silly weapons have nothing against me! I resist it all! Lava\, black holes\, you name it! Now\, where's the princess?";SSS:["ID\:6\;MI\:19\;"];AS:0;AX:0;AY:0;
+ET:"Bowser Warning 3";MG:"<boxStyle ml><speakerName \"Bowser\">Let me guess\, baking a cake again? She must have her defences down\, due to all your cute little guns.";SSS:["ID\:2\;MI\:19\;"];AS:0;AX:0;AY:0;
 ET:"Bowser Dialouge";MG:"Bowser\:				\nGwahaha\, Peach! You can't run from me for long!";AS:0;AX:0;AY:0;
 ET:"Bowser Dialouge 2";MG:"Peach\:\nYou don't seem to be in a very good condition after you tried to fight through the Border Patrol and Toad Town\, and if you try to run off the other way you will be shot again! There really is no point kidnapping me anymore.";AS:0;AX:0;AY:0;
 ET:"Bowser Dialouge 3";MG:"Bowser\:                    Ah\, kidnap you? Well excuse me\, Princess! I'm not doing that today! I want information! Have you seen any of the shards of the Star Blade recently?";AS:0;AX:0;AY:0;
