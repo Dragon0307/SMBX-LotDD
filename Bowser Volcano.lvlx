@@ -5,7 +5,7 @@ SECTION
 SC:0;L:-200000;R:-197536;T:-200600;B:-200000;MZ:24;MF:"Sonic 3D Blast - Volcano Valley Zone 1.vgz";BG:23;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 2\,\n        \"weather\"\: 5\n    }\n}\n";
 SC:1;L:-180000;R:-177760;T:-181568;B:-180000;MZ:24;MF:"Sweltering Cave.spc";BG:40;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 2\,\n        \"weather\"\: 5\n    }\n}\n";
 SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:24;MF:"Sweltering Cave.spc";BG:40;
-SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:24;MF:"58 Game Guy Mini-Game.mp3";BG:15;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 2\,\n        \"weather\"\: 5\n    }\n}\n";
+SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:24;MF:"Mario Party 3 - Game Guy Mini-Game.ogg";BG:15;XTRA:"{\n    \"effects\"\: {\n        \"screenEffects\"\: 2\,\n        \"weather\"\: 5\n    }\n}\n";
 SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:0;MF:"";BG:0;
 SECTION_END
 STARTPOINT
@@ -1360,8 +1360,8 @@ ID:142;X:-197984;Y:-200192;W:64;H:32;
 ID:142;X:-197856;Y:-200096;W:64;H:32;
 ID:142;X:-197856;Y:-200064;W:64;H:32;
 ID:142;X:-197856;Y:-200032;W:64;H:32;
-ID:1151;X:-198496;Y:-200256;W:32;H:32;
-ID:1151;X:-198496;Y:-200288;W:32;H:32;
+ID:1151;X:-198432;Y:-200352;W:32;H:32;
+ID:1151;X:-198496;Y:-200352;W:32;H:32;
 ID:482;X:-179232;Y:-180192;W:32;H:32;
 ID:482;X:-179200;Y:-180160;W:32;H:32;
 ID:482;X:-179168;Y:-180128;W:32;H:32;
@@ -2055,7 +2055,7 @@ ID:131;X:-139360;Y:-140256;D:-1;FD:1;NM:1;
 ID:0;X:0;Y:0;D:-1;
 NPC_END
 DOORS
-IX:-198496;IY:-200256;OX:-179952;OY:-181472;DT:1;ID:4;OD:1;
+IX:-198496;IY:-200256;OX:-179952;OY:-181472;DT:1;ID:4;OD:1;TW:1;
 DOORS_END
 LAYERS
 LR:"Default";

@@ -6,7 +6,7 @@ SC:0;L:-200000;R:-198144;T:-200600;B:-200000;MZ:55;MF:"";BG:38;
 SC:1;L:-180000;R:-177984;T:-180600;B:-178880;MZ:55;MF:"";BG:25;
 SC:2;L:-160000;R:-129728;T:-160600;B:-160000;MZ:55;MF:"134 Docaty Mountain Railroad.spc";BG:39;
 SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:24;MF:"Pokemon Gold & Silver.gbs|16";BG:0;
-SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:24;MF:"Pokemon Gold & Silver.gbs|50";BG:45;XTRA:"{\n    \"darkness\"\: {\n        \"ambient\"\: \"#13001dff\"\,\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"brightness\"\: 0.4\,\n            \"color\"\: \"#55aa00ff\"\,\n            \"enabled\"\: true\,\n            \"flicker\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 5\,\n        \"weather\"\: 3\n    }\n}\n";
+SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:24;MF:"Pokemon Gold & Silver.gbs|50";BG:45;XTRA:"{\n    \"darkness\"\: {\n        \"ambient\"\: \"#13001dff\"\,\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"brightness\"\: 0.7\,\n            \"color\"\: \"#ffffffff\"\,\n            \"enabled\"\: true\,\n            \"flicker\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 5\,\n        \"weather\"\: 3\n    }\n}\n";
 SC:5;L:-100000;R:-99200;T:-100600;B:-100000;MZ:24;MF:"Pokemon Gold & Silver.gbs|50";BG:0;
 SC:6;L:-80000;R:-79200;T:-80600;B:-80000;MZ:39;MF:"";BG:45;
 SECTION_END
@@ -737,6 +737,7 @@ ID:151;X:-198984;Y:-200176;D:-1;MG:"Wah! This mine is MINE!(and  mine)    \n-- W
 ID:94;X:-198752;Y:-200182;D:-1;MG:"I'm the lift operator. Now\, I WOULD be allowing you to use the lift\, but unfortunatey for us\, Wario has stolen the lift switch and blocked the pipe with this spicy stuff. I think I heard something about something cold being able to wreck those spicy lava blocks\, but my fridge's power cable wouldn't stretch this far. Guess we're stuck.";FD:1;
 ID:94;X:-159648;Y:-160278;D:-1;MG:"Welcome to the Mushroom Mine Minecart Track! I recomend that first timers take the tutorial\, which can be accessed from within this door.";FD:1;NM:1;
 ID:900;X:-119808;Y:-120160;D:-1;XTRA:"{\n    \"name\"\: \"Toxic Caverns\"\n}\n";
+ID:900;X:-199808;Y:-200192;D:-1;XTRA:"{\n    \"name\"\: \"Mine Entrance\"\n}\n";
 NPC_END
 LAYERS
 LR:"Default";

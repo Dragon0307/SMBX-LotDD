@@ -1623,6 +1623,9 @@ BGO_END
 NPC
 ID:386;X:-159776;Y:-160096;D:1;
 ID:94;X:-199840;Y:-200182;D:-1;MG:"<boxStyle ml><speakerName \"Toad\"> Welcome to Bubble Lake! Come to relax by the shores? Or are you going to attempt to swim?";FD:1;NM:1;
+ID:229;X:-179488;Y:-180256;D:-1;
+ID:53;X:-179520;Y:-179904;D:-1;
+ID:151;X:-159464;Y:-160272;D:-1;MG:"~~IMPORTANT NOTICE FROM THE KERO SEWERS ADMINISTRATORS~~\n\nIf you tell anyone that we're dumping sewage in the lake\, we will send the sewer mafia to get you.";FD:1;
 NPC_END
 PHYSICS
 ET:0;X:-199776;Y:-200112;W:1440;H:112;

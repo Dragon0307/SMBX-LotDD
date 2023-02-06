@@ -7,6 +7,8 @@ SC:1;L:-180000;R:-176544;T:-181024;B:-179552;MZ:24;MF:"PU-NuclearZeta.ogg";BG:20
 SC:2;L:-160000;R:-154144;T:-160600;B:-160000;MZ:24;MF:"PU-NuclearZeta.ogg";BG:20;XTRA:"{\n    \"darkness\"\: {\n        \"ambient\"\: \"#000000ff\"\,\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"color\"\: \"#ffffffff\"\,\n            \"enabled\"\: true\,\n            \"flicker\"\: false\,\n            \"radius\"\: 1000\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 5\,\n        \"weather\"\: 6\n    }\n}\n";
 SC:3;L:-140000;R:-138592;T:-140600;B:-140000;MZ:24;MF:"PU-NuclearZeta.ogg";BG:20;XTRA:"{\n    \"beat\"\: {\n        \"enabled\"\: true\,\n        \"useMusicClock\"\: true\n    }\,\n    \"darkness\"\: {\n        \"enableDarkness\"\: false\,\n        \"playerlight\"\: {\n            \"enabled\"\: true\,\n            \"radius\"\: 256\n        }\n    }\,\n    \"effects\"\: {\n        \"screenEffects\"\: 5\,\n        \"weather\"\: 6\n    }\n}\n";
 SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:24;MF:"PU-NuclearZeta.ogg";BG:0;XTRA:"{\n    \"darkness\"\: {\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"radius\"\: 256\n        }\n    }\n}\n";
+SC:5;L:-100000;R:-99200;T:-100600;B:-100000;MZ:0;MF:"";BG:0;
+SC:6;L:-80000;R:-79200;T:-80600;B:-80000;MZ:0;MF:"";BG:0;
 SECTION_END
 STARTPOINT
 ID:1;X:-199980;Y:-200182;D:1;

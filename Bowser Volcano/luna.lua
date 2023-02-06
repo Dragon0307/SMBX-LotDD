@@ -26,7 +26,7 @@ Sniffit: And, if you get any wrong, you'll lose a life. If you run out of lives.
 Correct! Next question.
 Oops! You got that wrong! Lose a life.
 Uh-oh! Seems you're out of lives! Thank you for playing, and we'll try to fish out your charred remains later today. Probably.
-Well, it seems you got that final question right! As promises, here's your prize.
+Well, it seems you got that final question right! As promised, here's your prize.
 Wow, you got everything right! Here - take the grand prize for the day: The Fire Emblem! It's a shield that lets you shoot fireballs anywhere - even underwater! No, it doesn't 
 protect against anything. Dragon killing sword not included.
 Anyway, seeing as you've now won, I thank you for coming on today, and now I kindky ask that you get out of my studio. Right this second.

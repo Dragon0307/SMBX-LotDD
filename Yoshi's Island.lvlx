@@ -1137,7 +1137,7 @@ ID:265;X:-200544;Y:-200064;
 ID:265;X:-200544;Y:-200032;
 BGO_END
 NPC
-ID:94;X:-200288;Y:-200310;D:-1;MG:"<boxStyle ml><speakerName \"Boa T.\">\: This is Yoshi's Island\, home of the Yoshis. The monsters native to here don't seem to be aligned with anyone and are somewhat tougher than the guys over at the Mushroom Kingdom. But I think you get a better experience from fighting them\, if you know what I mean.";FD:1;
+ID:94;X:-200288;Y:-200310;D:-1;MG:"<boxStyle ml><speakerName \"Boa T.\">\: This is Yoshi's Island\, home of the Yoshis. The monsters native to here don't seem to be aligned with anyone and are somewhat tougher than the guys over at the Mushroom Kingdom. But I think you get a better experience from fighting them\, if you know what I mean.";FD:1;NM:1;
 ID:125;X:-198338;Y:-200792;D:-1;MG:"wassup";FD:1;NM:1;
 ID:162;X:-199392;Y:-200476;D:-1;
 NPC_END

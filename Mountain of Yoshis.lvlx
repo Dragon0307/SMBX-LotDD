@@ -46,7 +46,7 @@ ID:81;X:-198912;Y:-200096;W:32;H:32;
 ID:81;X:-198880;Y:-200096;W:32;H:32;
 BLOCK_END
 NPC
-ID:95;X:-199584;Y:-200128;D:-1;MG:"Now that Trashi's opened the borded up\, we can now climb the mountain as much as we please! Although\, it's a bit cloudy up here\, so that might be problematic...";FD:1;NM:1;
+ID:95;X:-199584;Y:-200128;D:-1;MG:"Now that Trashi's opened the gate up\, we can now climb the mountain as much as we please! Although\, it's a bit cloudy up here\, so that might be problematic...";FD:1;NM:1;
 NPC_END
 LAYERS
 LR:"Default";

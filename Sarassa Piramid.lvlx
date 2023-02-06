@@ -4,6 +4,10 @@ HEAD_END
 SECTION
 SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Mario & Luigi Bowser's Inside Story- Bowser's Path.ogg";BG:52;OE:1;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 4\n    }\n}\n";
 SC:1;L:-180000;R:-177888;T:-180864;B:-180000;MZ:24;MF:"Music-Underground_Desert.mp3";BG:57;XTRA:"{\n    \"darkness\"\: {\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"enabled\"\: true\n        }\n    }\,\n    \"effects\"\: {\n        \"weather\"\: 4\n    }\n}\n";
+SC:2;L:-160000;R:-159200;T:-160600;B:-160000;MZ:0;MF:"";BG:0;
+SC:3;L:-140000;R:-139200;T:-140600;B:-140000;MZ:0;MF:"";BG:0;
+SC:4;L:-120000;R:-119200;T:-120600;B:-120000;MZ:0;MF:"";BG:0;
+SC:6;L:-80000;R:-79200;T:-80600;B:-80000;MZ:0;MF:"";BG:0;
 SECTION_END
 STARTPOINT
 ID:1;X:-199996;Y:-200118;D:1;
@@ -526,7 +530,7 @@ BGO_END
 NPC
 ID:94;X:-199712;Y:-200118;D:-1;MG:"This is Sarassa Piramid\, the ancestral resting place of the Sarassaland Royal Family. Only those who have explicit permission from Princess Daisy may set foot within.";FD:1;
 ID:94;X:-199552;Y:-200118;D:1;MG:"This is Sarassa Piramid\, the ancestral resting place of the Sarassaland Royal Family. Only those who have explicit permission from Princess Daisy may set foot within.";FD:1;
-ID:151;X:-179496;Y:-180144;D:-1;MG:"Those who is't dare to intrude upon the sanctity of the final resting lodging of the sarrassa line shalt perish\, unless they can persevere the eight trials.       ";FD:1;
+ID:151;X:-179496;Y:-180144;D:-1;MG:"Those who is't dare to intrude upon the sanctity of the final resting lodging of the Sarrassa line shalt perish\, unless they can persevere the eight trials.       ";FD:1;
 ID:151;X:-179048;Y:-180144;D:-1;MG:"Those who is't dare to continueth wilt taketh the first trial - the dephts art did guard by a being of immortal\, he of which death doest not hold\, with a souless corse and cruel mind\, refusing to depart from this realm. Those who is't did fall this beast of unliving shalt descent to the lower crypts.         ";FD:1;
 ID:151;X:-178920;Y:-180144;D:-1;MG:"Those who is't bringeth death to death itself wilt then taketh the second trial. All who is't intend to clear such a cunning cubiculo shalt beest did test by the might of the waves - those who is't collect the eight crimson treasures unscathed wilt enter the next cubiculo.         ";FD:1;
 ID:151;X:-178792;Y:-180144;D:-1;MG:"Any who is't hath't the determination to reacheth the third cubiculo wilt beest did test of their courage. In the lodging of unseen fear\, challengers of the dark wilt embrace the false light beyond the grave.         ";FD:1;

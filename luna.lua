@@ -1,5 +1,5 @@
 --luna.lua for Legend of the Dark Door, an SMBX episode.
---This code will make experienced lua dudes cry. Also, comments.
+--This code will make experienced lua people cry. Also, comments.
 
 
 --PLANS
@@ -7,10 +7,18 @@
 --Add a menu to choose special attacks from. I can't make sense of Mega Man's code so I can't use that as a reference.
 --Switch characters to Uncle Broadsword and reskin him into Mario
 
+--function onLoop()
+
+--end
 
 stats = require("Stats") -- Installs a custom library that I should not be proud of but I am. Provides the levels and experience
 allAchievements = Achievements.get() -- Stuffs all the achievements into a useable state.
 local attack = require("attacks") -- May be deleted at some point; is a special attack script that conjures special attacks.
+local hammer = require("hammer") -- Stop, hammertime. Changed locally to make the game think its a sword since I've already implemented that.
+hammer.active = true
+
+--hammer.canSlamSwing = false
+--hammer.canSlamAir = false
 
 --playerHP = 0 -- Suprise! There's limited HP. Why else would I have reskinned Mario to be Uncle Broadsword unless I wanted that sweet sweet knockback mechanic?
 
@@ -18,22 +26,30 @@ local attack = require("attacks") -- May be deleted at some point; is a special 
 --WARNING: Spaghetti Code Ahead!
 
 SaveData["episode"] = SaveData["episode"] or {}
-local unlocks = SaveData["episode"]
+unlocks = SaveData["episode"]
 
 function onKeyboardPress(keyCode)
     if keyCode == VK_Q then
         attack.fireOrb()
-    --elseif keyCode == VK_W then
-      --  attack.powerSlam()
+    elseif keyCode == VK_W then
+        attack.powerSlam()
     elseif keyCode == VK_E then
         attack.chillout()
     elseif keyCode == VK_R then
         attack.recover()
+    elseif keyCode == VK_T then
+        attack.swordBeam()
+    elseif keyCode == VK_Y then
+        attack.boomerangBlade()
     end
 end
 
 
 -- Story savedatas
+
+unlocks.hasHammer = 1
+unlocks.hammerTier = 0
+unlocks.bootTier = 0
 
 lhp = require("LightHitPoint") -- Needs to be global for per-level health bars.
 --anothercurrency = require("anothercurrency") -- Global for it to count across every level - ever. I think.
@@ -56,12 +72,27 @@ local fontA = textplus.loadFont("textplus/font/smw-b.ini")
 ------------------
 
 function onStart()
-    --player.character = 15 -- You have to be Broadsword. He's busy pretending to be Mario.
+    --player.character = 15 -- You used to have to be Broadsword. He pretended to be Mario. Then hammer.lua happened, and frankly Uncle Broadsword was too slow for appropriate gameplay.
 end
 
-function onDraw()
-    if player.keys.altRun == KEYS_DOWN and unlocks.fireOrb == 1 then
+function onTickEnd()
+    --sText.print(0x11C,100,100)
+    if player.keys.altRun == KEYS_PRESSED and player.keys.up then
+        if player:isOnGround() --[[player.speedY == 0]] then
+            if player.speedX == 0 and not player.keys.left and not player.keys.right then
+                attack.fireOrb()
+            elseif hammer.canSlamSwing == true then
+                attack.chillout()
+            end
+        elseif hammer.canSlamAir == true then
+            attack.swordBeam()
+        end
+        --[[
         attack.fireOrb()
+    else player.keys.altRun == KEYS_PRESSED and player.keys.up == KEYS_DOWN and unlocks.fireOrb == 1 and player.isOnGround then
+        attack.chillout()
+    end
+    ]]--
     end
 end
 
@@ -82,14 +113,14 @@ function onHUDDraw()
         font = fontB,
         text = "EXPERIENCE: " .. stat.xp
     }
-    --textplus.print{
-      --  x = 0,
-        --y = 20,
-    --    xscale = 2,
-      --  yscale = 2,
-        --font = fontB,
-       -- text = "FP: " .. stat.fp
-    --}
+    textplus.print{
+        x = 0,
+        y = 20,
+        xscale = 2,
+        yscale = 2,
+        font = fontB,
+        text = "FP: " .. attack.Mana .. "/" .. attack.maxMana
+    }
     if stat.hp >= stats.criticalHP then
         textplus.print{
             x = 0,
@@ -138,7 +169,7 @@ lhp.setHarmtypeDamage(HARM_TYPE_JUMP, stat.level * 0.75) -- When Mario jumps on 
 lhp.setHarmtypeSound(HARM_TYPE_JUMP, "Sounds/SmallExplosion8-Bit.ogg")
 lhp.setHarmtypeDamage(HARM_TYPE_FROMBELOW, stat.level * 3) -- When Mario hits a block, damaging enemies on it.
 lhp.setHarmtypeSound(HARM_TYPE_FROMBELOW, "Sounds/Crush8-Bit.ogg")
-lhp.setHarmtypeDamage(HARM_TYPE_TAIL, stat.level * 1.5) -- When Mario uses a Tanooki spin.
+lhp.setHarmtypeDamage(HARM_TYPE_TAIL, stat.level * 0.75) -- When Mario uses a Tanooki spin.
 lhp.setHarmtypeSound(HARM_TYPE_TAIL, "Sounds/Crush8-Bit.ogg")
 lhp.setHarmtypeDamage(HARM_TYPE_SPINJUMP, stat.level * 1) -- When Mario spin jumps.
 lhp.setHarmtypeSound(HARM_TYPE_SPINJUMP, "Sounds/Crush8-Bit.ogg")

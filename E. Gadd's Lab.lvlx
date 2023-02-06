@@ -2,9 +2,12 @@ HEAD
 TL:"E. Gadd's Lab";CPID:"SMBX2";
 HEAD_END
 SECTION
-SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Ghost House (PM_ Forever Forest).mp3";BG:19;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 6\n    }\n}\n";
-SC:1;L:-180000;R:-177984;T:-180600;B:-180000;MZ:24;MF:"Sonic the Hedgehog 2 - 02 - Options.vgz";BG:4;
+SC:0;L:-200000;R:-199200;T:-200600;B:-200000;MZ:24;MF:"Ghost House (PM_ Forever Forest).mp3";BG:19;OE:1;XTRA:"{\n    \"effects\"\: {\n        \"weather\"\: 6\n    }\n}\n";
+SC:1;L:-180000;R:-177984;T:-180600;B:-180000;MZ:24;MF:"Luigi's Mansion - Professor E. Gadd's Lab.ogg";BG:4;
 SECTION_END
+STARTPOINT
+ID:1;X:-199964;Y:-200118;D:1;
+STARTPOINT_END
 BLOCK
 ID:119;X:-200000;Y:-200064;W:32;H:32;
 ID:119;X:-199968;Y:-200064;W:32;H:32;
@@ -342,6 +345,9 @@ BLOCK_END
 BGO
 ID:17;X:-199744;Y:-200416;
 BGO_END
+NPC
+ID:151;X:-199816;Y:-200112;D:-1;MG:"E. GADD'S LAB";FD:1;
+NPC_END
 LAYERS
 LR:"Default";
 LR:"Destroyed Blocks";HD:1;

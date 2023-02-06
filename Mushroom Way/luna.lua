@@ -1,5 +1,3 @@
-soundPlayed = 0
-
 function onEvent(event)
     if event == "Hammer Bro Music" then
         Audio.MusicChange(0, "Mid-Boss - Super Mario Sunshine.ogg")
